@@ -6,9 +6,9 @@ import { login } from '../../utils/api';
 import './login.scss'
 
 function LoginPage({ loginSuccess }) {
+
     async function onLogin({ email, password }) {
         const { error, data } = await login({ email, password });
-
         if (!error) {
             loginSuccess(data);
         }

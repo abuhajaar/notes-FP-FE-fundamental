@@ -1,63 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Gap } from '../../atoms';
+import { useInput } from '../../../hooks/useInput';
 
-class LoginInput extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            email: '',
-            password: '',
-        };
 
-        this.onEmailChangeHandler = this.onEmailChangeHandler.bind(this);
-        this.onPasswordChangeHandler = this.onPasswordChangeHandler.bind(this);
-        this.onSubmitHandler = this.onSubmitHandler.bind(this);
-    }
+function LoginInput({login}) {
+    const [email, setEmail] = useInput('');
+    const [password, setPassword] = useInput('');
 
-    onEmailChangeHandler(event) {
-        this.setState(() => {
-            return {
-                email: event.target.value
-            }
-        })
-    }
-
-    onPasswordChangeHandler(event) {
-        this.setState(() => {
-            return {
-                password: event.target.value
-            };
-        });
-    }
-
-    onSubmitHandler(event) {
+    function onSubmitHandler(event) {
         event.preventDefault();
-
-        this.props.login({
-            email: this.state.email,
-            password: this.state.password,
+        login({
+            email,
+            password,
         });
     }
-
-    render() {
-        return (
-            <form onSubmit={this.onSubmitHandler} className='login-input'>
-                <Gap height={20} />
-                <input type="email" placeholder='Email' value={this.state.email} onChange={this.onEmailChangeHandler} />
-                <Gap height={20} />
-                <input type="password" placeholder='Password' value={this.state.password} onChange={this.onPasswordChangeHandler} />
-                <Gap height={20} />
-                <button>Masuk</button>
-                <Gap height={20} />
-            </form>
-        );
-    }
+  return (
+    <div>
+    <form onSubmit={onSubmitHandler} className='login-input'>
+    <Gap height={20} />
+    <input type="email" placeholder='Email' value={email} onChange={setEmail} />
+    <Gap height={20} />
+    <input type="password" placeholder='Password' value={password} onChange={setPassword} />
+    <Gap height={20} />
+    <button>Masuk</button>
+    <Gap height={20} />
+    </form>
+    </div>
+  )
 }
 
 LoginInput.propTypes = {
     login: PropTypes.func.isRequired,
 }
-
 export default LoginInput;
