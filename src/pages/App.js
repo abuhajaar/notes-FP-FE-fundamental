@@ -42,8 +42,10 @@ class App extends React.Component {
       theme: 'light',
       toggleTheme: () => {
         this.setState((prevState) => {
+          const newTheme = prevState.theme === 'light' ? 'dark' : 'light';
+          localStorage.setItem('theme', newTheme);
           return {
-            theme: prevState.theme === 'light' ? 'dark' : 'light',
+            theme: newTheme,
           };
         });
       },
@@ -51,6 +53,12 @@ class App extends React.Component {
 
     this.onLoginSuccess = this.onLoginSuccess.bind(this);
     this.onLogout = this.onLogout.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.theme !== this.state.theme) {
+      document.documentElement.setAttribute('data-theme', this.state.theme);
+    }
   }
 
   async componentDidMount() {
