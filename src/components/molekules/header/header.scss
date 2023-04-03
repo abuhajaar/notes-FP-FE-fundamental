@@ -1,0 +1,25 @@
+.container{
+    background-color: #D3ECA7;
+    color: #753188;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    height: 15vh;
+    align-items: center;
+    justify-items: center;
+    .logo1{
+        height: 9vh;
+    }   
+    .Link{
+        color: #753188;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+    .logo22{
+        padding-left: 120px;
+        color: #753188;
+        text-decoration: none;
+    }
+}
+

@@ -1,0 +1,47 @@
+.newnote{
+    display: flexbox;
+    background-color: #A1B57D;
+    min-height: 80vh;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+
+    
+    .judul{
+
+        color: black;
+        padding: 20px 50px;
+        margin-inline:50px ;
+        border: 2px dashed ;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+}
+    .body{
+        margin-inline: 50px;
+        height: 50vh;
+        padding: 20px 50px;
+        border: 2px dashed ;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+    .btn-submit{
+        display: flex;
+        
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .judul:empty:before {
+        content: attr(data-placeholder);
+    }
+    .body:empty:before {
+        content: attr(data-placeholder);
+    }
+}

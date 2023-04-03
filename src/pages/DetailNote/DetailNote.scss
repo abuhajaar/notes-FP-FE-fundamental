@@ -1,0 +1,19 @@
+.detail_page{
+    background-color: #A1B57D;
+    padding-inline: 100px;
+    min-height: 70vh;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    .wrapper-detailNote{
+        padding-inline:50px ;
+        justify-content: center;
+        border: 2px dotted;
+        border-radius: 15px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        -o-border-radius: 15px;
+}
+}

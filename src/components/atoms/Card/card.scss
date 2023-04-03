@@ -1,0 +1,65 @@
+.Card{
+    border: 1px solid rgb(21, 5, 5);
+    border-radius: 8px;
+    border-top: 5px solid;
+    padding: 16px;
+    background-color: aliceblue;
+    width: 200px;
+    font-family: calibri;
+    font-size: 15px;
+    overflow: hidden;
+    text-decoration: none;
+   
+   
+    .title{
+        font-size: 1.5rem;
+    }
+    .note-item {
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        max-height: 10px;
+
+    }   
+    .Box {
+        overflow: hidden;
+        max-height: 60px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;  
+        text-overflow: ellipsis;
+       
+      }
+    .note-item__content {
+        padding: 12px;
+        flex: 1;
+        height: 95px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+      
+    .note-item__title {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-bottom: 4px;
+        text-decoration: none;
+        color: black;
+      }
+      
+      .note-item__date {
+        font-size: 15px;
+        margin-bottom: 8px;
+        color: #aaa;
+      }
+      
+      .note-item__body {
+        font-size: 10px;
+      }
+      .note-item__action {
+      display: flex;
+        justify-content: space-around;
+      }
+}

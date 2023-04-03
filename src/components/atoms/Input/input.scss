@@ -1,0 +1,12 @@
+.input-wrapper{
+    justify-content: center;
+    min-width: 200px;
+    .input{
+        border: 1px solid gray;
+        padding: 10px;
+        border-radius: 8px;
+        outline: none;
+        box-sizing: border-box;
+        min-width: 500px;
+    }
+}
