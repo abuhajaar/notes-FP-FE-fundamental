@@ -1,17 +1,19 @@
-
+import { Routes, Route } from 'react-router-dom';
+import './app.css';
 import {
-  Routes,
-  Route,
-} from "react-router-dom";
-import './app.css'
-import { Home, ArsipPage, NotFoundPage, CreateNote, DetailNote } from "../pages";
-import { Footer, Header } from "../components";
+  Home,
+  ArsipPage,
+  NotFoundPage,
+  CreateNote,
+  DetailNote,
+} from '../pages';
+import { Footer, Header } from '../components';
 import { LocaleProvider } from '../contexts/LocaleContext';
+import { ThemeProvider } from '../contexts/ThemeContext';
 import React from 'react';
 import { getUserLogged, putAccessToken } from '../utils/api';
-import LoginPage from "./Login";
-import RegisterPage from "./RegisterPage";
-
+import LoginPage from './Login';
+import RegisterPage from './RegisterPage';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,21 +21,32 @@ class App extends React.Component {
     this.state = {
       authedUser: null,
       initializing: true,
+
       localeContext: {
         locale: localStorage.getItem('locale') || 'id',
         toggleLocale: () => {
           this.setState((prevState) => {
-            const newLocale = prevState.localeContext.locale === 'id' ? 'en' : 'id';
+            const newLocale =
+              prevState.localeContext.locale === 'id' ? 'en' : 'id';
             localStorage.setItem('locale', newLocale);
             return {
               localeContext: {
                 ...prevState.localeContext,
-                locale: newLocale
-              }
-            }
+                locale: newLocale,
+              },
+            };
           });
-        }
-      }
+        },
+      },
+
+      theme: 'light',
+      toggleTheme: () => {
+        this.setState((prevState) => {
+          return {
+            theme: prevState.theme === 'light' ? 'dark' : 'light',
+          };
+        });
+      },
     };
 
     this.onLoginSuccess = this.onLoginSuccess.bind(this);
@@ -46,7 +59,7 @@ class App extends React.Component {
     this.setState(() => {
       return {
         authedUser: data,
-        initializing: false
+        initializing: false,
       };
     });
   }
@@ -65,8 +78,8 @@ class App extends React.Component {
   onLogout() {
     this.setState(() => {
       return {
-        authedUser: null
-      }
+        authedUser: null,
+      };
     });
 
     putAccessToken('');
@@ -79,36 +92,44 @@ class App extends React.Component {
 
     if (this.state.authedUser === null) {
       return (
-        <LocaleProvider value={this.state.localeContext}>
-          <div className='contact-app'>
-            <header className='contact-app__header'>
-              <h1>Aplikasi Kontak</h1>
-            </header>
-            <main>
-              <Routes>
-                <Route path="/*" element={<LoginPage loginSuccess={this.onLoginSuccess} />} />
-                <Route path="/register" element={<RegisterPage />} />
-              </Routes>
-            </main>
-          </div>
-        </LocaleProvider>
-      )
+        <ThemeProvider value={this.state}>
+          <LocaleProvider value={this.state.localeContext}>
+            <div className="contact-app">
+              <header className="contact-app__header">
+                <h1>Aplikasi Kontak</h1>
+              </header>
+              <main>
+                <Routes>
+                  <Route
+                    path="/*"
+                    element={<LoginPage loginSuccess={this.onLoginSuccess} />}
+                  />
+                  <Route path="/register" element={<RegisterPage />} />
+                </Routes>
+              </main>
+            </div>
+          </LocaleProvider>
+        </ThemeProvider>
+      );
     }
 
     return (
-      <LocaleProvider value={this.state.localeContext}>
-        <div className="contact-app">
-          <Header LogOut={this.onLogout} />
-          <Routes>
-            <Route path="/" exact element={<Home />} />
-            <Route path="/notes/:id" element={<DetailNote />} />
-            <Route path="/newnote" element={<CreateNote />} />
-            <Route path="/arsip" element={<ArsipPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-          <Footer />
-        </div>
-      </LocaleProvider>
+      <ThemeProvider value={this.state}>
+        <LocaleProvider value={this.state.localeContext}>
+          <div className="contact-app">
+            <Header LogOut={this.onLogout} />
+
+            <Routes>
+              <Route path="/" exact element={<Home />} />
+              <Route path="/notes/:id" element={<DetailNote />} />
+              <Route path="/newnote" element={<CreateNote />} />
+              <Route path="/arsip" element={<ArsipPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+            <Footer />
+          </div>
+        </LocaleProvider>
+      </ThemeProvider>
     );
   }
   // console.log(authedUser)
@@ -125,5 +146,4 @@ class App extends React.Component {
   // </ BrowserRouter >
 }
 
-
-export default App
+export default App;
