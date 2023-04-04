@@ -1,5 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
-import './app.css';
+import { Link, Routes, Route } from 'react-router-dom';
+import './app.scss';
 import {
   Home,
   ArsipPage,
@@ -104,7 +104,7 @@ class App extends React.Component {
           <LocaleProvider value={this.state.localeContext}>
             <div className="contact-app">
               <header className="contact-app__header">
-                <h1>Aplikasi Kontak</h1>
+                <h2>Aplikasi Kontak</h2>
               </header>
               <main>
                 <Routes>
@@ -115,6 +115,20 @@ class App extends React.Component {
                   <Route path="/register" element={<RegisterPage />} />
                 </Routes>
               </main>
+              <footer className="contact-app__footer">
+                <div className="left">
+                  <p>Belum punya akun?</p>
+                  <h3>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                  </h3>
+                </div>
+                <div className="right">
+                  <Link to="/register" className="btn-register">
+                    Daftar di sini
+                  </Link>
+                </div>
+              </footer>
             </div>
           </LocaleProvider>
         </ThemeProvider>

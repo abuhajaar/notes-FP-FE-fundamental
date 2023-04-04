@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
 :root {
-  --font-color: #333;
-  --background-color: #ec3838;
+  --font-color: #393546;
+  --background-color: #ececec;
+  --grey: #949397;
+  --yellow: #dfb72e;
+  --pink: #c1a9bf;
+  --blue: #131fc0;
+  --red: #d6106c;
+  --font: 'Kalam', cursive;
+  --line: 2em;
 }
 
 [data-theme='dark'] {
   --font-color: #eee;
   --background-color: #333;
+  --blue: #6d8fff;
+  --red: #ff77b7;
 }
