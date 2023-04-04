@@ -34,7 +34,7 @@ function LoginInput({ login }) {
         />
         <Gap height={16} />
         <button>Masuk</button>
-        <Gap height={16} />
+        <Gap height={12} />
       </form>
     </div>
   );
