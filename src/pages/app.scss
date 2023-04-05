@@ -16,7 +16,7 @@ html {
       background-image: var(--noise);
       background-color: var(--background-color);
       height: 10vh;
-      border-bottom: 5px double var(--red);
+      border-bottom: 10px double var(--red);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -37,7 +37,7 @@ html {
       height: 15vh;
       padding: 0 2em;
       background-color: var(--background-color);
-      border-top: 2px solid black;
+      border-top: 5px solid var(--font-color);
 
       .left {
         display: flex;
