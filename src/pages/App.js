@@ -64,16 +64,25 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    const { data } = await getUserLogged();
+    const isLoggin = localStorage.getItem('accessToken');
+    if (isLoggin) {
+      const { data } = await getUserLogged();
+      this.setState(() => {
+        return {
+          authedUser: data,
+          initializing: false,
+        };
+      });
+    } else {
+      this.setState(() => {
+        return {
+          authedUser: null,
+          initializing: false,
+        };
+      });
+    }
 
     document.documentElement.setAttribute('data-theme', this.state.theme);
-
-    this.setState(() => {
-      return {
-        authedUser: data,
-        initializing: false,
-      };
-    });
   }
 
   async onLoginSuccess({ accessToken }) {
@@ -130,8 +139,8 @@ class App extends React.Component {
                   <div className="left">
                     <p>
                       {this.state.localeContext.locale === 'id'
-                        ? "Don't have an account?"
-                        : 'Belum punya akun?'}
+                        ? 'Belum punya akun? ?'
+                        : "Don't have an account?"}
                     </p>
                     <h3>
                       Lorem Ipsum is simply dummy text of the printing and
@@ -141,8 +150,8 @@ class App extends React.Component {
                   <div className="right">
                     <Link to="/register" className="btn-register">
                       {this.state.localeContext.locale === 'id'
-                        ? 'Register >'
-                        : 'Daftar Disini >'}
+                        ? 'Daftar Disini>'
+                        : ' Register>'}
                     </Link>
                   </div>
                 </footer>
