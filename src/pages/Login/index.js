@@ -48,7 +48,7 @@ function LoginPage({ loginSuccess }) {
               <div className="left">
                 <p>
                   {locale === 'id'
-                    ? 'Belum punya akun? ?'
+                    ? 'Belum punya akun?'
                     : "Don't have an account?"}
                 </p>
                 <h3>

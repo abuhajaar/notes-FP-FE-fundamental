@@ -1,0 +1,130 @@
+@import '../../styles/variable.scss';
+
+.register-page {
+  background-color: var(--background-color);
+  background-image: linear-gradient(var(--grey) 0.01em, transparent 0.1em),
+    var(--noise);
+  background-size: 100% 3em;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .flex {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 5px double var(--blue);
+    padding: 1em;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+      rgba(17, 17, 26, 0.05) 0px 8px 32px;
+
+    h2 {
+      font-family: var(--font);
+      color: var(--font-color);
+      line-height: 1.5em;
+      font-size: 2em;
+      font-weight: 700;
+      border-bottom: 3px solid var(--red);
+    }
+
+    .register-back-to-login {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.6em;
+      p {
+        font-family: var(--font);
+        color: var(--blue);
+        font-size: 1.5em;
+        font-weight: 700;
+      }
+
+      .btn-login {
+        font-family: var(--font);
+        color: var(--font-color);
+        font-size: 1.5em;
+        text-decoration: none;
+        font-weight: 700;
+        transition: 0.2s;
+        position: relative;
+        display: inline-block;
+
+        &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          transform: scaleX(0);
+          height: 3px;
+          bottom: 0;
+          left: 0;
+          background-color: var(--red);
+          transform-origin: center;
+          transition: transform 0.25s ease-out;
+        }
+        &:hover {
+          letter-spacing: 2px;
+
+          &::after {
+            transform: scaleX(1);
+            transform-origin: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .register-page {
+    background-size: 100% 2em;
+    .flex {
+      h2 {
+        font-size: 1.2em;
+      }
+
+      .register-input {
+        input {
+          width: 90%;
+        }
+
+        button {
+          width: 90%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .register-page {
+    .flex {
+      h2 {
+        text-align: center;
+      }
+
+      .register-input {
+        input {
+        }
+
+        button {
+          font-size: 1em;
+        }
+      }
+
+      .register-back-to-login {
+        p {
+          font-size: 0.8em;
+        }
+
+        .btn-login {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+}
