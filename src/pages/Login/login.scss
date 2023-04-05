@@ -58,25 +58,6 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .login-page {
-    height: 100vh;
-    .container-1 {
-      .right {
-        .flex {
-          h1 {
-            font-size: 1.2em;
-          }
-
-          p {
-            display: none;
-          }
-        }
-      }
-    }
-  }
-}
-
 @media screen and (max-width: 1300px) {
   .login-page {
     .container-1 {
@@ -126,6 +107,26 @@
     .left {
       h3 {
         display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .login-page {
+    height: 75vh;
+    background-size: 100% 1em;
+    .container-1 {
+      .right {
+        .flex {
+          h1 {
+            font-size: 1.2em;
+          }
+
+          p {
+            display: none;
+          }
+        }
       }
     }
   }

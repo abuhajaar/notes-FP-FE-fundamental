@@ -42,7 +42,7 @@ html {
       display: flex;
       justify-content: space-around;
       align-items: center;
-      height: 15vh;
+      height: 10vh;
       padding: 0 2em;
       background-color: var(--background-color);
       border-top: 5px solid var(--font-color);
@@ -50,13 +50,13 @@ html {
       .left {
         display: flex;
         flex-direction: column;
-        gap: 1.2em;
+        gap: 1em;
 
         p {
           color: var(--font-color);
           border-bottom: 10px double var(--red);
           font-family: var(--font);
-          font-size: 2em;
+          font-size: 1.5em;
           line-height: 1.2em;
           font-weight: 700;
         }
@@ -64,7 +64,7 @@ html {
         h3 {
           color: var(--blue);
           font-family: var(--font);
-          font-size: 1.5em;
+          font-size: 1.3em;
         }
       }
 
@@ -122,10 +122,12 @@ html {
 
 @media screen and (max-width: 600px) {
   .overlay {
+    padding: 1em;
     .contact-app {
       .contact-app__header {
         padding: 1em;
         gap: 3em;
+        height: 5vh;
         .logo {
           h2 {
             font-family: var(--font);
