@@ -1,4 +1,4 @@
-import { Link, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './app.scss';
 import {
   Home,
@@ -135,26 +135,6 @@ class App extends React.Component {
                     <Route path="/register" element={<RegisterPage />} />
                   </Routes>
                 </main>
-                <footer className="contact-app__footer">
-                  <div className="left">
-                    <p>
-                      {this.state.localeContext.locale === 'id'
-                        ? 'Belum punya akun? ?'
-                        : "Don't have an account?"}
-                    </p>
-                    <h3>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry.
-                    </h3>
-                  </div>
-                  <div className="right">
-                    <Link to="/register" className="btn-register">
-                      {this.state.localeContext.locale === 'id'
-                        ? 'Daftar Disini>'
-                        : ' Register>'}
-                    </Link>
-                  </div>
-                </footer>
               </div>
             </div>
           </LocaleProvider>

@@ -38,7 +38,7 @@ function LoginInput({ login }) {
                 onChange={setPassword}
               />
               <Gap height={16} />
-              <button>{locale === 'id' ? 'Login' : 'Masuk'}</button>
+              <button>{locale === 'id' ? 'Masuk' : 'Login'}</button>
               <Gap height={12} />
             </form>
           </div>

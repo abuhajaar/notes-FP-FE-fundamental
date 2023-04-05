@@ -5,6 +5,7 @@ import { login } from '../../utils/api';
 import './login.scss';
 import study from '../../assets/image/school2.png';
 import { LocaleConsumer } from '../../contexts/LocaleContext';
+import { Link } from 'react-router-dom';
 
 function LoginPage({ loginSuccess }) {
   async function onLogin({ email, password }) {
@@ -25,8 +26,8 @@ function LoginPage({ loginSuccess }) {
                   <div className="flex">
                     <h1>
                       {locale === 'id'
-                        ? 'Please Login to go further...'
-                        : 'Silahkan Masuk Untuk Melanjutkan...'}
+                        ? 'Silahkan Masuk Untuk Melanjutkan...'
+                        : 'Please Login to go further...'}
                     </h1>
                     <LoginInput login={onLogin} />
                     <p>
@@ -43,6 +44,24 @@ function LoginPage({ loginSuccess }) {
                 </div>
               </div>
             </section>
+            <footer className="contact-app__footer">
+              <div className="left">
+                <p>
+                  {locale === 'id'
+                    ? 'Belum punya akun? ?'
+                    : "Don't have an account?"}
+                </p>
+                <h3>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry.
+                </h3>
+              </div>
+              <div className="right">
+                <Link to="/register" className="btn-register">
+                  {locale === 'id' ? 'Daftar Disini >' : ' Register >'}
+                </Link>
+              </div>
+            </footer>
           </section>
         );
       }}
