@@ -102,8 +102,7 @@ html {
     .contact-app {
       .contact-app__footer {
         height: 10vh;
-        padding: 0;
-
+        padding: 0 1em;
         .left {
           p {
             font-size: 1.2em;
@@ -125,6 +124,7 @@ html {
   .overlay {
     .contact-app {
       .contact-app__header {
+        padding: 1em;
         gap: 3em;
         .logo {
           h2 {
@@ -137,7 +137,7 @@ html {
         }
 
         .settings {
-          gap: 1em;
+          gap: 2em;
           font-size: 0.7em;
         }
       }
