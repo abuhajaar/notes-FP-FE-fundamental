@@ -90,21 +90,44 @@ html {
 }
 
 @media screen and (max-width: 768px) {
-  .contact-app {
-    .contact-app__footer {
-      height: 10vh;
-      padding: 0;
+  .overlay {
+    .contact-app {
+      .contact-app__footer {
+        height: 10vh;
+        padding: 0;
 
-      .left {
-        p {
-          font-size: 1.4em;
+        .left {
+          p {
+            font-size: 1.2em;
+          }
+        }
+
+        .right {
+          .btn-register {
+            font-size: 1em;
+            padding: 0.4em 0.8em;
+          }
         }
       }
+    }
+  }
+}
 
-      .right {
-        .btn-register {
-          font-size: 1.2em;
-          padding: 0.4em 0.8em;
+@media screen and (max-width: 400px) {
+  .overlay {
+    .contact-app {
+      .contact-app__footer {
+        .left {
+          p {
+            font-size: 1em;
+          }
+        }
+
+        .right {
+          .btn-register {
+            font-size: 0.8em;
+            padding: 0.4em 0.8em;
+          }
         }
       }
     }
