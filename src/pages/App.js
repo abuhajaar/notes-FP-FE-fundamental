@@ -41,7 +41,7 @@ class App extends React.Component {
         },
       },
 
-      theme: 'light',
+      theme: localStorage.getItem('theme') || 'light',
       toggleTheme: () => {
         this.setState((prevState) => {
           const newTheme = prevState.theme === 'light' ? 'dark' : 'light';
@@ -65,6 +65,8 @@ class App extends React.Component {
 
   async componentDidMount() {
     const { data } = await getUserLogged();
+
+    document.documentElement.setAttribute('data-theme', this.state.theme);
 
     this.setState(() => {
       return {
