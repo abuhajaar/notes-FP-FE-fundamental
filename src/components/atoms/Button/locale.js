@@ -13,7 +13,7 @@ function ToggleLocale() {
               title="language"
               className="button-setting"
             >
-              {locale === 'id' ? 'en' : 'id'}
+              {locale === 'id' ? 'id' : 'en'}
             </button>
           );
         }}
