@@ -1,4 +1,5 @@
 import React from 'react';
+import './Button.scss';
 
 import { ThemeConsumer } from '../../../contexts/ThemeContext';
 import { FaMoon, FaSun } from 'react-icons/fa';
@@ -9,7 +10,11 @@ function ToggleTheme() {
       <ThemeConsumer>
         {({ theme, toggleTheme }) => {
           return (
-            <button onClick={toggleTheme} title="mode">
+            <button
+              onClick={toggleTheme}
+              title="mode"
+              className="button-setting"
+            >
               {theme === 'light' ? <FaMoon /> : <FaSun />}
             </button>
           );

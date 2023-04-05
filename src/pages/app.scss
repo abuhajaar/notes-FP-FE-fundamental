@@ -13,19 +13,27 @@ html {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
     .contact-app__header {
+      padding: 0 5em;
       background-image: var(--noise);
       background-color: var(--background-color);
       height: 10vh;
       border-bottom: 10px double var(--red);
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
+      .logo {
+        h2 {
+          font-family: var(--font);
+          background-color: var(--blue);
+          color: var(--background-color);
+          padding: 0.4em 0.8em;
+        }
+      }
 
-      h2 {
-        font-family: var(--font);
-        background-color: var(--blue);
-        color: var(--background-color);
-        padding: 0.4em 0.8em;
+      .settings {
+        display: flex;
+        align-items: center;
+        gap: 3em;
       }
     }
 
@@ -81,7 +89,7 @@ html {
             background-color: var(--font-color);
             color: var(--background-color);
             border-color: var(--font-color);
-            letter-spacing: 2px;
+            letter-spacing: 1px;
           }
         }
       }
@@ -89,7 +97,7 @@ html {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 889px) {
   .overlay {
     .contact-app {
       .contact-app__footer {
@@ -113,13 +121,31 @@ html {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   .overlay {
     .contact-app {
+      .contact-app__header {
+        gap: 3em;
+        .logo {
+          h2 {
+            font-family: var(--font);
+            background-color: var(--blue);
+            color: var(--background-color);
+            padding: 0.2em 0.4em;
+            font-size: 1em;
+          }
+        }
+
+        .settings {
+          gap: 1em;
+          font-size: 0.7em;
+        }
+      }
+
       .contact-app__footer {
         .left {
           p {
-            font-size: 1em;
+            font-size: 0.8em;
           }
         }
 

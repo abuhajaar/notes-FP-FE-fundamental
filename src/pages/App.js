@@ -14,6 +14,8 @@ import React from 'react';
 import { getUserLogged, putAccessToken } from '../utils/api';
 import LoginPage from './Login';
 import RegisterPage from './RegisterPage';
+import ToggleTheme from '../components/atoms/Button/theme';
+import ToggleLocale from '../components/atoms/Button/locale';
 
 class App extends React.Component {
   constructor(props) {
@@ -105,7 +107,13 @@ class App extends React.Component {
             <div className="overlay">
               <div className="contact-app">
                 <header className="contact-app__header">
-                  <h2>Aplikasi Kontak</h2>
+                  <div className="logo">
+                    <h2>Aplikasi Kontak</h2>
+                  </div>
+                  <div className="settings">
+                    <ToggleTheme />
+                    <ToggleLocale />
+                  </div>
                 </header>
                 <main>
                   <Routes>
@@ -118,7 +126,11 @@ class App extends React.Component {
                 </main>
                 <footer className="contact-app__footer">
                   <div className="left">
-                    <p>Belum punya akun?</p>
+                    <p>
+                      {this.state.localeContext.locale === 'id'
+                        ? "Don't have an account?"
+                        : 'Belum punya akun?'}
+                    </p>
                     <h3>
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry.
@@ -126,7 +138,9 @@ class App extends React.Component {
                   </div>
                   <div className="right">
                     <Link to="/register" className="btn-register">
-                      Daftar di sini
+                      {this.state.localeContext.locale === 'id'
+                        ? 'Register >'
+                        : 'Daftar Disini >'}
                     </Link>
                   </div>
                 </footer>
