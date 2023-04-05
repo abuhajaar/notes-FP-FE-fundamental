@@ -6,9 +6,8 @@ html {
 }
 
 .contact-app {
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-
   .contact-app__header {
+    background-image: url('../../src/assets/image/noise.png');
     background-color: var(--background-color);
     height: 10vh;
     border-bottom: 5px double var(--red);
@@ -25,6 +24,7 @@ html {
   }
 
   .contact-app__footer {
+    background-image: url('../../src/assets/image/noise.png');
     display: flex;
     justify-content: space-around;
     align-items: center;
