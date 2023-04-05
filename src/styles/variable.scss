@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 :root {
   --font-color: #393546;
@@ -8,13 +8,17 @@
   --pink: #c1a9bf;
   --blue: #131fc0;
   --red: #d6106c;
-  --font: 'Kalam', cursive;
+  --font: 'Permanent Marker', cursive;
   --line: 2em;
+  --noise: url('../assets/image/noise.png');
+  --texture: url('../assets/image/texture.png');
 }
 
 [data-theme='dark'] {
   --font-color: #eee;
   --background-color: #333;
-  --blue: #6d8fff;
-  --red: #ff77b7;
+  --blue: #4eafff;
+  --red: #f76cb2;
+  --noise: url('../assets/image/soft-wallpaper.png');
+  --grey: #b8b8b8;
 }

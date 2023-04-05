@@ -102,33 +102,35 @@ class App extends React.Component {
       return (
         <ThemeProvider value={this.state}>
           <LocaleProvider value={this.state.localeContext}>
-            <div className="contact-app">
-              <header className="contact-app__header">
-                <h2>Aplikasi Kontak</h2>
-              </header>
-              <main>
-                <Routes>
-                  <Route
-                    path="/*"
-                    element={<LoginPage loginSuccess={this.onLoginSuccess} />}
-                  />
-                  <Route path="/register" element={<RegisterPage />} />
-                </Routes>
-              </main>
-              <footer className="contact-app__footer">
-                <div className="left">
-                  <p>Belum punya akun?</p>
-                  <h3>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
-                  </h3>
-                </div>
-                <div className="right">
-                  <Link to="/register" className="btn-register">
-                    Daftar di sini
-                  </Link>
-                </div>
-              </footer>
+            <div className="overlay">
+              <div className="contact-app">
+                <header className="contact-app__header">
+                  <h2>Aplikasi Kontak</h2>
+                </header>
+                <main>
+                  <Routes>
+                    <Route
+                      path="/*"
+                      element={<LoginPage loginSuccess={this.onLoginSuccess} />}
+                    />
+                    <Route path="/register" element={<RegisterPage />} />
+                  </Routes>
+                </main>
+                <footer className="contact-app__footer">
+                  <div className="left">
+                    <p>Belum punya akun?</p>
+                    <h3>
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry.
+                    </h3>
+                  </div>
+                  <div className="right">
+                    <Link to="/register" className="btn-register">
+                      Daftar di sini
+                    </Link>
+                  </div>
+                </footer>
+              </div>
             </div>
           </LocaleProvider>
         </ThemeProvider>

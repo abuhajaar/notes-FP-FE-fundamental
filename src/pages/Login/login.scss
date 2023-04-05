@@ -3,8 +3,8 @@
 .login-page {
   background-color: var(--background-color);
   background-image: linear-gradient(var(--grey) 0.01em, transparent 0.1em),
-    url('../../assets/image/noise.png');
-  background-size: 100% 2em;
+    var(--noise);
+  background-size: 100% 3em;
   justify-content: center;
   align-items: center;
   height: 75vh;
@@ -16,7 +16,7 @@
       display: block;
       margin: auto;
       padding: 0 5em;
-      width: 50%;
+      width: 60%;
 
       .flex {
         display: flex;
@@ -65,21 +65,13 @@
       .right {
         .flex {
           h1 {
-            font-size: 1em;
+            font-size: 1.2em;
           }
 
           p {
             display: none;
           }
         }
-      }
-    }
-  }
-  .contact-app__footer {
-    padding: 2em;
-    .left {
-      p {
-        font-size: 1em;
       }
     }
   }
