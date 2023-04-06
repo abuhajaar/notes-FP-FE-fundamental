@@ -1,10 +1,16 @@
-.footer{
+@import '../../../styles/variable.scss';
+
+.container-footer {
+  background-color: var(--header);
+  background-image: var(--soft);
+  .footer {
     display: flex;
-    margin: 0 ;
+    margin: 0;
     padding: 20px 40px;
-    background-color: #B33030;
-    height: 10vh;
-    justify-content: space-around;
+
+    height: 5vh;
+    justify-content: center;
     align-items: center;
-    color: #D3ECA7;
+    color: var(--background-color);
+  }
 }

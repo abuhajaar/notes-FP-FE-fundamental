@@ -1,13 +1,8 @@
 @import '../../../styles/variable.scss';
 
 .button-setting {
-  background-image: var(--noise);
   cursor: pointer;
   border: none;
-  background-color: var(--background-color);
-  font-family: var(--font);
-  font-size: 1.5em;
-  color: var(--font-color);
   text-align: center;
   margin: auto;
   display: flex;

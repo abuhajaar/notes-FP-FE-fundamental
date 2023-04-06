@@ -145,17 +145,19 @@ class App extends React.Component {
     return (
       <ThemeProvider value={this.state}>
         <LocaleProvider value={this.state.localeContext}>
-          <div className="contact-app">
-            <Header LogOut={this.onLogout} />
+          <div className="contact-app-inside">
+            <div className="contact-app-container">
+              <Header LogOut={this.onLogout} />
 
-            <Routes>
-              <Route path="/" exact element={<Home />} />
-              <Route path="/notes/:id" element={<DetailNote />} />
-              <Route path="/newnote" element={<CreateNote />} />
-              <Route path="/arsip" element={<ArsipPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-            <Footer />
+              <Routes>
+                <Route path="/" exact element={<Home />} />
+                <Route path="/notes/:id" element={<DetailNote />} />
+                <Route path="/newnote" element={<CreateNote />} />
+                <Route path="/arsip" element={<ArsipPage />} />
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
+              <Footer />
+            </div>
           </div>
         </LocaleProvider>
       </ThemeProvider>

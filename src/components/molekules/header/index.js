@@ -11,17 +11,55 @@ import ToggleLocale from '../../atoms/Button/locale';
 function Header({ LogOut }) {
   return (
     <div className="container">
-      <Link className="Link" to={'/'}>
-        <img className="logo1" src={logo1} alt="logo" />
-        <Gap width={10} />
-        <h1>Catatan</h1>
-      </Link>
-      <Link className="logo22" to={'/arsip'}>
-        <h2>Arsip</h2>
-      </Link>
-      <ToggleTheme />
-      <ToggleLocale />
-      <Button onClick={LogOut} title={'Log Out'}></Button>
+      <div className="container-logo">
+        <div className="image">
+          <Link className="Link" to={'/'}>
+            <img className="logo1" src={logo1} alt="logo" />
+            <Gap width={10} />
+            <h1>Catatan</h1>
+          </Link>
+        </div>
+      </div>
+      <div className="container-flex">
+        <ul className="nav">
+          <li>
+            <Link className="nav-logo" to={'/arsip'}>
+              <h2>Arsip</h2>
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-logo" to={'/arsip'}>
+              <h2>Arsip</h2>
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-logo" to={'/arsip'}>
+              <h2>Arsip</h2>
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-logo" to={'/arsip'}>
+              <h2>Arsip</h2>
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-logo" to={'/arsip'}>
+              <h2>Arsip</h2>
+            </Link>
+          </li>
+        </ul>
+        <div className="container-settings">
+          <div className="settings">
+            <ToggleTheme className="btn-dark" />
+            <ToggleLocale className="btn-language" />
+          </div>
+          <Button
+            onClick={LogOut}
+            title={'Log Out'}
+            className="btn-logout"
+          ></Button>
+        </div>
+      </div>
     </div>
   );
 }
