@@ -1,5 +1,4 @@
-
-const BASE_URL = 'https://notes-api.dicoding.dev/v1';
+const BASE_URL = 'http://54.93.32.20:5000';
 
 function getAccessToken() {
   return localStorage.getItem('accessToken');
@@ -94,7 +93,6 @@ async function getActiveNotes() {
     return { error: true, data: null };
   }
   return { error: false, data: responseJson.data };
-
 }
 
 async function getArchivedNotes() {
