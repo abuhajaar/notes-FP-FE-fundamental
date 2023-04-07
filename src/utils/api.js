@@ -1,4 +1,4 @@
-const BASE_URL = 'http://54.93.32.20:5000';
+const BASE_URL = 'https://little-houses-teach-joyously.a276.dcdg.xyz';
 
 function getAccessToken() {
   return localStorage.getItem('accessToken');
