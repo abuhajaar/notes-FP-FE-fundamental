@@ -47,7 +47,7 @@
       width: 100%;
 
       .image {
-        width: 600px;
+        width: 800px;
         margin: 0 2em;
 
         img {
@@ -169,7 +169,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 765px) {
   .paper {
     .login-page {
       height: 75vh;

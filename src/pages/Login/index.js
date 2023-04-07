@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { LoginInput } from '../../components/molekules';
 import { login } from '../../utils/api';
 import './login.scss';
-import study from '../../assets/image/school2.png';
+import grafik from '../../assets/image/grafik.png';
 import { LocaleConsumer } from '../../contexts/LocaleContext';
 import { Link } from 'react-router-dom';
 
@@ -39,7 +39,7 @@ function LoginPage({ loginSuccess }) {
                 </div>
                 <div className="left">
                   <div className="image">
-                    <img src={study} alt="#" />
+                    <img src={grafik} alt="#" />
                   </div>
                 </div>
               </div>
