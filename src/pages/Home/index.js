@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Card, Gap, Input } from '../../components';
+import { Card, Input } from '../../components';
 import './Home.scss';
 import { showFormattedDate } from '../../utils/index';
 import { getActiveNotes, deleteNote, archiveNote } from '../../utils/api';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Home({ LogOut }) {
   // const [searchParams, setSearchParams] = useSearchParams();
@@ -46,35 +46,55 @@ function Home({ LogOut }) {
 
   return (
     <div className="main-page">
-      <div className="wrapper">
-        <Input className="input1" placeholder="search" />
-        <NavLink className="NavLink" to={'/newnote'}>
-          Tambah Note
-        </NavLink>
-      </div>
-      {console.log(notes)}
-      <div className={!notes.length ? 'NotFound' : 'Card-container'}>
-        {!notes.length ? (
-          <h1>TIDAK ADA NOTE</h1>
-        ) : (
-          notes.map((data) => {
-            return (
-              <Card
-                key={data.id}
-                id={data.id}
-                btnTitle1={'Archived'}
-                btnTitle2={'Delete'}
-                title={data.title}
-                body={data.body}
-                createAt={showFormattedDate(data.created_at)}
-                onDelete={onDeleteHandler}
-                onArsip={onArsipHandler}
-              />
-            );
-          })
-        )}
-      </div>
-      <Gap height={20} />
+      <section className="main-top">
+        <section className="notes">
+          <div className="wrapper-search">
+            <Input className="search-input" placeholder="search" />
+            <button className="btn-search">button</button>
+          </div>
+
+          <div className="wrapper-content">
+            <div className={!notes.length ? 'NotFound' : 'Card-container'}>
+              {!notes.length ? (
+                <h1>TIDAK ADA NOTE</h1>
+              ) : (
+                notes.map((data) => {
+                  return (
+                    <Card
+                      key={data.id}
+                      id={data.id}
+                      btnTitle1={'Archived'}
+                      btnTitle2={'Delete'}
+                      title={data.title}
+                      body={data.body}
+                      createAt={showFormattedDate(data.created_at)}
+                      onDelete={onDeleteHandler}
+                      onArsip={onArsipHandler}
+                    />
+                  );
+                })
+              )}
+            </div>
+          </div>
+          <div className="wrapper-add">
+            <Link className="navlink" to={'/newnote'}>
+              Tambah Note
+            </Link>
+          </div>
+        </section>
+        <section className="explore">
+          <div className="example">
+            <div className="coba-text"></div>Lorem Ipsum is simply dummy text of
+            the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown
+            printer took a galley of type and scrambled it to make a type
+            specimen book. It has survived not only five centuries, but also the
+            leap into electronic typesetting, remaining essentially unchanged.
+          </div>
+          <div className="example">Upcoming Content</div>
+        </section>
+      </section>
+      <section className="main-bottom">sdadsad</section>
     </div>
   );
 }
