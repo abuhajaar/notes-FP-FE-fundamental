@@ -1,4 +1,4 @@
-const BASE_URL = 'https://little-houses-teach-joyously.a276.dcdg.xyz';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function getAccessToken() {
   return localStorage.getItem('accessToken');
