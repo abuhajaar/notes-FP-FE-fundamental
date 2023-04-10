@@ -1,0 +1,30 @@
+@import '../../../styles/variable.scss';
+
+.card {
+  border: 3px solid var(--font-color);
+  height: 10vh;
+  padding: 10px;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    .date {
+      padding: 5px;
+      font-size: 1.5em;
+      color: var(--red);
+      text-align: center;
+      font-family: var(--font-monserrat);
+      font-weight: 600;
+    }
+
+    .todo {
+      border-top: 3px solid var(--font-color);
+      line-height: 1.1em;
+      color: var(--font-color);
+      text-decoration: none;
+    }
+  }
+}

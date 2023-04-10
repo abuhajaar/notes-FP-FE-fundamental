@@ -5,6 +5,7 @@ import './Home.scss';
 import { showFormattedDate } from '../../utils/index';
 import { getActiveNotes, deleteNote, archiveNote } from '../../utils/api';
 import { Link } from 'react-router-dom';
+import Reminder from '../../components/molekules/Reminder';
 
 function Home({ LogOut }) {
   // const [searchParams, setSearchParams] = useSearchParams();
@@ -12,8 +13,76 @@ function Home({ LogOut }) {
   // const [keyword, setKeyword] = React.useState(() => {
   //     return searchParams.get('keyword') || ''
   // });
+  const reminders = [
+    {
+      id: '001',
+      content: 'belanja A',
+      tanggal: '2023-04-10',
+    },
+    {
+      id: '002',
+      content: 'belanja B',
+      tanggal: '2023-04-10',
+    },
+    {
+      id: '003',
+      content: 'belanja C',
+      tanggal: '2023-04-11',
+    },
+    {
+      id: '004',
+      content: 'belanja C',
+      tanggal: '2023-04-14',
+    },
+    {
+      id: '010',
+      content: 'belanja Ciki',
+      tanggal: '2023-04-14',
+    },
+    {
+      id: '005',
+      content: 'belanja gg',
+      tanggal: '2023-04-11',
+    },
+    {
+      id: '006',
+      content: 'belanja jjkij',
+      tanggal: '2023-04-11',
+    },
+    {
+      id: '007',
+      content: 'belanja C',
+      tanggal: '2023-04-13',
+    },
+  ];
 
-  // const { locale } = React.useContext(LocaleContext);
+  //--------------- FORMAT TANGGAL ---------------
+  //   const date = new Date().toISOString().substring(0, 10);
+
+  // const groupByDate = reminders.groupByToMap((Reminder) => {
+  //   return Reminder.tanggal;
+  // });
+
+  // const groupByDate = reminders.groupBy((reminder) => {
+  //   return reminder.tanggal;
+  // });
+
+  // console.log(groupByDate);
+
+  // ({'date':2023-04-20} = groupByDate)
+
+  // console.log(typeof groupByDate);
+  // console.log(groupByDate);
+
+  //   Di cardnya nerima 'reminderDate' dan 'reminderTotalTask'
+  const groupByDate = reminders.reduce((group, reminder) => {
+    const { id } = reminder;
+    group[id] = group[id] ?? [];
+    group[id].push(reminder);
+    return group;
+  }, {});
+  var { tanggal } = groupByDate;
+  console.log(groupByDate['010']);
 
   React.useEffect(() => {
     getActiveNotes().then(({ data }) => {
@@ -23,7 +92,7 @@ function Home({ LogOut }) {
 
   async function onDeleteHandler(id) {
     await deleteNote(id);
-    // update the contacts state from network.js
+
     const { data } = await getActiveNotes();
     setNotes(data);
   }
@@ -84,13 +153,9 @@ function Home({ LogOut }) {
         </section>
         <section className="explore">
           <div className="example">
-            <div className="coba-text"></div>Lorem Ipsum is simply dummy text of
-            the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a type
-            specimen book. It has survived not only five centuries, but also the
-            leap into electronic typesetting, remaining essentially unchanged.
+            <Reminder reminders={reminders} />
           </div>
+
           <div className="example">Upcoming Content</div>
         </section>
       </section>
