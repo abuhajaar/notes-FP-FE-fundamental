@@ -17,6 +17,8 @@ import RegisterPage from './RegisterPage';
 import ToggleTheme from '../components/atoms/Button/theme';
 import ToggleLocale from '../components/atoms/Button/locale';
 
+
+
 class App extends React.Component {
   constructor(props) {
     super(props);
