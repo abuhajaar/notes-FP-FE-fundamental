@@ -6,6 +6,7 @@ import { showFormattedDate } from '../../utils/index';
 import { getActiveNotes, deleteNote, archiveNote } from '../../utils/api';
 import { Link } from 'react-router-dom';
 import Reminder from '../../components/molekules/Reminder';
+import reminders from '../../utils/Reminders';
 
 function Home({ LogOut }) {
   // const [searchParams, setSearchParams] = useSearchParams();
@@ -13,48 +14,7 @@ function Home({ LogOut }) {
   // const [keyword, setKeyword] = React.useState(() => {
   //     return searchParams.get('keyword') || ''
   // });
-  const reminders = [
-    {
-      id: '001',
-      content: 'belanja A',
-      tanggal: '2023-04-10',
-    },
-    {
-      id: '002',
-      content: 'belanja B',
-      tanggal: '2023-04-10',
-    },
-    {
-      id: '003',
-      content: 'belanja C',
-      tanggal: '2023-04-11',
-    },
-    {
-      id: '004',
-      content: 'belanja C',
-      tanggal: '2023-04-14',
-    },
-    {
-      id: '010',
-      content: 'belanja Ciki',
-      tanggal: '2023-04-14',
-    },
-    {
-      id: '005',
-      content: 'belanja gg',
-      tanggal: '2023-04-11',
-    },
-    {
-      id: '006',
-      content: 'belanja jjkij',
-      tanggal: '2023-04-11',
-    },
-    {
-      id: '007',
-      content: 'belanja C',
-      tanggal: '2023-04-13',
-    },
-  ];
+  
 
   const groupByDate = reminders.reduce((group, reminder) => {
     const { id } = reminder;

@@ -8,7 +8,7 @@ function Reminder({ reminders = [] }) {
 
   function FormattedDate(date) {
     const [year, month, day] = date.split('-');
-    const formattedDate = `${day}.${month}.${year}`;
+    const formattedDate = `${day}-${month}-${year}`;
 
     return formattedDate;
   }
@@ -21,21 +21,24 @@ function Reminder({ reminders = [] }) {
       nextDate.setDate(currentDate.getDate() + i);
       nextSevenDays.push(nextDate.toISOString().substring(0, 10));
     }
-    setDates(nextSevenDays);
+    const TanggalFormat = nextSevenDays.map((date) => {
+      return FormattedDate(date);
+    });
+      
+    setDates(TanggalFormat);
   }, []);
-  console.log(new Date());
 
+  console.log(dates)
   return (
     <div className="reminder-wrapper">
       {dates.map((date) => {
         let total = reminders.filter((reminder) => reminder.tanggal === date)
           ? reminders.filter((reminder) => reminder.tanggal === date)
           : null;
-        let formatTanggal = FormattedDate(date);
         return (
           <ReminderCard
             key={date}
-            reminderDate={formatTanggal}
+            reminderDate={date}
             reminderTotalTask={total.length}
           />
         );
