@@ -6,6 +6,8 @@ import {
   NotFoundPage,
   CreateNote,
   DetailNote,
+  DetailReminder,
+  CreateReminder,
 } from '../pages';
 import { Footer, Header } from '../components';
 import { LocaleProvider } from '../contexts/LocaleContext';
@@ -16,8 +18,6 @@ import LoginPage from './Login';
 import RegisterPage from './RegisterPage';
 import ToggleTheme from '../components/atoms/Button/theme';
 import ToggleLocale from '../components/atoms/Button/locale';
-
-
 
 class App extends React.Component {
   constructor(props) {
@@ -156,6 +156,8 @@ class App extends React.Component {
                 <Route path="/notes/:id" element={<DetailNote />} />
                 <Route path="/newnote" element={<CreateNote />} />
                 <Route path="/arsip" element={<ArsipPage />} />
+                <Route path="/reminder/:id" element={<DetailReminder />} />
+                <Route path="/newreminder" element={<CreateReminder />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
               <Footer />

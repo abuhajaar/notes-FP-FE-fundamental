@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useState, useEffect } from 'react';
 
 import { Card, Input } from '../../components';
 import './Home.scss';
@@ -9,7 +9,7 @@ import Reminder from '../../components/molekules/Reminder';
 
 function Home({ LogOut }) {
   // const [searchParams, setSearchParams] = useSearchParams();
-  const [notes, setNotes] = React.useState([]);
+  const [notes, setNotes] = useState([]);
   // const [keyword, setKeyword] = React.useState(() => {
   //     return searchParams.get('keyword') || ''
   // });
@@ -56,25 +56,6 @@ function Home({ LogOut }) {
     },
   ];
 
-  //--------------- FORMAT TANGGAL ---------------
-  //   const date = new Date().toISOString().substring(0, 10);
-
-  // const groupByDate = reminders.groupByToMap((Reminder) => {
-  //   return Reminder.tanggal;
-  // });
-
-  // const groupByDate = reminders.groupBy((reminder) => {
-  //   return reminder.tanggal;
-  // });
-
-  // console.log(groupByDate);
-
-  // ({'date':2023-04-20} = groupByDate)
-
-  // console.log(typeof groupByDate);
-  // console.log(groupByDate);
-
-  //   Di cardnya nerima 'reminderDate' dan 'reminderTotalTask'
   const groupByDate = reminders.reduce((group, reminder) => {
     const { id } = reminder;
     group[id] = group[id] ?? [];
@@ -84,7 +65,7 @@ function Home({ LogOut }) {
   var { tanggal } = groupByDate;
   console.log(groupByDate['010']);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getActiveNotes().then(({ data }) => {
       setNotes(data);
     });
@@ -107,11 +88,6 @@ function Home({ LogOut }) {
       setNotes(data);
     });
   }
-  // const filteredContacts = contacts.filter((contact) => {
-  //     return contact.name.toLowerCase().includes(
-  //         keyword.toLowerCase()
-  //     );
-  // });
 
   return (
     <div className="main-page">

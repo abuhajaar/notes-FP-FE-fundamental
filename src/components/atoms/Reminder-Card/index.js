@@ -5,7 +5,7 @@ import './reminder-card.scss';
 function ReminderCard(props) {
   const { reminderDate, reminderTotalTask } = props;
   return (
-    <Link className="reminder-card" to={`/notes/${reminderDate}`}>
+    <Link className="reminder-card" to={`/reminder/${reminderDate}`}>
       <div className="card">
         <div className="container">
           <div className="date">{reminderDate}</div>
