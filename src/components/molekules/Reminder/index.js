@@ -6,6 +6,13 @@ import './reminder.scss';
 function Reminder({ reminders = [] }) {
   const [dates, setDates] = useState([]);
 
+  function FormattedDate(date) {
+    const [year, month, day] = date.split('-');
+    const formattedDate = `${day}.${month}.${year}`;
+
+    return formattedDate;
+  }
+
   useEffect(() => {
     const currentDate = new Date();
     const nextSevenDays = [];
@@ -16,6 +23,7 @@ function Reminder({ reminders = [] }) {
     }
     setDates(nextSevenDays);
   }, []);
+  console.log(new Date());
 
   return (
     <div className="reminder-wrapper">
@@ -23,11 +31,11 @@ function Reminder({ reminders = [] }) {
         let total = reminders.filter((reminder) => reminder.tanggal === date)
           ? reminders.filter((reminder) => reminder.tanggal === date)
           : null;
-        console.log(total.length);
+        let formatTanggal = FormattedDate(date);
         return (
           <ReminderCard
             key={date}
-            reminderDate={date}
+            reminderDate={formatTanggal}
             reminderTotalTask={total.length}
           />
         );
