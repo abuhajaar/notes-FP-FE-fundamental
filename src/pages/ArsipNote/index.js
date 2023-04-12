@@ -34,7 +34,6 @@ function ArsipPage() {
     return (
       <h1>
         Loading...
-        {console.log(notes)}
       </h1>
     );
   }

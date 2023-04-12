@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 :root {
-  --font-color: #393546;
-  --background-color: #f0f0f0;
+  --font-color: #313131;
+  --background-color: #dedede;
   --header: #313131;
-  --grey: #949397;
+  --grey: #707070;
   --yellow: #dfb72e;
   --pink: #c1a9bf;
-  --blue: #131fc0;
+  --blue: #2966ff;
   --red: #d6106c;
   --font: 'Permanent Marker', cursive;
   --font-monserrat: 'Montserrat', sans-serif;
@@ -15,14 +15,18 @@
   --soft: url('../assets/image/soft-wallpaper.png');
   --noise: url('../assets/image/noise.png');
   --texture: url('../assets/image/texture.png');
+  --card-shadow-todo: 20px 20px 44px #bfbfbf,
+  -20px -20px 44px #fdfdfd;
 }
 
 [data-theme='dark'] {
-  --font-color: #f1f1f1;
-  --background-color: #333;
-  --header: #f1f1f1;
+  --font-color: #dedede;
+  --background-color: #313131;
+  --header: #dedede;
   --blue: #39dbe9;
   --red: #f9583d;
   --noise: url('../assets/image/soft-wallpaper.png');
   --grey: #b8b8b8;
+  --card-shadow-todo: 20px 20px 60px #2a2a2a,
+  -20px -20px 60px #383838;
 }

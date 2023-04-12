@@ -1,0 +1,92 @@
+@import '../../../styles/variable.scss';
+
+.card-todo{
+    border-radius: 5%;
+  background: var(--background-color);
+  height: 15vh;
+  padding: 10px;
+  box-shadow:  var(--card-shadow-todo);
+  height: 16rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+
+    .card-todo__header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        line-height: 2.5em;
+        border-bottom: 2px dashed var(--grey);
+
+        .card-todo__header__title{
+            font-family: var(--font-monserrat);
+            font-size: 1.6em;
+            font-weight: 800;
+            color: var(--blue);
+        }
+
+        .card-todo__header__category{
+            font-family: var(--font-monserrat);
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--grey);
+
+        }
+    }
+
+    .card-todo__body{
+
+        &__content{
+
+
+        }
+
+        &__date{
+
+
+        }
+
+    }
+
+    .card-todo__footer{
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+
+        &__left{
+
+
+            &__completed{
+
+            }
+        }
+
+        &__right{
+            display: flex;
+            align-items: center;
+            gap: 1em;
+
+            &__favorite__on{
+                color: red;
+            }
+
+            &__favorite__off{
+                color: black
+            }
+
+            &__delete{
+
+
+            }
+
+            &__edit{
+
+            }
+
+        }
+    }
+ 
+}

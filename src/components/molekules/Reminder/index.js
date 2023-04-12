@@ -28,7 +28,6 @@ function Reminder({ reminders = [] }) {
     setDates(TanggalFormat);
   }, []);
 
-  console.log(dates)
   return (
     <div className="reminder-wrapper">
       {dates.map((date) => {

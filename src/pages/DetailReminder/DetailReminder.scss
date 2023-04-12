@@ -1,0 +1,27 @@
+@import '../../styles/variable.scss';
+
+.reminder-detail-page{
+    background-color: var(--background-color);
+    height: 75vh;
+    padding: 5em;
+    
+
+    .reminder-detail-page__wrapper{
+        
+
+        .reminder-detail-page__wrapper__notfound{
+            color:red
+        }
+
+        .reminder-detail-page__wrapper__card-container{
+            
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 3em;
+        }
+    }
+}
+
+
+
+
