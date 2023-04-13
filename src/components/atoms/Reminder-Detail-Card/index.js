@@ -3,7 +3,7 @@ import './reminder-detail-card.scss';
 import { FaHeart } from 'react-icons/fa';
 
 function ReminderDetailCard({data}) {
-  const {content,title, date, category, completed, favorite} = data;
+  const {content, title, date, category, completed, favorite} = data;
 
   return (
     <div className="card-todo">

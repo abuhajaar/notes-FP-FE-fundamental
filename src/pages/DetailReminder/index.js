@@ -4,11 +4,13 @@ import ReminderDetailCard from '../../components/atoms/Reminder-Detail-Card';
 import reminders from '../../utils/Reminders';
 import './DetailReminder.scss';
 import { getData } from '../../utils/fetch';
+import PopupForm from '../../components/molekules/PopupForm';
 
 
 function DetailReminder() {
   const { id } = useParams();
   const [reminder, setReminder] = useState([]);
+  const [popup, setPopup] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,18 +31,21 @@ function DetailReminder() {
 
   return (
     <div className="reminder-detail-page">
+      {console.log(reminder)}
       
       <div className="reminder-detail-page__wrapper">
         <div className={!reminder.length ? 'reminder-detail-page__wrapper__notfound' : 'reminder-detail-page__wrapper__card-container'}>
-          {!reminder.length ? (<h1>Reminder Not Found</h1>) : (
+          {!reminder.length ? ('') : (
             reminder.map((data) => {
              
               return (
                 <ReminderDetailCard data={data}/>
+                
               );
             })
-          )}
-          
+            )}
+          <button className='btn-popup' onClick={() => setPopup(true)}>Add New Task</button>
+          <PopupForm trigger={popup} setTrigger={setPopup}/>
         </div>
       </div>
     </div>

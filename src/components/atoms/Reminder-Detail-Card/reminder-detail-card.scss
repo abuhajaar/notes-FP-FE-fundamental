@@ -3,15 +3,17 @@
 .card-todo{
     border-radius: 5%;
   background: var(--background-color);
-  height: 15vh;
-  padding: 10px;
   box-shadow:  var(--card-shadow-todo);
   height: 16rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: .3s;
   
+  &:first-of-type{
+    border: 1px solid var(--blue)
+  }
 
     .card-todo__header{
         display: flex;
