@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { LoginInput } from '../../components/molekules';
-import { login } from '../../utils/api';
 import './login.scss';
 import grafik from '../../assets/image/grafik.png';
 import { LocaleConsumer } from '../../contexts/LocaleContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { asyncSetAuthUser } from '../../states/authUser/action';
 
-function LoginPage({ loginSuccess }) {
-  async function onLogin({ email, password }) {
-    const { error, data } = await login({ email, password });
-    if (!error) {
-      loginSuccess(data);
-    }
-  }
+function LoginPage() {
+  const dispatch = useDispatch(); // @TODO: get dispatch function from store
+  const navigate = useNavigate();
+
+  const onLogin = ({ email, password }) => {
+    dispatch(asyncSetAuthUser({ email, password }));
+    navigate('/');
+  };
 
   return (
     <LocaleConsumer>
@@ -68,9 +70,5 @@ function LoginPage({ loginSuccess }) {
     </LocaleConsumer>
   );
 }
-
-LoginPage.propTypes = {
-  loginSuccess: PropTypes.func.isRequired,
-};
 
 export default LoginPage;

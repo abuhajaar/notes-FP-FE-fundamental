@@ -5,6 +5,9 @@ import NotFoundPage from './NotFoundPage';
 import ArsipPage from './ArsipNote';
 import DetailReminder from './DetailReminder';
 import CreateReminder from './CreateReminder';
+import LoginPage from './Login';
+import RegisterPage from './Register';
+import Reminder from './Reminder';
 
 export {
   ArsipPage,
@@ -14,4 +17,7 @@ export {
   CreateNote,
   DetailReminder,
   CreateReminder,
+  LoginPage,
+  RegisterPage,
+  Reminder,
 };

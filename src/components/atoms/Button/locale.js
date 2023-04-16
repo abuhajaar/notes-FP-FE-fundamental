@@ -6,10 +6,10 @@ function ToggleLocale() {
   return (
     <div>
       <LocaleConsumer>
-        {({ locale, toggleLocale }) => {
+        {({ locale, ToggleLocale }) => {
           return (
             <button
-              onClick={toggleLocale}
+              onClick={ToggleLocale}
               title="language"
               className="button-setting"
             >

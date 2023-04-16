@@ -28,8 +28,8 @@ function Header({ LogOut }) {
             </Link>
           </li>
           <li>
-            <Link className="nav-logo" to={'/arsip'}>
-              <h2>Arsip</h2>
+            <Link className="nav-logo" to={'/reminder'}>
+              <h2>Reminder</h2>
             </Link>
           </li>
           <li>

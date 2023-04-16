@@ -8,10 +8,10 @@ function ToggleTheme() {
   return (
     <div>
       <ThemeConsumer>
-        {({ theme, toggleTheme }) => {
+        {({ theme, ToggleTheme }) => {
           return (
             <button
-              onClick={toggleTheme}
+              onClick={ToggleTheme}
               title="mode"
               className="button-setting"
             >
