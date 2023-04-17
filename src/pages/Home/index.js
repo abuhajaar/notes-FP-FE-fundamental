@@ -7,12 +7,13 @@ import { Link } from 'react-router-dom';
 import Reminder from '../../components/molekules/Reminder';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/action';
 
 
 function Home({ LogOut }) {
-  const [popup, setPopup] = useState(false);
-  const reminders = useSelector(state => state.reminders);
+
+  const { reminders } = useSelector(state => state.reminders);
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
   // const [searchParams, setSearchParams] = useSearchParams();
   const [notes, setNotes] = useState([]);
@@ -53,6 +54,7 @@ function Home({ LogOut }) {
 
   return (
     <div className="main-page">
+      {/* {console.log('tipe nya nih', reminders)} */}
       <section className="main-top">
         <section className="notes">
           <div className="wrapper-search">

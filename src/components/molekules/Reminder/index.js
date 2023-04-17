@@ -21,27 +21,34 @@ function Reminder({ reminders = [] }) {
       nextDate.setDate(currentDate.getDate() + i);
       nextSevenDays.push(nextDate.toISOString().substring(0, 10));
     }
-    const TanggalFormat = nextSevenDays.map((date) => {
-      return FormattedDate(date);
-    });
-      
-    setDates(TanggalFormat);
+    // const TanggalFormat = nextSevenDays.map((date) => {
+    //   return FormattedDate(date);
+    // });
+
+    setDates(nextSevenDays);
   }, []);
 
   return (
     <div className="reminder-wrapper">
-      {dates.map((date) => {
-        let total = reminders.filter((reminder) => reminder.tanggal === date)
-          ? reminders.filter((reminder) => reminder.tanggal === date)
-          : null;
-        return (
-          <ReminderCard
-            key={date}
-            reminderDate={date}
-            reminderTotalTask={total.length}
-          />
-        );
-      })}
+      {console.log('typeOFFFFFF', typeof reminders)}
+      {
+        dates.map((date) => {
+          const total = reminders.filter((reminder) => reminder.date === date)
+            ? reminders.filter((reminder) => reminder.date === date)
+            : null;
+          reminders.map((reminder) => {
+            console.log(reminder.date);
+          });
+          console.log(typeof reminders)
+          return (
+            <ReminderCard
+              key={date}
+              reminderDate={date}
+              reminderTotalTask={total.length}
+            />
+          );
+        })
+      }
     </div>
   );
 }

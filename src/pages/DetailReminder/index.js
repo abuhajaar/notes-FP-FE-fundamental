@@ -9,13 +9,15 @@ import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/act
 
 
 function DetailReminder() {
-  const [popup, setPopup] = useState(false);
   const { id } = useParams();
-  const reminders = useSelector(state => state.reminders);
+  const { reminders } = useSelector(state => state.reminders);
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
+  const [data, setData] = useState([]);
+
 
   useEffect(() => {
     dispatch(asyncFetchReminders());
+    setData(reminders.filter((data) => data.date === id));
   }, [dispatch]);
 
   function submitForm(data) {
@@ -34,16 +36,15 @@ function DetailReminder() {
   return (
     <div className="reminder-detail-page">
       <div className="reminder-detail-page__wrapper">
-        <div className={!reminders.length ? 'reminder-detail-page__wrapper__notfound' : 'reminder-detail-page__wrapper__card-container'}>
-          {!reminders.length ? (null) : (
-            reminders.map((data) => {
+        <div className={!data.length ? 'reminder-detail-page__wrapper__notfound' : 'reminder-detail-page__wrapper__card-container'}>
+          {!data.length ? (null) : (
+            data.map((data) => {
               return (
                 <ReminderDetailCard key={data.id} data={data} />
               );
             })
           )}
-          <button className='btn-popup' onClick={() => setPopup(true)}>Add New Task</button>
-          <PopupForm handleSubmit={submitForm()} trigger={popup} setTrigger={setPopup} />
+          <PopupForm handleSubmit={submitForm()} />
         </div>
       </div>
     </div>

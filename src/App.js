@@ -55,11 +55,11 @@ function App() {
     const dispatch = useDispatch(); // @TODO: get dispatch function from store
 
     useEffect(() => {
+        console.log('isPreload')
         dispatch(asyncPreloadProcess());
     }, [dispatch]);
 
     useEffect(() => {
-
         document.documentElement.setAttribute('data-theme', theme);
     }, [theme, locale]);
 
@@ -94,6 +94,10 @@ function App() {
                                     <Route
                                         path="/*"
                                         element={<LoginPage />}
+                                    />
+                                    <Route
+                                        path="/register"
+                                        element={<RegisterPage />}
                                     />
                                 </Routes>
                             </main>
