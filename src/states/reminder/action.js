@@ -2,7 +2,7 @@ import { hideLoading, showLoading } from "react-redux-loading-bar";
 import api2 from "../../utils/api2";
 
 
-const ActionType = {
+export const ActionType = {
     SET_REMINDERS: 'SET_REMINDERS',
     ADD_REMINDER: 'ADD_REMINDER',
     DELETE_REMINDER: 'DELETE_REMINDER',
@@ -29,7 +29,7 @@ export function asyncAddReminder(reminder) {
     }
 }
 
-function setRemindersActionCreator(reminders) {
+export function setRemindersActionCreator(reminders) {
     return {
         type: ActionType.SET_REMINDERS,
         payload: reminders

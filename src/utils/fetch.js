@@ -48,3 +48,20 @@ export async function putData(url, payload) {
     return err;
   }
 }
+
+export async function deleteData(url) {
+  try {
+    const token = localStorage.getItem('accessToken')
+      ? localStorage.getItem('accessToken')
+      : {};
+    return await axios.delete(`${BASE_URL}${url}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (err) {
+    return err;
+
+  }
+}

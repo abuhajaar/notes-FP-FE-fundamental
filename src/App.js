@@ -55,8 +55,9 @@ function App() {
     const dispatch = useDispatch(); // @TODO: get dispatch function from store
 
     useEffect(() => {
-        console.log('isPreload')
         dispatch(asyncPreloadProcess());
+        console.log('isPreload')
+
     }, [dispatch]);
 
     useEffect(() => {
@@ -70,15 +71,15 @@ function App() {
     };
 
     if (isPreload) {
-        return null;
+        return (<Loading />); // @TODO: return Loading component
     }
 
     if (authUser === null) {
         return (
             <ThemeProvider value={ThemeDataFunction} >
                 <LocaleProvider value={LocaleDataFunction}>
-                    <Loading />
                     <div className="overlay">
+                        <Loading />
                         <div className="contact-app">
                             <header className="contact-app__header">
                                 <div className="logo">
@@ -113,8 +114,8 @@ function App() {
             <LocaleProvider value={LocaleDataFunction}>
                 <div className="contact-app-inside">
                     <div className="contact-app-container">
-                        <Loading />
                         <Header LogOut={onSignOut} />
+                        <Loading />
                         <Routes>
                             <Route path="/" exact element={<Home />} />
                             <Route path="/notes/:id" element={<DetailNote />} />

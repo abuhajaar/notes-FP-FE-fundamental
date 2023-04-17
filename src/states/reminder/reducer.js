@@ -1,10 +1,12 @@
+
+import { ActionType } from "./action"
 function reminderReducer(reminders = [], action) {
     switch (action.type) {
-        case 'SET_REMINDERS':
+        case ActionType.SET_REMINDERS:
             return action.payload
-        case 'ADD_REMINDER':
+        case ActionType.ADD_REMINDER:
             return [...reminders, action.payload]
-        case 'DELETE_REMINDER':
+        case ActionType.DELETE_REMINDER:
             return reminders.filter(reminder => reminder.id !== action.payload)
         default:
             return reminders

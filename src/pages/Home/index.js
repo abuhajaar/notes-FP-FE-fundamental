@@ -2,59 +2,40 @@
 import { Card, Input } from '../../components';
 import './Home.scss';
 import { showFormattedDate } from '../../utils/index';
-import { getActiveNotes, deleteNote, archiveNote } from '../../utils/api';
+// import { getActiveNotes, deleteNote, archiveNote } from '../../utils/api';
 import { Link } from 'react-router-dom';
 import Reminder from '../../components/molekules/Reminder';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/action';
+// import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/action';
+import { asyncDeleteNotesById } from '../../states/notes/action';
+import { asyncFetchReminderAndNotes } from '../../states/shared/action';
+import Loading from '../../components/atoms/Loading';
 
 
-function Home({ LogOut }) {
-
-  const { reminders } = useSelector(state => state.reminders);
+function Home() {
+  const { reminders, notes } = useSelector(state => state);
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
-  // const [searchParams, setSearchParams] = useSearchParams();
-  const [notes, setNotes] = useState([]);
-
-  // const [keyword, setKeyword] = React.useState(() => {
-  //     return searchParams.get('keyword') || ''
-  // });
-
-
-  // const groupByDate = reminders.reduce((group, reminder) => {
-  //   const { id } = reminder;
-  //   group[id] = group[id] ?? [];
-  //   group[id].push(reminder);
-  //   return group;
-  // }, {});
-  // var { tanggal } = groupByDate;
-  // console.log(groupByDate['010']);
 
   useEffect(() => {
-    getActiveNotes().then(({ data }) => {
-      setNotes(data);
-    });
-  }, []);
+    if (reminders.length === 0) {
+      dispatch(asyncFetchReminderAndNotes());
+    }
+  }, [dispatch, reminders]);
 
   async function onDeleteHandler(id) {
-    await deleteNote(id);
-
-    const { data } = await getActiveNotes();
-    setNotes(data);
+    dispatch(asyncDeleteNotesById(id));
+    // dispatch(asyncFetchNotes());
   }
 
   async function onArsipHandler(id) {
-    await archiveNote(id);
-    getActiveNotes().then(({ data }) => {
-      setNotes(data);
-    });
+
   }
 
   return (
     <div className="main-page">
-      {/* {console.log('tipe nya nih', reminders)} */}
+      {/* {console.log('DATA REMINDERS DI HOME', reminders)} */}
       <section className="main-top">
         <section className="notes">
           <div className="wrapper-search">
@@ -64,7 +45,7 @@ function Home({ LogOut }) {
           <div className="wrapper-content">
             <div className={!notes.length ? 'NotFound' : 'Card-container'}>
               {!notes.length ? (
-                <h1>TIDAK ADA NOTE</h1>
+                <Loading />
               ) : (
                 notes.map((data) => {
                   return (

@@ -30,16 +30,12 @@ function Reminder({ reminders = [] }) {
 
   return (
     <div className="reminder-wrapper">
-      {console.log('typeOFFFFFF', typeof reminders)}
+
       {
         dates.map((date) => {
           const total = reminders.filter((reminder) => reminder.date === date)
             ? reminders.filter((reminder) => reminder.date === date)
             : null;
-          reminders.map((reminder) => {
-            console.log(reminder.date);
-          });
-          console.log(typeof reminders)
           return (
             <ReminderCard
               key={date}

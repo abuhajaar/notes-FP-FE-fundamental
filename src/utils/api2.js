@@ -1,4 +1,4 @@
-const { getData, postData } = require('./fetch');
+const { getData, postData, deleteData } = require('./fetch');
 
 const api2 = (() => {
     const BASE_URL = 'http://localhost:5000';
@@ -34,8 +34,6 @@ const api2 = (() => {
 
         return user;
     }
-
-
     //--------------------Reminder--------------------------------  
     async function addReminder(reminder) {
         // title:string
@@ -43,7 +41,7 @@ const api2 = (() => {
         // date:string
         // category:string
         const response = await postData(`/reminders`, reminder);
-        console.log('hasilresponse', response)
+        // console.log('hasilresponse', response)
         const { status, message } = response.data;
         if (status !== 'success') {
             throw new Error(message);
@@ -59,7 +57,37 @@ const api2 = (() => {
         }
         return (response.data.data)
     }
+    //--------------------Notes-----------------------------------
+    async function addNotes(notes) {
+        // title:string 
+        // content:string
+        // category:string
+        const response = await postData(`/notes`, notes);
+        const { status, message } = response.data;
+        if (status !== 'success') {
+            throw new Error(message);
+        }
+        return (response.data.data)
+    }
 
+    async function getNotes() {
+        const response = await getData(`/notes`);
+        const { status, message } = response.data;
+        if (status !== 'success') {
+            throw new Error(message);
+        }
+        return (response.data.data)
+    }
+
+    async function deleteNotesById(id) {
+        const response = await deleteData(`/notes/${id}`);
+        const { status, message } = response.data;
+        if (status !== 'success') {
+            throw new Error(message);
+        }
+        return (response.data.data)
+    }
+    //------------------END Notes---------------------------------
 
     async function _fetchWithAuth(url, options = {}) {
         return fetch(url, {
@@ -237,6 +265,8 @@ const api2 = (() => {
 
     return {
         ourAuth,
+        addNotes,
+        deleteNotesById,
         login,
         logout,
         putAccessToken,

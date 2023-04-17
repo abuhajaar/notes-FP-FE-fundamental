@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import ReminderDetailCard from '../../components/atoms/Reminder-Detail-Card';
 import './DetailReminder.scss';
-import { getData } from '../../utils/fetch';
+// import { getData } from '../../utils/fetch';
 import PopupForm from '../../components/molekules/PopupForm';
 import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/action';
 
@@ -13,7 +13,6 @@ function DetailReminder() {
   const { reminders } = useSelector(state => state.reminders);
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
   const [data, setData] = useState([]);
-
 
   useEffect(() => {
     dispatch(asyncFetchReminders());
@@ -39,16 +38,13 @@ function DetailReminder() {
         <div className={!data.length ? 'reminder-detail-page__wrapper__notfound' : 'reminder-detail-page__wrapper__card-container'}>
           {!data.length ? (null) : (
             data.map((data) => {
-              return (
-                <ReminderDetailCard key={data.id} data={data} />
-              );
+              return (<ReminderDetailCard key={data.id} data={data} />);
             })
           )}
           <PopupForm handleSubmit={submitForm()} />
         </div>
       </div>
     </div>
-
   );
 }
 
