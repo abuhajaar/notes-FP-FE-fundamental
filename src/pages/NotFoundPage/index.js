@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 function NotFoundPage() {
-    return (
-        <h1 className='NotFound'>NOT FOUND</h1>
-    )
+  return (
+    <h1 className="NotFound">NOT FOUND</h1>
+  );
 }
 
-export default NotFoundPage
+export default NotFoundPage;

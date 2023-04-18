@@ -43,21 +43,19 @@ function ArsipPage() {
         {!notes.length ? (
           <h1>TIDAK ADA ARSIP NOTE</h1>
         ) : (
-          notes.map((note) => {
-            return (
-              <Card
-                key={note.id}
-                id={note.id}
-                btnTitle1={'Activate'}
-                btnTitle2={'Delete'}
-                title={note.title}
-                body={note.body}
-                createAt={showFormattedDate(note.created_at)}
-                onDelete={() => onDeleteHandler(note.id)}
-                onArsip={() => onArsipHandler(note.id)}
-              />
-            );
-          })
+          notes.map((note) => (
+            <Card
+              key={note.id}
+              id={note.id}
+              btnTitle1="Activate"
+              btnTitle2="Delete"
+              title={note.title}
+              body={note.body}
+              createAt={showFormattedDate(note.created_at)}
+              onDelete={() => onDeleteHandler(note.id)}
+              onArsip={() => onArsipHandler(note.id)}
+            />
+          ))
         )}
       </div>
     </div>

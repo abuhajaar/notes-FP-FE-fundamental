@@ -4,16 +4,17 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import logo1 from '../../../assets/image/logo1.png';
 import Gap from '../../atoms/Gap';
-import { Button } from './../../../components';
+
 import ToggleTheme from '../../atoms/Button/theme';
 import ToggleLocale from '../../atoms/Button/locale';
+import { Button } from '../../atoms';
 
 function Header({ LogOut }) {
   return (
     <div className="container">
       <div className="container-logo">
         <div className="image">
-          <Link className="Link" to={'/'}>
+          <Link className="Link" to="/">
             <img className="logo1" src={logo1} alt="logo" />
             <Gap width={10} />
             <h1>Catatan</h1>
@@ -23,27 +24,27 @@ function Header({ LogOut }) {
       <div className="container-flex">
         <ul className="nav">
           <li>
-            <Link className="nav-logo" to={'/arsip'}>
+            <Link className="nav-logo" to="/arsip">
               <h2>Arsip</h2>
             </Link>
           </li>
           <li>
-            <Link className="nav-logo" to={'/arsip'}>
+            <Link className="nav-logo" to="/reminder">
+              <h2>Reminder</h2>
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-logo" to="/arsip">
               <h2>Arsip</h2>
             </Link>
           </li>
           <li>
-            <Link className="nav-logo" to={'/arsip'}>
+            <Link className="nav-logo" to="/arsip">
               <h2>Arsip</h2>
             </Link>
           </li>
           <li>
-            <Link className="nav-logo" to={'/arsip'}>
-              <h2>Arsip</h2>
-            </Link>
-          </li>
-          <li>
-            <Link className="nav-logo" to={'/arsip'}>
+            <Link className="nav-logo" to="/arsip">
               <h2>Arsip</h2>
             </Link>
           </li>
@@ -55,9 +56,9 @@ function Header({ LogOut }) {
           </div>
           <Button
             onClick={LogOut}
-            title={'Log Out'}
+            title="Log Out"
             className="btn-logout"
-          ></Button>
+          />
         </div>
       </div>
     </div>

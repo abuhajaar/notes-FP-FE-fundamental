@@ -3,4 +3,6 @@ import Footer from './footer';
 import LoginInput from './loginInput';
 import RegisterInput from './RegisterInput';
 
-export { Header, Footer, LoginInput, RegisterInput };
+export {
+  Header, Footer, LoginInput, RegisterInput,
+};

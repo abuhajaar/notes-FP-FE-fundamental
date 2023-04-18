@@ -1,14 +1,15 @@
 import React from 'react';
-import Button from '../Button';
 import { Link } from 'react-router-dom';
 import './card.scss';
-import Gap from '../Gap';
 import parser from 'html-react-parser';
 import PropTypes from 'prop-types';
+import Gap from '../Gap';
+import Button from '../Button';
 
 function Card(props) {
-  const { btnTitle2, btnTitle1, id, onDelete, title, body, createAt, onArsip } =
-    props;
+  const {
+    btnTitle2, btnTitle1, id, onDelete, title, body, createAt, onArsip,
+  } = props;
 
   return (
     <div className="Card">
@@ -36,7 +37,6 @@ function Card(props) {
 
 Card.propTypes = {
   id: PropTypes.string.isRequired,
-  onArsip: PropTypes.func,
   btnTitle1: PropTypes.string.isRequired,
   btnTitle2: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,

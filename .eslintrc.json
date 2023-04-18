@@ -1,0 +1,45 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb",
+        "react-app"
+    ],
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "react-hooks"
+        
+    ],
+    "rules": {
+        "linebreak-style": "off",
+        "no-alert": "off",
+        "no-underscore-dangle": "off",
+        "import/prefer-default-export": "off",
+        "react/jsx-filename-extension": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/jsx-props-no-spreading": "off",
+        "react/prop-types": "off",
+        "react/no-array-index-key": "off",
+        "react/no-unescaped-entities": "off",
+        "react/no-danger": "off",
+        "react/no-unused-prop-types": "off",
+        "react/no-unused-state": "off",
+        "react/import/no-unresolved": "off",
+        "react/default-params-last": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/no-unresolved": "off",
+        "import/no-cycle": "off",
+        "react/require-default-props": "off"
+    }
+}

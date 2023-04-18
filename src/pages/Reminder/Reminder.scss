@@ -1,0 +1,8 @@
+@import url(../../styles/variable.scss);
+
+.reminder_wrapper{
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 3em;
+}

@@ -7,18 +7,11 @@
     
 
     .reminder-detail-page__wrapper{
-        
-
-        
-
         .reminder-detail-page__wrapper__card-container, .reminder-detail-page__wrapper__notfound{
             
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 3em;
-
-           
-
             .btn-popup{
                 border-radius: 15px;
                 box-shadow:  var(--card-shadow-todo);

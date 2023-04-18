@@ -8,7 +8,7 @@
     align-content: center;
 
     
-    .judul{
+    .title{
 
         color: black;
         padding: 20px 50px;
@@ -38,7 +38,7 @@
         align-items: center;
         
     }
-    .judul:empty:before {
+    .title:empty:before {
         content: attr(data-placeholder);
     }
     .body:empty:before {

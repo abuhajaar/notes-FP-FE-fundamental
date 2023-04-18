@@ -1,55 +1,48 @@
-import { React, useState, useEffect } from 'react';
-import { useParams } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import ReminderDetailCard from '../../components/atoms/Reminder-Detail-Card';
-import reminders from '../../utils/Reminders';
 import './DetailReminder.scss';
-import { getData } from '../../utils/fetch';
+// import { getData } from '../../utils/fetch';
 import PopupForm from '../../components/molekules/PopupForm';
-
+// import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/action';
 
 function DetailReminder() {
   const { id } = useParams();
-  const [reminder, setReminder] = useState([]);
-  const [popup, setPopup] = useState(false);
+  const { reminders } = useSelector((state) => state);
+  // const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const {data:{data}} = await getData(`/reminders`);
-      const {reminders} = data; 
-      setReminder(reminders);
-    };
-    fetchData();
-    const remindertest = reminders.filter((data) => data.tanggal === id);
-    setReminder(remindertest);
-  }, [id]);
-  
+    // dispatch(asyncFetchReminders());
+    const filterData = reminders.filter((reminder) => reminder.date === id);
+    setData(filterData);
+  }, [reminders, id]);
 
-  if (!reminder) {
+  // function submitForm(data) {
+  //   dispatch(asyncAddReminder(data));
+  // }
+
+  if (!reminders) {
     return <h1>Loading Reminder</h1>;
   }
 
+  // function submitForm(data) {
+  //   console.log('datasss', data);
+  // }
 
   return (
     <div className="reminder-detail-page">
-      {console.log(reminder)}
-      
       <div className="reminder-detail-page__wrapper">
-        <div className={!reminder.length ? 'reminder-detail-page__wrapper__notfound' : 'reminder-detail-page__wrapper__card-container'}>
-          {!reminder.length ? ('') : (
-            reminder.map((data) => {
-             
-              return (
-                <ReminderDetailCard data={data}/>
-                
-              );
-            })
-            )}
-          <button className='btn-popup' onClick={() => setPopup(true)}>Add New Task</button>
-          <PopupForm trigger={popup} setTrigger={setPopup}/>
+        {console.log('data', data)}
+        <div className={!data.length ? 'reminder-detail-page__wrapper__notfound' : 'reminder-detail-page__wrapper__card-container'}>
+          {!data.length ? (null) : (
+            data.map((datas) => (<ReminderDetailCard key={datas.id} data={datas} />))
+          )}
+          <PopupForm handleSubmit="" />
         </div>
       </div>
     </div>
-    
   );
 }
 
