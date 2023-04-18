@@ -44,8 +44,7 @@ function asyncUnsetAuthUser() {
     dispatch(unsetAuthUserActionCreator());
     try {
       api2.logout(localStorage.getItem('refreshToken'));
-    }
-    catch (error) {
+    } catch (error) {
       alert(error.message);
     }
     api2.putAccessToken('', '');

@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Gap } from '../../atoms';
@@ -20,27 +21,21 @@ class RegisterInput extends React.Component {
   }
 
   onNameChange(event) {
-    this.setState(() => {
-      return {
-        name: event.target.value,
-      };
-    });
+    this.setState(() => ({
+      name: event.target.value,
+    }));
   }
 
   onEmailChange(event) {
-    this.setState(() => {
-      return {
-        email: event.target.value,
-      };
-    });
+    this.setState(() => ({
+      email: event.target.value,
+    }));
   }
 
   onPasswordChange(event) {
-    this.setState(() => {
-      return {
-        password: event.target.value,
-      };
-    });
+    this.setState(() => ({
+      password: event.target.value,
+    }));
   }
 
   onSubmitHandler(event) {
@@ -79,7 +74,7 @@ class RegisterInput extends React.Component {
           onChange={this.onPasswordChange}
         />
         <Gap height={16} />
-        <button>Register</button>
+        <button type="button">Register</button>
         <Gap height={12} />
       </form>
     );

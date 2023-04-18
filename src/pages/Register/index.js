@@ -17,27 +17,25 @@ function RegisterPage() {
 
   return (
     <LocaleConsumer>
-      {({ locale }) => {
-        return (
-          <section className="register-page">
-            <div className="flex">
-              <h2>
-                {locale === 'id'
-                  ? 'Silahkan Isi Form Pendaftaran'
-                  : 'Please Fill the registration Form'}
-              </h2>
-              <RegisterInput register={onRegisterHandler} />
-              <div className="register-back-to-login">
-                <p>{locale === 'id' ? 'Kembali ke' : 'Back To'}</p>
-                <Link to="/" className="btn-login">
-                  Login
-                </Link>
-              </div>
-              ;
+      {({ locale }) => (
+        <section className="register-page">
+          <div className="flex">
+            <h2>
+              {locale === 'id'
+                ? 'Silahkan Isi Form Pendaftaran'
+                : 'Please Fill the registration Form'}
+            </h2>
+            <RegisterInput register={() => onRegisterHandler} />
+            <div className="register-back-to-login">
+              <p>{locale === 'id' ? 'Kembali ke' : 'Back To'}</p>
+              <Link to="/" className="btn-login">
+                Login
+              </Link>
             </div>
-          </section>
-        );
-      }}
+            ;
+          </div>
+        </section>
+      )}
     </LocaleConsumer>
   );
 }

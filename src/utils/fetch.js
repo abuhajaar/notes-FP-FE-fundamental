@@ -62,6 +62,5 @@ export async function deleteData(url) {
     });
   } catch (err) {
     return err;
-
   }
 }

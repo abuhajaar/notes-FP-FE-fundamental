@@ -1,287 +1,284 @@
 const { getData, postData, deleteData } = require('./fetch');
 
 const api2 = (() => {
-    const BASE_URL = 'http://localhost:5000';
+  const BASE_URL = 'http://localhost:5000';
 
-    async function login({ email, password }) {
-        const response = await postData(`/login`, {
-            email: email,
-            password: password,
-        });
-        const { status, message } = response.data;
+  async function login({ email, password }) {
+    const response = await postData('/login', {
+      email,
+      password,
+    });
+    const { status, message } = response.data;
 
-        if (status !== 'success') {
-            throw new Error(message);
-        }
-        return (response.data.data)
-
+    if (status !== 'success') {
+      throw new Error(message);
     }
-    async function logout(refreshToken) {
-        const response = await postData(`/logout`, { refreshToken: refreshToken });
-        const { status } = response.data;
-        if (status !== 'success') {
-            throw new Error('failed to logout');
-        }
+    return (response.data.data);
+  }
+  async function logout(refreshToken) {
+    const response = await postData('/logout', { refreshToken });
+    const { status } = response.data;
+    if (status !== 'success') {
+      throw new Error('failed to logout');
     }
+  }
 
-    async function ourAuth() {
-        const response = await getData(`/users/me`);
-        const { status, message } = response.data;
-        if (status !== 'success') {
-            throw new Error(message);
-        }
-        const { data: { user } } = response.data;
-
-        return user;
+  async function ourAuth() {
+    const response = await getData('/users/me');
+    const { status, message } = response.data;
+    if (status !== 'success') {
+      throw new Error(message);
     }
-    //--------------------Reminder--------------------------------  
-    async function addReminder(reminder) {
-        // title:string
-        // content:string
-        // date:string
-        // category:string
-        const response = await postData(`/reminders`, reminder);
-        // console.log('hasilresponse', response)
-        const { status, message } = response.data;
-        if (status !== 'success') {
-            throw new Error(message);
-        }
-        return (response.data.data)
+    const { data: { user } } = response.data;
+
+    return user;
+  }
+  // --------------------Reminder--------------------------------
+  async function addReminder(reminder) {
+    // title:string
+    // content:string
+    // date:string
+    // category:string
+    const response = await postData('/reminders', reminder);
+    // console.log('hasilresponse', response)
+    const { status, message } = response.data;
+    if (status !== 'success') {
+      throw new Error(message);
     }
+    return (response.data.data);
+  }
 
-    async function getReminders() {
-        const response = await getData(`/reminders`);
-        const { status, message } = response.data;
-        if (status !== 'success') {
-            throw new Error(message);
-        }
-        return (response.data.data)
+  async function getReminders() {
+    const response = await getData('/reminders');
+    const { status, message } = response.data;
+    if (status !== 'success') {
+      throw new Error(message);
     }
-    //--------------------Notes-----------------------------------
-    async function addNotes(notes) {
-        // title:string 
-        // content:string
-        // category:string
-        const response = await postData(`/notes`, notes);
-        const { status, message } = response.data;
-        if (status !== 'success') {
-            throw new Error(message);
-        }
-        return (response.data.data)
+    return (response.data.data);
+  }
+  // --------------------Notes-----------------------------------
+  async function addNotes(notes) {
+    // title:string
+    // content:string
+    // category:string
+    const response = await postData('/notes', notes);
+    const { status, message } = response.data;
+    if (status !== 'success') {
+      throw new Error(message);
     }
+    return (response.data.data);
+  }
 
-    async function getNotes() {
-        const response = await getData(`/notes`);
-        const { status, message } = response.data;
-        if (status !== 'success') {
-            throw new Error(message);
-        }
-        return (response.data.data)
+  async function getNotes() {
+    const response = await getData('/notes');
+    const { status, message } = response.data;
+    if (status !== 'success') {
+      throw new Error(message);
     }
+    return (response.data.data);
+  }
 
-    async function deleteNotesById(id) {
-        const response = await deleteData(`/notes/${id}`);
-        const { status, message } = response.data;
-        if (status !== 'success') {
-            throw new Error(message);
-        }
-        return (response.data.data)
+  async function deleteNotesById(id) {
+    const response = await deleteData(`/notes/${id}`);
+    const { status, message } = response.data;
+    if (status !== 'success') {
+      throw new Error(message);
     }
-    //------------------END Notes---------------------------------
+    return (response.data.data);
+  }
+  // ------------------END Notes---------------------------------
 
-    async function _fetchWithAuth(url, options = {}) {
-        return fetch(url, {
-            ...options,
-            headers: {
-                ...options.headers,
-                Authorization: `Bearer ${getAccessToken()}`,
-            },
-        });
-    }
+  async function _fetchWithAuth(url, options = {}) {
+    return fetch(url, {
+      ...options,
+      headers: {
+        ...options.headers,
+        Authorization: `Bearer ${getAccessToken()}`,
+      },
+    });
+  }
 
-    function putAccessToken(token, refreshToken) {
-        localStorage.setItem('accessToken', token);
-        localStorage.setItem('refreshToken', refreshToken);
-    }
+  function putAccessToken(token, refreshToken) {
+    localStorage.setItem('accessToken', token);
+    localStorage.setItem('refreshToken', refreshToken);
+  }
 
-    function getAccessToken() {
-        return localStorage.getItem('accessToken');
-    }
+  function getAccessToken() {
+    return localStorage.getItem('accessToken');
+  }
 
-    async function register({ name, email, password }) {
-        const response = await fetch(`${BASE_URL}/register`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                name,
-                email,
-                password,
-            }),
-        });
+  async function register({ name, email, password }) {
+    const response = await fetch(`${BASE_URL}/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+      }),
+    });
 
-        const responseJson = await response.json();
-        const { status, message } = responseJson;
+    const responseJson = await response.json();
+    const { status, message } = responseJson;
 
-        if (status !== 'success') {
-            throw new Error(message);
-        }
-
-        const { data: { user } } = responseJson;
-
-        return user;
+    if (status !== 'success') {
+      throw new Error(message);
     }
 
-    async function addComment(content, threadId) {
-        const response = await _fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments
+    const { data: { user } } = responseJson;
+
+    return user;
+  }
+
+  async function addComment(content, threadId) {
+    const response = await _fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments
       `, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                content,
-            }),
-        });
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        content,
+      }),
+    });
 
-        const responseJson = await response.json();
-        const { status, message } = responseJson;
+    const responseJson = await response.json();
+    const { status, message } = responseJson;
 
-        if (status !== 'success') {
-            throw new Error(message);
-        }
-
-        const { data: { comment } } = responseJson;
-
-        return comment;
+    if (status !== 'success') {
+      throw new Error(message);
     }
 
+    const { data: { comment } } = responseJson;
 
+    return comment;
+  }
 
-    async function getOwnProfile() {
-        const response = await _fetchWithAuth(`${BASE_URL}/users/me`);
+  async function getOwnProfile() {
+    const response = await _fetchWithAuth(`${BASE_URL}/users/me`);
 
-        const responseJson = await response.json();
+    const responseJson = await response.json();
 
-        const { status, message } = responseJson;
+    const { status, message } = responseJson;
 
-        if (status !== 'success') {
-            throw new Error(message);
-        }
-
-        const { data: { user } } = responseJson;
-
-        return user;
+    if (status !== 'success') {
+      throw new Error(message);
     }
 
-    async function getAllUsers() {
-        const response = await fetch(`${BASE_URL}/users`);
+    const { data: { user } } = responseJson;
 
-        const responseJson = await response.json();
+    return user;
+  }
 
-        const { status, message } = responseJson;
+  async function getAllUsers() {
+    const response = await fetch(`${BASE_URL}/users`);
 
-        if (status !== 'success') {
-            throw new Error(message);
-        }
+    const responseJson = await response.json();
 
-        const { data: { users } } = responseJson;
+    const { status, message } = responseJson;
 
-        return users;
+    if (status !== 'success') {
+      throw new Error(message);
     }
 
-    async function getAllThreads() {
-        const response = await fetch(`${BASE_URL}/threads`);
+    const { data: { users } } = responseJson;
 
-        const responseJson = await response.json();
+    return users;
+  }
 
-        const { status, message } = responseJson;
+  async function getAllThreads() {
+    const response = await fetch(`${BASE_URL}/threads`);
 
-        if (status !== 'success') {
-            throw new Error(message);
-        }
+    const responseJson = await response.json();
 
-        const { data: { threads } } = responseJson;
+    const { status, message } = responseJson;
 
-        return threads;
+    if (status !== 'success') {
+      throw new Error(message);
     }
 
-    async function getThreadDetail(id) {
-        const response = await fetch(`${BASE_URL}/threads/${id}`);
+    const { data: { threads } } = responseJson;
 
-        const responseJson = await response.json();
+    return threads;
+  }
 
-        const { status, message } = responseJson;
+  async function getThreadDetail(id) {
+    const response = await fetch(`${BASE_URL}/threads/${id}`);
 
-        if (status !== 'success') {
-            throw new Error(message);
-        }
+    const responseJson = await response.json();
 
-        const { data: { detailThread } } = responseJson;
+    const { status, message } = responseJson;
 
-        return detailThread;
+    if (status !== 'success') {
+      throw new Error(message);
     }
 
-    async function createThread({ title, body, category = '' }) {
-        const response = await _fetchWithAuth(`${BASE_URL}/threads`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                title,
-                body,
-                category,
-            }),
-        });
+    const { data: { detailThread } } = responseJson;
 
-        const responseJson = await response.json();
+    return detailThread;
+  }
 
-        const { status, message } = responseJson;
+  async function createThread({ title, body, category = '' }) {
+    const response = await _fetchWithAuth(`${BASE_URL}/threads`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title,
+        body,
+        category,
+      }),
+    });
 
-        if (status !== 'success') {
-            throw new Error(message);
-        }
+    const responseJson = await response.json();
 
-        const { data: { thread } } = responseJson;
+    const { status, message } = responseJson;
 
-        return thread;
+    if (status !== 'success') {
+      throw new Error(message);
     }
 
-    async function toggleVotesThread(id, isUpVote) {
-        const response = await _fetchWithAuth(`${BASE_URL}/threads/${id}/${isUpVote ? 'neutral-vote' : 'up-vote'}`, {
-            method: 'POST',
-        });
+    const { data: { thread } } = responseJson;
 
-        const responseJson = await response.json();
+    return thread;
+  }
 
-        const { status, message } = responseJson;
+  async function toggleVotesThread(id, isUpVote) {
+    const response = await _fetchWithAuth(`${BASE_URL}/threads/${id}/${isUpVote ? 'neutral-vote' : 'up-vote'}`, {
+      method: 'POST',
+    });
 
-        if (status !== 'success') {
-            throw new Error(message);
-        }
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
     }
+  }
 
-    return {
-        ourAuth,
-        addNotes,
-        deleteNotesById,
-        login,
-        logout,
-        putAccessToken,
-        getAccessToken,
-        register,
-        getOwnProfile,
-        getAllUsers,
-        getAllThreads,
-        createThread,
-        toggleVotesThread,
-        getThreadDetail,
-        addComment,
-        addReminder,
-        getReminders,
-    };
+  return {
+    ourAuth,
+    addNotes,
+    deleteNotesById,
+    login,
+    logout,
+    putAccessToken,
+    getAccessToken,
+    register,
+    getOwnProfile,
+    getAllUsers,
+    getAllThreads,
+    createThread,
+    toggleVotesThread,
+    getThreadDetail,
+    addComment,
+    addReminder,
+    getReminders,
+  };
 })();
 
 export default api2;

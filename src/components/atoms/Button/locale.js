@@ -6,17 +6,16 @@ function ToggleLocale() {
   return (
     <div>
       <LocaleConsumer>
-        {({ locale, ToggleLocale }) => {
-          return (
-            <button
-              onClick={ToggleLocale}
-              title="language"
-              className="button-setting"
-            >
-              {locale === 'id' ? 'id' : 'en'}
-            </button>
-          );
-        }}
+        {({ locale, ToggleLocales }) => (
+          <button
+            type="button"
+            onClick={ToggleLocales}
+            title="language"
+            className="button-setting"
+          >
+            {locale === 'id' ? 'id' : 'en'}
+          </button>
+        )}
       </LocaleConsumer>
     </div>
   );

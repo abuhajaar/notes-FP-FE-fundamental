@@ -1,9 +1,10 @@
 import React from 'react';
 import './Button.scss';
 import PropTypes from 'prop-types';
+
 function Button({ title, onClick, ...Rest }) {
   return (
-    <button className="button-setting" onClick={onClick} {...Rest}>
+    <button type="button" className="button-setting" onClick={onClick} {...Rest}>
       {title}
     </button>
   );
@@ -11,7 +12,7 @@ function Button({ title, onClick, ...Rest }) {
 
 Button.propTypes = {
   title: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
+
 };
 
 export default Button;

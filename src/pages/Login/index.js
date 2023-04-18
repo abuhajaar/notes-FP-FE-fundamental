@@ -1,11 +1,12 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+// import PropTypes from 'prop-types';
+import { Link, useNavigate } from 'react-router-dom';
 import { LoginInput } from '../../components/molekules';
 import './login.scss';
 import grafik from '../../assets/image/grafik.png';
 import { LocaleConsumer } from '../../contexts/LocaleContext';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { asyncSetAuthUser } from '../../states/authUser/action';
 
 function LoginPage() {
@@ -19,54 +20,52 @@ function LoginPage() {
 
   return (
     <LocaleConsumer>
-      {({ locale }) => {
-        return (
-          <section className="paper">
-            <section className="login-page">
-              <div className="container-1">
-                <div className="right">
-                  <div className="flex">
-                    <h1>
-                      {locale === 'id'
-                        ? 'Silahkan Masuk Untuk Melanjutkan...'
-                        : 'Please Login to go further...'}
-                    </h1>
-                    <LoginInput login={onLogin} />
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s,
-                    </p>
-                  </div>
-                </div>
-                <div className="left">
-                  <div className="image">
-                    <img src={grafik} alt="#" />
-                  </div>
-                </div>
-              </div>
-            </section>
-            <footer className="contact-app__footer">
-              <div className="left">
-                <p>
-                  {locale === 'id'
-                    ? 'Belum punya akun?'
-                    : "Don't have an account?"}
-                </p>
-                <h3>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.
-                </h3>
-              </div>
+      {({ locale }) => (
+        <section className="paper">
+          <section className="login-page">
+            <div className="container-1">
               <div className="right">
-                <Link to="/register" className="btn-register">
-                  {locale === 'id' ? 'Daftar Disini >' : ' Register >'}
-                </Link>
+                <div className="flex">
+                  <h1>
+                    {locale === 'id'
+                      ? 'Silahkan Masuk Untuk Melanjutkan...'
+                      : 'Please Login to go further...'}
+                  </h1>
+                  <LoginInput login={onLogin} />
+                  <p>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s,
+                  </p>
+                </div>
               </div>
-            </footer>
+              <div className="left">
+                <div className="image">
+                  <img src={grafik} alt="#" />
+                </div>
+              </div>
+            </div>
           </section>
-        );
-      }}
+          <footer className="contact-app__footer">
+            <div className="left">
+              <p>
+                {locale === 'id'
+                  ? 'Belum punya akun?'
+                  : "Don't have an account?"}
+              </p>
+              <h3>
+                Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry.
+              </h3>
+            </div>
+            <div className="right">
+              <Link to="/register" className="btn-register">
+                {locale === 'id' ? 'Daftar Disini >' : ' Register >'}
+              </Link>
+            </div>
+          </footer>
+        </section>
+      )}
     </LocaleConsumer>
   );
 }

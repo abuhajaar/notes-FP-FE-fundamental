@@ -1,9 +1,9 @@
-import { Button, Gap } from '../../components';
 import React, { useState } from 'react';
 import './CreateNote.scss';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { asyncAddNote } from '../../states/notes/action';
+import { Button, Gap } from '../../components';
 
 function CreateNote() {
   const navigate = useNavigate();
@@ -15,8 +15,8 @@ function CreateNote() {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.className]: e.target.innerHTML });
   };
-  const handleSubmit = (form) => {
-    dispatch(asyncAddNote(form));
+  const handleSubmit = (formData) => {
+    dispatch(asyncAddNote(formData));
     navigate('/');
   };
 
@@ -41,7 +41,7 @@ function CreateNote() {
       <Gap height={20} />
       <div className="btn-submit">
         <Button
-          title={'Submit'}
+          title="Submit"
           onClick={() => handleSubmit(form)}
         />
       </div>
