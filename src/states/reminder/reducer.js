@@ -1,14 +1,37 @@
 /* eslint-disable default-param-last */
 import { ActionType } from './action';
 
-function reminderReducer(reminders = [], action) {
+const status = {
+  idle: 'idle',
+  loading: 'loading',
+  success: 'success',
+  error: 'error',
+};
+
+const initialState = {
+  reminders: [],
+  status: status.idle,
+};
+function reminderReducer(reminders = initialState, action) {
   switch (action.type) {
     case ActionType.SET_REMINDERS:
-      return action.payload;
+      return {
+        ...reminders,
+        reminders: action.payload,
+        status: status.success,
+      };
     case ActionType.ADD_REMINDER:
-      return [...reminders, action.payload];
+      return {
+        ...reminders,
+        reminders: [...reminders.reminders, action.payload],
+        status: status.success,
+      };
     case ActionType.DELETE_REMINDER:
-      return reminders.filter((reminder) => reminder.id !== action.payload);
+      return {
+        ...reminders,
+        reminders: reminders.reminders.filter((reminder) => reminder.id !== action.payload),
+        status: status.success,
+      };
     default:
       return reminders;
   }

@@ -10,19 +10,26 @@ import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/act
 
 function DetailReminder() {
   const { date } = useParams();
-  const { reminders } = useSelector((state) => state);
+  const { reminders, status } = useSelector((state) => state.reminders);
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    dispatch(asyncFetchReminders());
+    if (status === 'idle') {
+      dispatch(asyncFetchReminders());
+      console.log('render fecth');
+    }
+    // dispatch(asyncFetchReminders());
+  }, []);
+
+  useEffect(() => {
     if (date !== undefined) {
       const filterData = reminders.filter((reminder) => reminder.date === date);
       setData(filterData);
     } else {
       setData(reminders);
     }
-  }, [date, dispatch]);
+  }, [date, dispatch, reminders]);
 
   const submitForm = (formData) => {
     dispatch(asyncAddReminder(formData));

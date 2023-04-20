@@ -65,8 +65,4 @@ function PopupForm({ handleSubmit }) {
   );
 }
 
-PopupForm.defaultProps = {
-  handleSubmit: () => { console.log('handleSubmitForm'); },
-};
-
 export default PopupForm;
