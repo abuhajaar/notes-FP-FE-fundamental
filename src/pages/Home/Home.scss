@@ -90,36 +90,7 @@
         }
       }
 
-      &__show{
-        margin: 1em 0;
-        text-decoration: none;
-        padding: .5em 1em;
-        box-shadow: var(--shadow-flat);
-        outline: 1px solid var(--blue);
-        width: 50%;
-        border-radius: 5px;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        transition: .2s;
-
-        &__navlink{
-          
-          font-family: var(--font-monserrat);
-          font-weight: 600;
-          color: var(--blue);
-        }
-
-        &:hover{
-          letter-spacing: 1px;
-        }
-
-        &:active{
-          color: var(--blue);
-          outline: 1px solid var(--blue);
-          box-shadow: var(--shadow-pressed);
-        }
-      }
+      
     }
 
     &__explore {

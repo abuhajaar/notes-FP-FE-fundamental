@@ -7,36 +7,37 @@
     display: flex;
     
 
-    &__selector{
-        width: 20%;
-        flex-grow: 1;
-        box-shadow: var(--shadow-flat);
-
-        button {
-            width: 100%;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--shadow-flat);
-            padding: 1em 2em;
-            color: var(--grey);
-            font-family: var(--font-monserrat);
-            font-size: 1.5em;
-            font-weight: 600;
-        }
-    }
-
-    &__wrapper{
-        padding: 2em;
-        width: 60%;
-        box-shadow: var(--shadow-pressed);
-
-        &__card-container, &__notfound{
+    .reminder-detail-page__wrapper{
+        .reminder-detail-page__wrapper__card-container, .reminder-detail-page__wrapper__notfound{
             
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 3em;
-            
+
+           
+
+            .btn-popup{
+                border-radius: 15px;
+                box-shadow:  var(--card-shadow-todo);
+                height: 100%;
+                padding: 1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: var(--background-color);
+                border: 2px dashed var(--grey);
+                color: var(--grey);
+                font-weight: 500;
+                font-family: var(--font-monserrat);
+                font-size: 1.2em;
+                cursor: pointer;
+                transition: .2s ease-in-out;
+
+                &:hover{
+                    background: var(--grey);
+                    color: var(--background-color);
+                }
+            }
         }
 
         
