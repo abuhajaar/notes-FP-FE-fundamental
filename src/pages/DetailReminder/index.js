@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReminderDetailCard from '../../components/atoms/Reminder-Detail-Card';
 import './DetailReminder.scss';
@@ -13,6 +13,7 @@ function DetailReminder() {
   const { reminders } = useSelector((state) => state);
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(asyncFetchReminders());
@@ -26,6 +27,7 @@ function DetailReminder() {
 
   const submitForm = (formData) => {
     dispatch(asyncAddReminder(formData));
+    navigate('/reminder/');
   };
 
   if (!reminders) {
@@ -35,8 +37,8 @@ function DetailReminder() {
   return (
     <div className="reminder-detail-page">
       <div className="reminder-detail-page__selector">
-        <h1>Today's Task</h1>
-        <h1>All Tasks</h1>
+        <button type="button">Today's Task</button>
+        <button type="button">All Tasks</button>
       </div>
       <div className="reminder-detail-page__wrapper">
         <div className={!data.length ? 'reminder-detail-page__wrapper__notfound' : 'reminder-detail-page__wrapper__card-container'}>
