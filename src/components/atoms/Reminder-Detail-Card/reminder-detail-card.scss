@@ -78,6 +78,7 @@
                 box-shadow: var(--shadow-flat);
                 outline: transparent;
                 transition: .2s;
+                color: var(--black);
 
                 &:hover{
                     outline: 1px solid white;
