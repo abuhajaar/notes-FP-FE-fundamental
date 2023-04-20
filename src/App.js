@@ -120,8 +120,8 @@ function App() {
               <Route path="/notes/:id" element={<DetailNote />} />
               <Route path="/newnote" element={<CreateNote />} />
               <Route path="/arsip" element={<ArsipPage />} />
-              <Route path="/reminder/:id" element={<DetailReminder />} />
-              <Route path="/reminder" element={<Reminder />} />
+              <Route path="/reminder/:date?" element={<DetailReminder />} />
+              {/* <Route path="/reminder" element={<Reminder />} /> */}
               {/* <Route path="/newreminder" element={<CreateReminder />} /> */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

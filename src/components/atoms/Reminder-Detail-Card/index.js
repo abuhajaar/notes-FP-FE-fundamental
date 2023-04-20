@@ -8,6 +8,22 @@ function ReminderDetailCard({ data }) {
     content, title, date, category, completed, favorite,
   } = data;
 
+  const toggleFavorite = () => {
+    console.log('favorite');
+  };
+
+  const toggleCompleted = () => {
+    console.log('completed');
+  };
+
+  const handleDelete = () => {
+    console.log('delete');
+  };
+
+  const handleEdit = () => {
+    console.log('edit');
+  };
+
   return (
     <div className="card-todo">
       <div className="card-todo__header">
@@ -21,12 +37,12 @@ function ReminderDetailCard({ data }) {
       </div>
       <div className="card-todo__footer">
         <div className="card-todo__footer__left">
-          <button type="button" className="card-todo__footer__left__completed">{completed ? (<h3>completed</h3>) : (<h3>uncompleted</h3>)}</button>
+          <button type="button" className="card-todo__footer__left__completed" onClick={toggleCompleted}>{completed ? (<h3>completed</h3>) : (<h3>uncompleted</h3>)}</button>
         </div>
         <div className="card-todo__footer__right">
-          <button type="button" className={favorite ? ('card-todo__footer__right__favorite__on') : ('card-todo__footer__right__favorite__off')}><FaHeart /></button>
-          <button type="button" className="card-todo__footer__right__delete">Delete</button>
-          <button type="button" className="card-todo__footer__right__edit">Edit</button>
+          <button type="button" className={favorite ? ('card-todo__footer__right__favorite__on') : ('card-todo__footer__right__favorite__off')} onClick={toggleFavorite}><FaHeart /></button>
+          <button type="button" className="card-todo__footer__right__delete" onClick={handleDelete}>Delete</button>
+          <button type="button" className="card-todo__footer__right__edit" onClick={handleEdit}>Edit</button>
         </div>
       </div>
     </div>

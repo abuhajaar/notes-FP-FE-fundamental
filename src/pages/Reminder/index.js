@@ -12,7 +12,7 @@ function Reminder() {
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
 
   const submitForm = (data) => {
-    console.log(data);
+    // console.log(data);
     dispatch(asyncAddReminder(data));
   };
 

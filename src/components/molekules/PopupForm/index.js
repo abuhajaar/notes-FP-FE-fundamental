@@ -22,7 +22,7 @@ function PopupForm({ handleSubmit }) {
   return (
 
     <div>
-      {console.log(tanggal)}
+      {/* {console.log(tanggal)} */}
       <button type="button" className="btn-popup" onClick={() => setTrigger(true)}>Add New Task</button>
       {
         trigger ? (
@@ -32,7 +32,7 @@ function PopupForm({ handleSubmit }) {
 
               <h1 className="popup__container__header">Add a task</h1>
               <Gap height={20} />
-              {console.log('handleSubmitForm', handleSubmit)}
+              {/* {console.log('handleSubmitForm', handleSubmit)} */}
               <form className="popup__container__form" onSubmit={() => handleSubmit(form)}>
                 <label className="popup__container__form__title">
                   Title
