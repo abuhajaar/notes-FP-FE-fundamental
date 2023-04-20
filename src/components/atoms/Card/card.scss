@@ -1,13 +1,14 @@
-.Card {
-  border: 2px solid var(--red);
-  border-top: 10px solid var(--red);
+.card-notes {
+  border: 2px solid white;
+  
   display: flex;
-  background-color: var(--background-color);
   width: 100%;
   overflow: hidden;
   text-decoration: none;
+  box-shadow: var(--shadow-pressed);
+  border-radius: 15px;
 
-  .card-content {
+  &__content {
     height: max-content;
     width: 100%;
     padding: 1em;
@@ -15,7 +16,7 @@
     display: flex;
     flex-direction: column;
 
-    .note-item__title {
+    &__title {
       text-decoration: none;
       text-align: center;
       h1 {
@@ -30,16 +31,16 @@
       }
     }
 
-    .note-item__date {
+    &____date {
       font-size: 0.8em;
       margin-bottom: 8px;
       color: var(--font-color);
       font-family: var(--font-monserrat);
     }
 
-    .description {
+    &__description {
       overflow: hidden;
-      .Box {
+      &__box {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
@@ -59,8 +60,33 @@
       }
     }
 
-    .note-item__action {
+    &__action {
       display: flex;
+
+      button {
+        font-size: .8em;
+        font-weight: 600;
+        color: var(--grey);
+        background-color: var(--background-color);
+        font-family: var(--font-monserrat);
+        box-shadow: var(--shadow-pop);
+        transition: all .2s ease;
+        border-radius: 5px;
+        background: linear-gradient(145deg, #eeeeee, #c8c8c8);
+
+        &:hover{
+          outline: 1px solid var(--blue);
+          color: var(--blue);
+          background: none;
+          box-shadow: var(--shadow-flat);
+        }
+        &:active{
+          outline: 1px solid var(--blue);
+          color: var(--blue);
+          background: none;
+          box-shadow: var(--shadow-pressed);
+        }
+      }
     }
   }
 }

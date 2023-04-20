@@ -3,13 +3,14 @@
 .card-todo{
     border-radius: 15px;
   background: var(--background-color);
-  box-shadow:  var(--card-shadow-todo);
+  box-shadow:  var(--shadow-flat);
   height: 16rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: .3s;
+  
   
   &:first-of-type{
     border: 1px solid var(--blue)
@@ -40,6 +41,10 @@
     }
 
     .card-todo__body{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
 
         &__content{
 
@@ -47,13 +52,14 @@
         }
 
         &__date{
-
+        align-self: flex-end;
 
         }
 
     }
 
     .card-todo__footer{
+        margin: 10px 0;
         display: flex;
         justify-content: space-between;
         align-content: center;

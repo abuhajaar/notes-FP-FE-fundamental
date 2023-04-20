@@ -40,8 +40,8 @@ export function asyncFetchReminders() {
     dispatch(showLoading());
     try {
       const response = await api2.getReminders();
-      dispatch(setRemindersActionCreator(response));
       console.log('responseFETCHREMINDER', response);
+      dispatch(setRemindersActionCreator(response));
     } catch (error) {
       alert(error.message);
     }
