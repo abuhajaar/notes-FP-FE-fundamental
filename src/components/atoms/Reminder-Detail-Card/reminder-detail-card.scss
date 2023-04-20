@@ -1,15 +1,16 @@
 @import '../../../styles/variable.scss';
 
 .card-todo{
-    border-radius: 15px;
-  background: var(--background-color);
-  box-shadow:  var(--card-shadow-todo);
+  border-radius: 15px; 
+  box-shadow:  var(--shadow-flat);
   height: 16rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: .3s;
+  font-family: var(--font-monserrat);
+  
   
   &:first-of-type{
     border: 1px solid var(--blue)
@@ -22,16 +23,17 @@
         margin-bottom: 1rem;
         line-height: 2.5em;
         border-bottom: 2px dashed var(--grey);
+        
 
         .card-todo__header__title{
-            font-family: var(--font-monserrat);
+            
             font-size: 1.6em;
             font-weight: 800;
             color: var(--blue);
         }
 
         .card-todo__header__category{
-            font-family: var(--font-monserrat);
+            
             font-size: 1.3em;
             font-weight: 600;
             color: var(--grey);
@@ -40,6 +42,10 @@
     }
 
     .card-todo__body{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
 
         &__content{
 
@@ -47,22 +53,59 @@
         }
 
         &__date{
-
+         
+        align-self: flex-end;
 
         }
 
     }
 
     .card-todo__footer{
+        margin: 14px 0;
         display: flex;
         justify-content: space-between;
         align-content: center;
 
         &__left{
+            
 
+            button {
+                font-family: var(--font-monserrat);
+                border: none;
+                padding: .5em 1em;
+                cursor: pointer;
+                border-radius: 15px;
+                box-shadow: var(--shadow-flat);
+                outline: transparent;
+                transition: .2s;
+                color: var(--black);
 
-            &__completed{
+                &:hover{
+                    outline: 1px solid white;
+                }
 
+                &:active{
+                    outline: transparent;
+                }
+            }
+
+            &__completed{               
+                background-color: var(--green);
+
+                &:active{
+                    box-shadow: inset 5px 5px 10px #04b82f,
+                    inset -5px -5px 10px #06f83f;
+                }
+
+            }
+
+            &__uncompleted{
+                background-color: var(--yellow);
+
+                &:active{
+                    box-shadow: inset 5px 5px 10px #d6b62d,
+                    inset -5px -5px 10px #fff63d;
+                }
             }
         }
 
@@ -71,21 +114,47 @@
             align-items: center;
             gap: 1em;
 
-            &__favorite__on{
-                color: red;
+            button{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1em;
+                border-radius: 50%;
+                border: none;
+                box-shadow: var(--shadow-flat);
+                padding: .5em;
+                cursor: pointer;
+                background-color: transparent;
+                outline: transparent;
+                transition: .2s;
+                
+
+                &:hover{
+                    outline: 1px solid white;
+                }
+
+                &:active{
+                    outline: transparent;
+                    box-shadow: var(--shadow-pressed);
+                }
             }
+            
+
+            &__favorite__on{               
+                color: var(--red);
+            }   
+               
 
             &__favorite__off{
-                color: black
+                color: var(--black);
             }
 
             &__delete{
-
-
+                color: var(--black);
             }
 
             &__edit{
-
+                color: var(--black);
             }
 
         }

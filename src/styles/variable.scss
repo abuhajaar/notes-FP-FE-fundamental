@@ -1,22 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 :root {
-  --font-color: #313131;
+  --font-color: #272932;
   --background-color: #dedede;
-  --header: #313131;
+  --black: #313131;
   --grey: #707070;
-  --yellow: #dfb72e;
+  --yellow: #fcd635;
   --pink: #c1a9bf;
   --blue: #2966ff;
-  --red: #d6106c;
+  --red: #F05D5E;
+  --green: #05d837;
   --font: 'Permanent Marker', cursive;
   --font-monserrat: 'Montserrat', sans-serif;
   --line: 2em;
   --soft: url('../assets/image/soft-wallpaper.png');
   --noise: url('../assets/image/noise.png');
   --texture: url('../assets/image/texture.png');
-  --card-shadow-todo:   7px 7px 26px #bdbdbd,
-  -7px -7px 26px #ffffff;
+  --shadow-flat:   5px 5px 10px #bdbdbd,
+  -5px -5px 10px #ffffff;
+  --shadow-pressed: inset 10px 10px 20px #bdbdbd,
+  inset -10px -10px 20px #ffffff;
+  --shadow-pop: 5px 5px 10px #bdbdbd,
+  -5px -5px 10px #ffffff;
+
 
 }
 

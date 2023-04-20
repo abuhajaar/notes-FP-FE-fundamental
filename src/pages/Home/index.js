@@ -13,6 +13,8 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/action';
 import { asyncDeleteNotesById } from '../../states/notes/action';
 import { asyncFetchReminderAndNotes } from '../../states/shared/action';
+
+import { FaSearch } from 'react-icons/fa';
 import Loading from '../../components/atoms/Loading';
 
 function Home() {
@@ -20,67 +22,71 @@ function Home() {
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
 
   useEffect(() => {
-    if (reminders.length === 0) {
-      dispatch(asyncFetchReminderAndNotes());
-    }
-  }, [dispatch, reminders]);
-
-  async function onDeleteHandler(id) {
-    dispatch(asyncDeleteNotesById(id));
-    // dispatch(asyncFetchNotes());
+    dispatch(asyncFetchReminderAndNotes());
+  }, [dispatch]);
+  if (reminders.length === 0) {
+    dispatch(asyncFetchReminderAndNotes());
   }
+} [dispatch, reminders];
 
-  async function onArsipHandler(id) {
-    // dispatch(asyncArchiveNotesById(id));
-    // dispatch(asyncFetchNotes());
-  }
-
-  return (
-    <div className="main-page">
-      {/* {console.log('DATA REMINDERS DI HOME', reminders)} */}
-      <section className="main-top">
-        <section className="notes">
-          <div className="wrapper-search">
-            <Input className="search-input" placeholder="search" />
-            <button type="button" className="btn-search">button</button>
-          </div>
-          <div className="wrapper-content">
-            <div className={!notes.length ? 'NotFound' : 'Card-container'}>
-              {!notes.length ? (
-                <Loading />
-              ) : (
-                notes.map((data) => (
-                  <Card
-                    key={data.id}
-                    id={data.id}
-                    btnTitle1="Archived"
-                    btnTitle2="Delete"
-                    title={data.title}
-                    body={data.body}
-                    createAt={showFormattedDate(data.created_at)}
-                    onDelete={onDeleteHandler}
-                    onArsip={onArsipHandler}
-                  />
-                ))
-              )}
-            </div>
-          </div>
-          <div className="wrapper-add">
-            <Link className="navlink" to="/newnote">
-              Tambah Note
-            </Link>
-          </div>
-        </section>
-        <section className="explore">
-          <div className="example">
-            <Reminder reminders={reminders} />
-          </div>
-          <div className="example">Upcoming Content</div>
-        </section>
-      </section>
-      <section className="main-bottom">sdadsad</section>
-    </div>
-  );
+async function onDeleteHandler(id) {
+  dispatch(asyncDeleteNotesById(id));
+  // dispatch(asyncFetchNotes());
 }
+
+async function onArsipHandler(id) {
+  // dispatch(asyncArchiveNotesById(id));
+  // dispatch(asyncFetchNotes());
+}
+
+return (
+  <div className="home-page">
+    {/* {console.log('DATA REMINDERS DI HOME', reminders)} */}
+    <section className="home-page__top">
+      <section className="home-page__top__notes">
+        <div className="home-page__top__notes__search">
+          <Input className="home-page__top__notes__search__input" placeholder="search" />
+          <button type="button" className="home-page__top__notes__search__btn">
+            {' '}
+            <FaSearch />
+            {' '}
+          </button>
+        </div>
+        <div className="home-page__top__notes__content">
+          <div className={!notes.length ? 'home-page__top__notes__content__NotFound' : 'home-page__top__notes__content__card'}>
+            {!notes.length ? (<h2>Your Notes Is Empty</h2>) : (
+              notes.map((data) => (
+                <Card
+                  key={data.id}
+                  id={data.id}
+                  btnTitle1="Archived"
+                  btnTitle2="Delete"
+                  title={data.title}
+                  body={data.body}
+                  createAt={showFormattedDate(data.created_at)}
+                  onDelete={onDeleteHandler}
+                  onArsip={onArsipHandler}
+                />
+              ))
+            )}
+          </div>
+        </div>
+        <Link className="home-page__top__notes__show" to="/newnote">
+          <div className="home-page__top__notes__show__navlink">
+            Tambah Note
+          </div>
+        </Link>
+      </section >
+      <section className="home-page__top__explore">
+        <div className="home-page__top__explore__reminder">
+          <Reminder reminders={reminders} />
+        </div>
+        <div className="home-page__top__explore__thread">Upcoming Content</div>
+      </section >
+    </section >
+    <section className="main-bottom">sdadsad</section>
+  </div >
+);
+
 
 export default Home;

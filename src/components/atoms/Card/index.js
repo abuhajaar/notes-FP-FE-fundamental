@@ -12,20 +12,20 @@ function Card(props) {
   } = props;
 
   return (
-    <div className="Card">
-      <div className="card-content">
-        <Link className="note-item__title" to={`/notes/${id}`}>
+    <div className="card-notes">
+      <div className="card-notes__content">
+        <Link className="card-notes__content__title" to={`/notes/${id}`}>
           <h1>{title}</h1>
         </Link>
 
-        <p className="note-item__date">{createAt}</p>
+        <p className="card-notes__content__date">{createAt}</p>
 
-        <div className="description">
-          <h1 className="Box">{parser(body)}</h1>
+        <div className="card-notes__content__description">
+          <h1 className="card-notes__content__description__box">{parser(body)}</h1>
         </div>
 
         <Gap height={20} />
-        <div className="note-item__action">
+        <div className="card-notes__content__action">
           <Button title={btnTitle1} onClick={() => onArsip(id)} />
 
           <Button title={btnTitle2} onClick={() => onDelete(id)} />

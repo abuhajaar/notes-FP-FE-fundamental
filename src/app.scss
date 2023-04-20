@@ -6,11 +6,11 @@ html {
 }
 
 .overlay {
-  background-color: var(--grey);
+  background-color: var(--background-color);
   padding: 2em;
-  background-image: var(--texture);
+  
   .contact-app {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    
 
     .contact-app__header {
       padding: 0 5em;
@@ -48,12 +48,14 @@ html {
 }
 
 .contact-app-inside {
-  background-color: var(--grey);
+  background-color: var(--background-color);
   padding: 2em;
-  background-image: var(--texture);
+  
 
   .contact-app-container {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 30px;
+    box-shadow: var(--shadow-flat);
+    
   }
 }
 

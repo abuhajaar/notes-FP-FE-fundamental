@@ -1,11 +1,23 @@
 .input-wrapper {
   justify-content: center;
-
+  box-shadow: var(--shadow-flat);
+  border-radius: 15px;
   .input {
-    border: 1px solid gray;
-    padding: 10px;
-    border-radius: 8px;
+    
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 15px;
     outline: none;
     box-sizing: border-box;
+    background-color: var(--background-color);
+    color: var(--grey);
+    font-size: 1em;
+    font-family: var(--font-monserrat);
+    box-shadow: var(--shadow-pressed);
+    font-weight: 600;
+
+    &:focus{
+      outline: 1px solid var(--blue);
+    }
   }
 }

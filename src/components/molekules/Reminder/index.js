@@ -16,7 +16,7 @@ function Reminder({ reminders = [] }) {
   useEffect(() => {
     const currentDate = new Date();
     const nextSevenDays = [];
-    for (let i = 0; i <= 6; i += 1) {
+    for (let i = 0; i <= 2; i++) {
       const nextDate = new Date(currentDate);
       nextDate.setDate(currentDate.getDate() + i);
       nextSevenDays.push(nextDate.toISOString().substring(0, 10));

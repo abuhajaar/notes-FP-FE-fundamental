@@ -10,54 +10,55 @@ import ToggleLocale from '../../atoms/Button/locale';
 import { Button } from '../../atoms';
 
 function Header({ LogOut }) {
+  const tanggal = '2023-04-18';
   return (
-    <div className="container">
-      <div className="container-logo">
-        <div className="image">
-          <Link className="Link" to="/">
+    <div className="header">
+      <div className="header__logo">
+        <div className="header__logo__image">
+          <Link className="header__logo__image__link" to="/">
             <img className="logo1" src={logo1} alt="logo" />
             <Gap width={10} />
             <h1>Catatan</h1>
           </Link>
         </div>
       </div>
-      <div className="container-flex">
-        <ul className="nav">
-          <li>
-            <Link className="nav-logo" to="/arsip">
+      <div className="header__container">
+        <ul className="header__container__nav">
+          <li className="header__container__nav__list">
+            <Link className="header__container__nav__list__logo" to="/arsip">
               <h2>Arsip</h2>
             </Link>
           </li>
-          <li>
-            <Link className="nav-logo" to="/reminder">
+          <li className="header__container__nav__list">
+            <Link className="header__container__nav__list__logo" to="/reminder/">
               <h2>Reminder</h2>
             </Link>
           </li>
-          <li>
-            <Link className="nav-logo" to="/arsip">
+          <li className="header__container__nav__list">
+            <Link className="header__container__nav__list__logo" to="/arsip">
               <h2>Arsip</h2>
             </Link>
           </li>
-          <li>
-            <Link className="nav-logo" to="/arsip">
+          <li className="header__container__nav__list">
+            <Link className="header__container__nav__list__logo" to="/arsip">
               <h2>Arsip</h2>
             </Link>
           </li>
-          <li>
-            <Link className="nav-logo" to="/arsip">
+          <li className="header__container__nav__list">
+            <Link className="header__container__nav__list__logo" to="/arsip">
               <h2>Arsip</h2>
             </Link>
           </li>
         </ul>
-        <div className="container-settings">
-          <div className="settings">
-            <ToggleTheme className="btn-dark" />
-            <ToggleLocale className="btn-language" />
+        <div className="header__container__settings">
+          <div className="header__container__settings__buttons">
+            <ToggleTheme className="header__container__settings__buttons__btn-dark" />
+            <ToggleLocale className="header__container__settings__buttons__btn-language" />
           </div>
           <Button
             onClick={LogOut}
             title="Log Out"
-            className="btn-logout"
+            className="header__container__settings__btn-logout"
           />
         </div>
       </div>
