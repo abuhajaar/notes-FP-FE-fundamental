@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { useSelector, useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import React, { useEffect } from 'react';
@@ -19,7 +18,6 @@ import {
   CreateNote,
   DetailNote,
   DetailReminder,
-  //   CreateReminder,
   LoginPage,
   RegisterPage,
   Reminder,

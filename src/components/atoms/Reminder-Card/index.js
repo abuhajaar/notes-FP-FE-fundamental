@@ -53,13 +53,11 @@ function ReminderCard({ reminderDate, reminderTotalTask }) {
             <h3>
               {formatDate(reminderDate)}
             </h3>
-
           </div>
           <div className="card-reminder__container__todo">
             {reminderTotalTask}
             {' '}
             Tasks for this day
-
           </div>
         </div>
       </div>

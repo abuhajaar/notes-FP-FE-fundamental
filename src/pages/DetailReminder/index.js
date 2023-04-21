@@ -3,10 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReminderDetailCard from '../../components/atoms/Reminder-Detail-Card';
 import './DetailReminder.scss';
-// import { getData } from '../../utils/fetch';
 import PopupForm from '../../components/molekules/PopupForm';
 import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/action';
-// import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/action';
 
 function DetailReminder() {
   const { date } = useParams();
