@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 import ReminderCard from '../../atoms/Reminder-Card';
 import './reminder.scss';
 
@@ -16,14 +15,11 @@ function Reminder({ reminders = [] }) {
   useEffect(() => {
     const currentDate = new Date();
     const nextSevenDays = [];
-    for (let i = 0; i <= 2; i++) {
+    for (let i = 0; i <= 2; i += 1) {
       const nextDate = new Date(currentDate);
       nextDate.setDate(currentDate.getDate() + i);
       nextSevenDays.push(nextDate.toISOString().substring(0, 10));
     }
-    // const TanggalFormat = nextSevenDays.map((date) => {
-    //   return FormattedDate(date);
-    // });
 
     setDates(nextSevenDays);
   }, []);
