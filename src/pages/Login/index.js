@@ -1,7 +1,5 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { useDispatch } from 'react-redux';
-// import PropTypes from 'prop-types';
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginInput } from '../../components/molekules';
 import './login.scss';
