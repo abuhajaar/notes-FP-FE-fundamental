@@ -5,8 +5,8 @@ import NotFoundPage from './NotFoundPage';
 import ArsipPage from './ArsipNote';
 import DetailReminder from './DetailReminder';
 import CreateReminder from './CreateReminder';
-import LoginPage from './Login';
-import RegisterPage from './Register';
+import Login from './Login';
+import Register from './Register';
 import Reminder from './Reminder';
 
 export {
@@ -17,7 +17,7 @@ export {
   CreateNote,
   DetailReminder,
   CreateReminder,
-  LoginPage,
-  RegisterPage,
+  Login,
+  Register,
   Reminder,
 };

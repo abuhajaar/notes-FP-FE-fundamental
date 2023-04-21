@@ -6,17 +6,27 @@
     display: flex;
     
     &__selector{
-       width: 20%; 
+       width: 15%; 
        box-shadow: var(--shadow-flat);
-
+       
        button{
+        box-shadow: var(--shadow-flat);
         width: 100%;
         padding: 1em;
+        background-color: transparent;
+        border: none;
+        font-family: var(--font-monserrat);
+        font-size: 1.5em;
+        font-weight: 600;
+        color: var(--grey);
+        cursor: pointer;
+
        }
     }
 
     &__wrapper{
-
+        width: 65%;
+        padding: 2em;
 
         &__card-container, &__notfound{
             
@@ -54,7 +64,7 @@
     }
 
     &__progress{
-        width: 20%;
+        width: 15%;
         flex-grow: 1;
         box-shadow: var(--shadow-flat);
     }

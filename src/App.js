@@ -18,9 +18,8 @@ import {
   CreateNote,
   DetailNote,
   DetailReminder,
-  LoginPage,
-  RegisterPage,
-  Reminder,
+  Login,
+  Register,
 } from './pages';
 
 function App() {
@@ -91,11 +90,11 @@ function App() {
                 <Routes>
                   <Route
                     path="/*"
-                    element={<LoginPage />}
+                    element={<Login />}
                   />
                   <Route
                     path="/register"
-                    element={<RegisterPage />}
+                    element={<Register />}
                   />
                 </Routes>
               </main>
