@@ -8,9 +8,7 @@ import { showFormattedDate } from '../../utils/index';
 import Reminder from '../../components/molekules/Reminder';
 import { asyncDeleteNotesById } from '../../states/notes/action';
 import { asyncFetchReminderAndNotes } from '../../states/shared/action';
-
-import { FaSearch } from 'react-icons/fa';
-import Loading from '../../components/atoms/Loading';
+// import Loading from '../../components/atoms/Loading';
 
 function Home() {
   const { reminders, notes } = useSelector((state) => state);
@@ -20,25 +18,19 @@ function Home() {
     dispatch(asyncFetchReminderAndNotes());
   }, [dispatch]);
 
-
   async function onDeleteHandler(id) {
     dispatch(asyncDeleteNotesById(id));
     // dispatch(asyncFetchNotes());
 
-  if (reminders.length === 0) {
-    dispatch(asyncFetchReminderAndNotes());
+  async function onDeleteHandler(id) {
+    dispatch(asyncDeleteNotesById(id));
+    // dispatch(asyncFetchNotes());
   }
-} [dispatch, reminders];
 
-async function onDeleteHandler(id) {
-  dispatch(asyncDeleteNotesById(id));
-  // dispatch(asyncFetchNotes());
-}
-
-async function onArsipHandler(id) {
-  // dispatch(asyncArchiveNotesById(id));
-  // dispatch(asyncFetchNotes());
-}
+  async function onArsipHandler(id) {
+    // dispatch(asyncArchiveNotesById(id));
+    // dispatch(asyncFetchNotes());
+  }
 
   return (
     <div className="home-page">
@@ -51,6 +43,26 @@ async function onArsipHandler(id) {
               <FaSearch />
               {' '}
             </button>
+          </div>
+          <div className="home-page__top__notes__content">
+            <div className={!notes.length ? 'home-page__top__notes__content__NotFound' : 'home-page__top__notes__content__card'}>
+              {!notes.length ? (<h2>Your Notes Is Empty</h2>) : (
+                notes.map((data) => (
+                  <Card
+                    key={data.id}
+                    id={data.id}
+                    btnTitle1="Archived"
+                    btnTitle2="Delete"
+                    title={data.title}
+                    body={data.body}
+                    createAt={showFormattedDate(data.created_at)}
+                    onDelete={onDeleteHandler}
+                    onArsip={onArsipHandler}
+                  />
+                ))
+              )}
+            </div>
+          </div>
           </div>
           <div className="home-page__top__notes__content">
             <div className={!notes.length ? 'home-page__top__notes__content__NotFound' : 'home-page__top__notes__content__card'}>
@@ -88,6 +100,5 @@ async function onArsipHandler(id) {
     </div>
   );
 }
-
 
 export default Home;
