@@ -58,6 +58,7 @@ function ReminderCard({ reminderDate, reminderTotalTask }) {
             {reminderTotalTask}
             {' '}
             Tasks for this day
+
           </div>
         </div>
       </div>

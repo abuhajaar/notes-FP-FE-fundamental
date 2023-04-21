@@ -1,8 +1,10 @@
 @import '../../styles/variable.scss';
 
 .reminder-detail-page{
+
     // background-color: var(--background-color);
     min-height: 75vh;
+
     display: flex;
     
     &__selector{

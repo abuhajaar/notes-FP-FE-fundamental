@@ -8,6 +8,8 @@ import { showFormattedDate } from '../../utils/index';
 import Reminder from '../../components/molekules/Reminder';
 import { asyncDeleteNotesById } from '../../states/notes/action';
 import { asyncFetchReminderAndNotes } from '../../states/shared/action';
+
+import { FaSearch } from 'react-icons/fa';
 import Loading from '../../components/atoms/Loading';
 
 function Home() {
@@ -18,15 +20,25 @@ function Home() {
     dispatch(asyncFetchReminderAndNotes());
   }, [dispatch]);
 
+
   async function onDeleteHandler(id) {
     dispatch(asyncDeleteNotesById(id));
     // dispatch(asyncFetchNotes());
-  }
 
-  async function onArsipHandler(id) {
-    // dispatch(asyncArchiveNotesById(id));
-    // dispatch(asyncFetchNotes());
+  if (reminders.length === 0) {
+    dispatch(asyncFetchReminderAndNotes());
   }
+} [dispatch, reminders];
+
+async function onDeleteHandler(id) {
+  dispatch(asyncDeleteNotesById(id));
+  // dispatch(asyncFetchNotes());
+}
+
+async function onArsipHandler(id) {
+  // dispatch(asyncArchiveNotesById(id));
+  // dispatch(asyncFetchNotes());
+}
 
   return (
     <div className="home-page">
@@ -76,5 +88,6 @@ function Home() {
     </div>
   );
 }
+
 
 export default Home;

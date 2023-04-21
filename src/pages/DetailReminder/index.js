@@ -6,6 +6,7 @@ import './DetailReminder.scss';
 import PopupForm from '../../components/molekules/PopupForm';
 import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/action';
 
+
 function DetailReminder() {
   const { date } = useParams();
   const { reminders } = useSelector((state) => state);

@@ -17,6 +17,7 @@ function Reminder({ reminders = [] }) {
     const currentDate = new Date();
     const nextSevenDays = [];
     for (let i = 0; i <= 2; i += 1) {
+
       const nextDate = new Date(currentDate);
       nextDate.setDate(currentDate.getDate() + i);
       nextSevenDays.push(nextDate.toISOString().substring(0, 10));
