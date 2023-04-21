@@ -70,7 +70,22 @@
           height: 100%;
 
           &__day{
+          
+            text-align: center;
+            font-family: var(--font-monserrat);
+            text-shadow: var(--shadow-flat);
+            font-weight: 800;
+            font-size: 1.3em;
+            color: var(--blue);
+          }
+
+          &__date {
             
+            text-align: center;
+            font-family: var(--font-monserrat);
+            text-shadow: var(--shadow-flat);
+            font-weight: 700;
+            font-size: 1.3em;
             text-align: center;
             font-family: var(--font-monserrat);
             text-shadow: var(--shadow-flat);
