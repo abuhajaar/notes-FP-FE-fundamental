@@ -6,7 +6,6 @@ import './DetailReminder.scss';
 import PopupForm from '../../components/molekules/PopupForm';
 import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/action';
 
-
 function DetailReminder() {
   const { date } = useParams();
   const { reminders } = useSelector((state) => state);
@@ -22,6 +21,7 @@ function DetailReminder() {
     } else {
       setData(reminders);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date, dispatch]);
 
   const submitForm = (formData) => {

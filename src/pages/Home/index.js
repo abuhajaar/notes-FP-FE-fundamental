@@ -52,7 +52,9 @@ function Home() {
                     title={data.title}
                     body={data.body}
                     createAt={showFormattedDate(data.created_at)}
+                    // eslint-disable-next-line react/jsx-no-bind
                     onDelete={onDeleteHandler}
+                    // eslint-disable-next-line react/jsx-no-bind
                     onArsip={onArsipHandler}
                   />
                 ))
