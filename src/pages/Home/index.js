@@ -21,6 +21,10 @@ function Home() {
   async function onDeleteHandler(id) {
     dispatch(asyncDeleteNotesById(id));
     // dispatch(asyncFetchNotes());
+
+  async function onDeleteHandler(id) {
+    dispatch(asyncDeleteNotesById(id));
+    // dispatch(asyncFetchNotes());
   }
 
   async function onArsipHandler(id) {
@@ -55,6 +59,26 @@ function Home() {
                     // eslint-disable-next-line react/jsx-no-bind
                     onDelete={onDeleteHandler}
                     // eslint-disable-next-line react/jsx-no-bind
+                    onArsip={onArsipHandler}
+                  />
+                ))
+              )}
+            </div>
+          </div>
+          </div>
+          <div className="home-page__top__notes__content">
+            <div className={!notes.length ? 'home-page__top__notes__content__NotFound' : 'home-page__top__notes__content__card'}>
+              {!notes.length ? (<h2>Your Notes Is Empty</h2>) : (
+                notes.map((data) => (
+                  <Card
+                    key={data.id}
+                    id={data.id}
+                    btnTitle1="Archived"
+                    btnTitle2="Delete"
+                    title={data.title}
+                    body={data.body}
+                    createAt={showFormattedDate(data.created_at)}
+                    onDelete={onDeleteHandler}
                     onArsip={onArsipHandler}
                   />
                 ))
