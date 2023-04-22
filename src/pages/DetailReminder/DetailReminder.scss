@@ -12,7 +12,8 @@
         flex-grow: 1;
         box-shadow: var(--shadow-flat);
 
-        h1 {
+        button {
+            width: 100%;
             box-shadow: var(--shadow-flat);
             padding: 1em 2em;
             color: var(--grey);

@@ -19,7 +19,7 @@ function addReminderActionCreator(reminders) {
 export function asyncAddReminder(reminder) {
   return async (dispatch) => {
     dispatch(showLoading());
-    dispatch(addReminderActionCreator(reminder));
+    // dispatch(addReminderActionCreator(reminder));
     try {
       // TODO: add reminder
       await api2.addReminder(reminder);
@@ -77,17 +77,18 @@ export function asyncCompleteReminder(id) {
     dispatch(showLoading());
     let type;
     const data = getState().reminders.reminders;
-
     const result = data.filter((reminder) => reminder.id === id);
     if (result[0].completed === true) {
       type = 'uncompleted';
     } else {
       type = 'completed';
     }
+    dispatch(completeReminderActionCreator(id));
     // console.log('type', type);
     try {
       await api2.completeReminderById(id, type);
     } catch (error) {
+      dispatch(completeReminderActionCreator(id));
       alert(error.message);
     }
     dispatch(hideLoading());

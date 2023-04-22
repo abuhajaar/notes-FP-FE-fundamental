@@ -17,7 +17,7 @@ import { asyncFetchReminderAndNotes } from '../../states/shared/action';
 import { FaSearch } from 'react-icons/fa';
 
 function Home() {
-  const { notes } = useSelector((state) => state);
+  const { notes, authUser } = useSelector((state) => state);
   const { reminders } = useSelector((state) => state.reminders);
 
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
@@ -38,7 +38,7 @@ function Home() {
 
   return (
     <div className="home-page">
-      {console.log('DATA REMINDERS DI HOME', reminders)}
+      {console.log('DATA REMINDERS DI HOME', authUser.name)}
       <section className="home-page__top">
         <section className="home-page__top__notes">
           <div className="home-page__top__notes__search">
