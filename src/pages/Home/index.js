@@ -38,7 +38,7 @@ function Home() {
 
   return (
     <div className="home-page">
-      {console.log('DATA REMINDERS DI HOME', authUser.name)}
+      {/* {console.log('DATA REMINDERS DI HOME', authUser.name)} */}
       <section className="home-page__top">
         <section className="home-page__top__notes">
           <div className="home-page__top__notes__search">

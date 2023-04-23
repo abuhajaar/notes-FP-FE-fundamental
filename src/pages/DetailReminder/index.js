@@ -18,7 +18,7 @@ function DetailReminder() {
   useEffect(() => {
     if (status === 'idle') {
       dispatch(asyncFetchReminders());
-      console.log('render fecth');
+      // console.log('render fecth');
     }
     // dispatch(asyncFetchReminders());
   }, []);
