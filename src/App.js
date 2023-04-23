@@ -22,7 +22,7 @@ import {
   //   CreateReminder,
   LoginPage,
   RegisterPage,
-  Reminder,
+  // Reminder,
 } from './pages';
 
 function App() {

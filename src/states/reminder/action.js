@@ -75,6 +75,7 @@ export function asyncDeleteReminder(id) {
 export function asyncCompleteReminder(id) {
   return async (dispatch, getState) => {
     dispatch(showLoading());
+    dispatch(completeReminderActionCreator(id));
     let type;
     const data = getState().reminders.reminders;
 

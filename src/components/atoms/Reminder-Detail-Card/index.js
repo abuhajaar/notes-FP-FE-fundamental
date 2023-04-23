@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import './reminder-detail-card.scss';
-import { FaHeart } from 'react-icons/fa';
+import { FaEdit, FaHeart, FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { asyncCompleteReminder, asyncDeleteReminder } from '../../../states/reminder/action';
 

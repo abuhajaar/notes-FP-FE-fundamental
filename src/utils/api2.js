@@ -41,7 +41,6 @@ const api2 = (() => {
     // content:string
     // date:string
     // category:string
-
     const response = await postData('/reminders', reminder);
     // console.log('hasilresponse', response)
     const { status, message } = response.data;
@@ -303,6 +302,7 @@ const api2 = (() => {
     addComment,
     addReminder,
     getReminders,
+    getNotes,
   };
 })();
 
