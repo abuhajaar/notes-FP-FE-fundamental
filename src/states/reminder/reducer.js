@@ -32,6 +32,20 @@ function reminderReducer(reminders = initialState, action) {
         reminders: reminders.reminders.filter((reminder) => reminder.id !== action.payload),
         status: status.success,
       };
+    case ActionType.COMPLETE_REMINDER:
+      return {
+        ...reminders,
+        reminders: reminders.reminders.map((reminder) => {
+          if (reminder.id === action.payload) {
+            return {
+              ...reminder,
+              completed: !reminder.completed,
+            };
+          }
+          return reminder;
+        }),
+        status: status.success,
+      };
     default:
       return reminders;
   }

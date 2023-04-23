@@ -62,7 +62,6 @@ function PopupForm({ handleSubmit }) {
           </div>
         ) : null
       }
-      ;
     </div>
   );
 }

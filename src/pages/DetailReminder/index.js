@@ -13,11 +13,12 @@ function DetailReminder() {
   const { reminders, status } = useSelector((state) => state.reminders);
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
   const [data, setData] = useState([]);
+  const today = new Date().toISOString().slice(0, 10);
 
   useEffect(() => {
     if (status === 'idle') {
       dispatch(asyncFetchReminders());
-      console.log('render fecth');
+      // console.log('render fecth');
     }
     // dispatch(asyncFetchReminders());
   }, []);
@@ -39,11 +40,20 @@ function DetailReminder() {
     return <h1>Loading Reminder</h1>;
   }
 
+  const filterAllTask = () => {
+    setData(reminders);
+  };
+
+  const filterTodayTask = () => {
+    const filterData = reminders.filter((reminder) => reminder.date === today);
+    setData(filterData);
+  };
+
   return (
     <div className="reminder-detail-page">
       <div className="reminder-detail-page__selector">
-        <button type="button">Today's Task</button>
-        <button type="button">All Tasks</button>
+        <button type="button" onClick={filterTodayTask}>Today's Task</button>
+        <button type="button" onClick={filterAllTask}>All Tasks</button>
       </div>
       <div className="reminder-detail-page__wrapper">
         <div className={!data.length ? 'reminder-detail-page__wrapper__notfound' : 'reminder-detail-page__wrapper__card-container'}>

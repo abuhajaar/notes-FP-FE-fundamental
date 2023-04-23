@@ -8,4 +8,11 @@ const showFormattedDate = (date) => {
   return new Date(date).toLocaleDateString('id-ID', options);
 };
 
-export { showFormattedDate };
+function FormattedDate(date) {
+  const [year, month, day] = date.split('-');
+  const formattedDate = `${day}-${month}-${year}`;
+
+  return formattedDate;
+}
+
+export { showFormattedDate, FormattedDate };
