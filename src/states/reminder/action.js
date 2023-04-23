@@ -1,4 +1,5 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import { useNavigate } from 'react-router-dom';
 import api2 from '../../utils/api2';
 
 export const ActionType = {
@@ -19,7 +20,7 @@ function addReminderActionCreator(reminders) {
 export function asyncAddReminder(reminder) {
   return async (dispatch) => {
     dispatch(showLoading());
-    // dispatch(addReminderActionCreator(reminder));
+    dispatch(addReminderActionCreator(reminder));
     try {
       // TODO: add reminder
       await api2.addReminder(reminder);
@@ -75,17 +76,17 @@ export function asyncDeleteReminder(id) {
 export function asyncCompleteReminder(id) {
   return async (dispatch, getState) => {
     dispatch(showLoading());
-    dispatch(completeReminderActionCreator(id));
     let type;
     const data = getState().reminders.reminders;
     const result = data.filter((reminder) => reminder.id === id);
+    console.log('result', result);
     if (result[0].completed === true) {
       type = 'uncompleted';
     } else {
       type = 'completed';
     }
     dispatch(completeReminderActionCreator(id));
-    // console.log('type', type);
+    console.log('type', type);
     try {
       await api2.completeReminderById(id, type);
     } catch (error) {

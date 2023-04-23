@@ -3,6 +3,7 @@ import React from 'react';
 import './reminder-detail-card.scss';
 import { FaEdit, FaHeart, FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { asyncCompleteReminder, asyncDeleteReminder } from '../../../states/reminder/action';
 
 function ReminderDetailCard({ data }) {
@@ -13,6 +14,7 @@ function ReminderDetailCard({ data }) {
   const toggleFavorite = () => {
     console.log('favorite');
   };
+  const navigate = useNavigate();
 
   const toggleCompleted = () => {
     dispatch(asyncCompleteReminder(id));
@@ -20,6 +22,7 @@ function ReminderDetailCard({ data }) {
 
   const handleDelete = () => {
     dispatch(asyncDeleteReminder(id));
+    navigate('/reminder');
   };
 
   const handleEdit = () => {

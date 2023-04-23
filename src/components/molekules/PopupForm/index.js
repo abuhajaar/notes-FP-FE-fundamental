@@ -32,9 +32,6 @@ function PopupForm({ handleSubmit }) {
               <h1 className="popup__container__header">Add a task</h1>
               <Gap height={20} />
 
-              <h1 className="popup__container__header">Add a task</h1>
-              <Gap height={20} />
-
               <form className="popup__container__form" onSubmit={() => handleSubmit(form)}>
                 <label className="popup__container__form__title">
                   Title
