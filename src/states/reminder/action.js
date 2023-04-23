@@ -5,6 +5,8 @@ export const ActionType = {
   SET_REMINDERS: 'SET_REMINDERS',
   ADD_REMINDER: 'ADD_REMINDER',
   DELETE_REMINDER: 'DELETE_REMINDER',
+  COMPLETE_REMINDER: 'COMPLETE_REMINDER',
+  FAVORITE_REMINDER: 'FAVORITE_REMINDER',
 };
 
 function addReminderActionCreator(reminders) {
@@ -17,10 +19,11 @@ function addReminderActionCreator(reminders) {
 export function asyncAddReminder(reminder) {
   return async (dispatch) => {
     dispatch(showLoading());
+    dispatch(addReminderActionCreator(reminder));
     try {
       // TODO: add reminder
-      const response = await api2.addReminder(reminder);
-      dispatch(addReminderActionCreator(response));
+      await api2.addReminder(reminder);
+      // console.log('masuk asyncAddReminder');
     } catch (error) {
       alert(error.message);
     }
@@ -46,5 +49,54 @@ export function asyncFetchReminders() {
       alert(error.message);
     }
     dispatch(hideLoading());
+  };
+}
+
+export function deleteReminderActionCreator(id) {
+  return {
+    type: ActionType.DELETE_REMINDER,
+    payload: id,
+  };
+}
+
+export function asyncDeleteReminder(id) {
+  return async (dispatch) => {
+    dispatch(showLoading());
+    dispatch(deleteReminderActionCreator(id));
+    try {
+      await api2.deleteReminderById(id);
+    } catch (error) {
+      alert(error.message);
+    }
+    dispatch(hideLoading());
+  };
+}
+
+export function asyncCompleteReminder(id) {
+  return async (dispatch, getState) => {
+    dispatch(showLoading());
+    let type;
+    const data = getState().reminders.reminders;
+
+    const result = data.filter((reminder) => reminder.id === id);
+    if (result[0].completed === true) {
+      type = 'uncompleted';
+    } else {
+      type = 'completed';
+    }
+    // console.log('type', type);
+    try {
+      await api2.completeReminderById(id, type);
+    } catch (error) {
+      alert(error.message);
+    }
+    dispatch(hideLoading());
+  };
+}
+
+function completeReminderActionCreator(id) {
+  return {
+    type: ActionType.COMPLETE_REMINDER,
+    payload: id,
   };
 }

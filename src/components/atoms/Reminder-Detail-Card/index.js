@@ -1,23 +1,25 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import './reminder-detail-card.scss';
-import { FaHeart, FaTrashAlt, FaEdit } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { asyncCompleteReminder, asyncDeleteReminder } from '../../../states/reminder/action';
 
 function ReminderDetailCard({ data }) {
   const {
-    content, title, date, category, completed, favorite,
+    id, content, title, date, category, completed, favorite,
   } = data;
-
+  const dispatch = useDispatch();
   const toggleFavorite = () => {
     console.log('favorite');
   };
 
   const toggleCompleted = () => {
-    console.log('completed');
+    dispatch(asyncCompleteReminder(id));
   };
 
   const handleDelete = () => {
-    console.log('delete');
+    dispatch(asyncDeleteReminder(id));
   };
 
   const handleEdit = () => {

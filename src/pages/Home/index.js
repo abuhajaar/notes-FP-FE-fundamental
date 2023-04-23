@@ -1,18 +1,25 @@
 /* eslint-disable react/jsx-no-bind */
+/* eslint-disable import/order */
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { FaSearch } from 'react-icons/fa';
 import { Card, Input } from '../../components';
 import './Home.scss';
 import { showFormattedDate } from '../../utils/index';
+// import { getActiveNotes, deleteNote, archiveNote } from '../../utils/api';
 import Reminder from '../../components/molekules/Reminder';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useSelector, useDispatch } from 'react-redux';
+
+// import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/action';
 import { asyncDeleteNotesById } from '../../states/notes/action';
 import { asyncFetchReminderAndNotes } from '../../states/shared/action';
 // import Loading from '../../components/atoms/Loading';
+import { FaSearch } from 'react-icons/fa';
 
 function Home() {
-  const { reminders, notes } = useSelector((state) => state);
+  const { notes } = useSelector((state) => state);
+  const { reminders } = useSelector((state) => state.reminders);
+
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
 
   useEffect(() => {

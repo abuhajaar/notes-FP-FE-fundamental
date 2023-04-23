@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useSelector, useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import React, { useEffect } from 'react';
@@ -18,8 +19,10 @@ import {
   CreateNote,
   DetailNote,
   DetailReminder,
-  Login,
-  Register,
+  //   CreateReminder,
+  LoginPage,
+  RegisterPage,
+  Reminder,
 } from './pages';
 
 function App() {
@@ -90,11 +93,11 @@ function App() {
                 <Routes>
                   <Route
                     path="/*"
-                    element={<Login />}
+                    element={<LoginPage />}
                   />
                   <Route
                     path="/register"
-                    element={<Register />}
+                    element={<RegisterPage />}
                   />
                 </Routes>
               </main>

@@ -20,6 +20,9 @@ function Reminder({ reminders = [] }) {
       nextDate.setDate(currentDate.getDate() + i);
       nextSevenDays.push(nextDate.toISOString().substring(0, 10));
     }
+    // const TanggalFormat = nextSevenDays.map((date) => {
+    //   return FormattedDate(date);
+    // });
 
     setDates(nextSevenDays);
   }, []);

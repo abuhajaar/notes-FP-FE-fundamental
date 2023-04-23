@@ -1,4 +1,6 @@
-const { getData, postData, deleteData } = require('./fetch');
+const {
+  getData, postData, deleteData, putData,
+} = require('./fetch');
 
 const api2 = (() => {
   const BASE_URL = 'http://localhost:5000';
@@ -39,6 +41,7 @@ const api2 = (() => {
     // content:string
     // date:string
     // category:string
+
     const response = await postData('/reminders', reminder);
     // console.log('hasilresponse', response)
     const { status, message } = response.data;
@@ -56,6 +59,26 @@ const api2 = (() => {
     }
     return (response.data.data);
   }
+
+  async function deleteReminderById(id) {
+    const response = await deleteData(`/reminders/${id}`);
+    const { status, message } = response.data;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+    return (response.data.data);
+  }
+
+  async function completeReminderById(id, type) {
+    const response = await putData(`/reminders/${id}/complete/${type}`);
+    const { status, message } = response.data;
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+    return (response.data.data);
+  }
+  // ------------------END Reminder------------------------------
   // --------------------Notes-----------------------------------
   async function addNotes(notes) {
     // title:string
@@ -261,6 +284,8 @@ const api2 = (() => {
   }
 
   return {
+    completeReminderById,
+    deleteReminderById,
     ourAuth,
     addNotes,
     deleteNotesById,
