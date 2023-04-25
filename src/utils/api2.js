@@ -77,6 +77,16 @@ const api2 = (() => {
     }
     return (response.data.data);
   }
+
+  async function favoriteReminderById(id, type) {
+    const response = await putData(`/reminders/${id}/favorite/${type}`);
+    const { status, message } = response.data;
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+    return (response.data.data);
+  }
+
   // ------------------END Reminder------------------------------
   // --------------------Notes-----------------------------------
   async function addNotes(notes) {
@@ -283,6 +293,7 @@ const api2 = (() => {
   }
 
   return {
+    favoriteReminderById,
     completeReminderById,
     deleteReminderById,
     ourAuth,

@@ -43,7 +43,7 @@ function ReminderCard({ reminderDate, reminderTotalTask }) {
   // Mouse Effect End
 
   return (
-    <Link className="reminder-card" to={`/reminder/${reminderDate}`}>
+    <Link className="reminder-card" to="/reminder/today">
       <div className="card-reminder">
         <div className="card-reminder__container">
           <div className="card-reminder__container__day">

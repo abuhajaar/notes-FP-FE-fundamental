@@ -10,7 +10,6 @@ import ToggleLocale from '../../atoms/Button/locale';
 import { Button } from '../../atoms';
 
 function Header({ LogOut }) {
-  const tanggal = '2023-04-18';
   return (
     <div className="header">
       <div className="header__logo">

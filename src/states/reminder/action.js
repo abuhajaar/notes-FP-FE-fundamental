@@ -1,5 +1,4 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
-import { useNavigate } from 'react-router-dom';
 import api2 from '../../utils/api2';
 
 export const ActionType = {
@@ -79,14 +78,12 @@ export function asyncCompleteReminder(id) {
     let type;
     const data = getState().reminders.reminders;
     const result = data.filter((reminder) => reminder.id === id);
-    console.log('result', result);
     if (result[0].completed === true) {
       type = 'uncompleted';
     } else {
       type = 'completed';
     }
     dispatch(completeReminderActionCreator(id));
-    console.log('type', type);
     try {
       await api2.completeReminderById(id, type);
     } catch (error) {
@@ -100,6 +97,35 @@ export function asyncCompleteReminder(id) {
 function completeReminderActionCreator(id) {
   return {
     type: ActionType.COMPLETE_REMINDER,
+    payload: id,
+  };
+}
+
+export function asyncFavoriteReminder(id) {
+  return async (dispatch, getState) => {
+    dispatch(showLoading());
+    let type;
+    const data = getState().reminders.reminders;
+    const result = data.filter((reminder) => reminder.id === id);
+    if (result[0].favorite === true) {
+      type = 'unfavorited';
+    } else {
+      type = 'favorited';
+    }
+    dispatch(favoriteReminderActionCreator(id));
+    try {
+      await api2.favoriteReminderById(id, type);
+    } catch (error) {
+      dispatch(favoriteReminderActionCreator(id));
+      alert(error.message);
+    }
+    dispatch(hideLoading());
+  };
+}
+
+function favoriteReminderActionCreator(id) {
+  return {
+    type: ActionType.FAVORITE_REMINDER,
     payload: id,
   };
 }

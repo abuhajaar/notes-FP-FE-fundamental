@@ -4,17 +4,18 @@ import './reminder-detail-card.scss';
 import { FaEdit, FaHeart, FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { asyncCompleteReminder, asyncDeleteReminder } from '../../../states/reminder/action';
+import { asyncCompleteReminder, asyncDeleteReminder, asyncFavoriteReminder } from '../../../states/reminder/action';
 
 function ReminderDetailCard({ data }) {
   const {
     id, content, title, date, category, completed, favorite,
   } = data;
   const dispatch = useDispatch();
-  const toggleFavorite = () => {
-    console.log('favorite');
-  };
   const navigate = useNavigate();
+
+  const toggleFavorite = () => {
+    dispatch(asyncFavoriteReminder(id));
+  };
 
   const toggleCompleted = () => {
     dispatch(asyncCompleteReminder(id));

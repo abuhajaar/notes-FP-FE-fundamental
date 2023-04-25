@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReminderDetailCard from '../../components/atoms/Reminder-Detail-Card';
 import './DetailReminder.scss';
@@ -14,6 +15,7 @@ function DetailReminder() {
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
   const [data, setData] = useState([]);
   const today = new Date().toISOString().slice(0, 10);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (status === 'idle') {
@@ -21,16 +23,7 @@ function DetailReminder() {
       // console.log('render fecth');
     }
     // dispatch(asyncFetchReminders());
-  }, []);
-
-  useEffect(() => {
-    if (date !== undefined) {
-      const filterData = reminders.filter((reminder) => reminder.date === date);
-      setData(filterData);
-    } else {
-      setData(reminders);
-    }
-  }, [date, dispatch, reminders]);
+  }, [status, dispatch]);
 
   const submitForm = (formData) => {
     dispatch(asyncAddReminder(formData));
@@ -41,13 +34,33 @@ function DetailReminder() {
   }
 
   const filterAllTask = () => {
-    setData(reminders);
+    navigate('/reminder/all');
   };
 
   const filterTodayTask = () => {
-    const filterData = reminders.filter((reminder) => reminder.date === today);
-    setData(filterData);
+    navigate('/reminder/today');
   };
+
+  useEffect(() => {
+    const filterData = reminders.filter((reminder) => reminder.date === today);
+    switch (date) {
+      case 'today':
+        setData(filterData);
+        break;
+      case 'all':
+        setData(reminders);
+        break;
+      default:
+        setData(reminders);
+        break;
+    }
+    // if (date !== undefined) {
+    //   const filterData = reminders.filter((reminder) => reminder.date === date);
+    //   setData(filterData);
+    // } else {
+    //   setData(reminders);
+    // }
+  }, [date, reminders, today]);
 
   return (
     <div className="reminder-detail-page">

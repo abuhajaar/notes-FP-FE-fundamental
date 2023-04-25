@@ -33,7 +33,6 @@ function reminderReducer(reminders = initialState, action) {
         status: status.success,
       };
     case ActionType.COMPLETE_REMINDER:
-      console.log('masuk complete', reminders);
       return {
         ...reminders,
         reminders: reminders.reminders.map((reminder) => {
@@ -41,6 +40,20 @@ function reminderReducer(reminders = initialState, action) {
             return {
               ...reminder,
               completed: !reminder.completed,
+            };
+          }
+          return reminder;
+        }),
+        status: status.success,
+      };
+    case ActionType.FAVORITE_REMINDER:
+      return {
+        ...reminders,
+        reminders: reminders.reminders.map((reminder) => {
+          if (reminder.id === action.payload) {
+            return {
+              ...reminder,
+              favorite: !reminder.favorite,
             };
           }
           return reminder;
