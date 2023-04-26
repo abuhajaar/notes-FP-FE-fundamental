@@ -7,7 +7,7 @@ function ReminderCard({ reminderDate, reminderTotalTask }) {
 
   function formatDay(date) {
     const newDate = new Date(date);
-    const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const weekday = localStorage.getItem('local') === 'id' ? ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'] : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const day = weekday[newDate.getDay()];
     return day;
   }

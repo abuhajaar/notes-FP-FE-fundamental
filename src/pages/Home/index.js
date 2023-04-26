@@ -59,7 +59,7 @@ function Home() {
                     btnTitle2="Delete"
                     title={data.title}
                     body={data.body}
-                    createAt={showFormattedDate(data.created_at)}
+                    createAt={showFormattedDate(data.created_at, localStorage.getItem('local') || 'en')}
                     // eslint-disable-next-line react/jsx-no-bind
                     onDelete={onDeleteHandler}
                     // eslint-disable-next-line react/jsx-no-bind

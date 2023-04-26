@@ -1,12 +1,16 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from 'react';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ReminderDetailCard from '../../components/atoms/Reminder-Detail-Card';
 import './DetailReminder.scss';
 // import { getData } from '../../utils/fetch';
 import PopupForm from '../../components/molekules/PopupForm';
-import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/action';
+import {
+  asyncAddReminder,
+  asyncFetchReminders,
+} from '../../states/reminder/action';
+import Progress from './Progress';
 // import { asyncAddReminder, asyncFetchReminders } from '../../states/reminder/action';
 
 function DetailReminder() {
@@ -54,30 +58,36 @@ function DetailReminder() {
         setData(reminders);
         break;
     }
-    // if (date !== undefined) {
-    //   const filterData = reminders.filter((reminder) => reminder.date === date);
-    //   setData(filterData);
-    // } else {
-    //   setData(reminders);
-    // }
   }, [date, reminders, today]);
 
   return (
     <div className="reminder-detail-page">
       <div className="reminder-detail-page__selector">
-        <button type="button" onClick={filterTodayTask}>Today's Task</button>
-        <button type="button" onClick={filterAllTask}>All Tasks</button>
+        <button type="button" onClick={filterTodayTask}>
+          Today's Task
+        </button>
+        <button type="button" onClick={filterAllTask}>
+          All Tasks
+        </button>
       </div>
       <div className="reminder-detail-page__wrapper">
-        <div className={!data.length ? 'reminder-detail-page__wrapper__notfound' : 'reminder-detail-page__wrapper__card-container'}>
-          {!data.length ? (null) : (
-            data.map((datas) => (<ReminderDetailCard key={datas.id} data={datas} />))
-          )}
-          <PopupForm handleSubmit={submitForm} />
+        <div
+          className={
+                        !data.length
+                          ? 'reminder-detail-page__wrapper__notfound'
+                          : 'reminder-detail-page__wrapper__card-container'
+                    }
+        >
+          {!data.length
+            ? null
+            : data.map((datas) => (
+              <ReminderDetailCard key={datas.id} data={datas} />
+            ))}
+          <PopupForm handleSubmit={submitForm} isi="add New Task" />
         </div>
       </div>
       <div className="reminder-detail-page__progress">
-        <h1>Progress</h1>
+        <Progress today={today} />
       </div>
     </div>
   );

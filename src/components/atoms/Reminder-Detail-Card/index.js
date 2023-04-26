@@ -50,7 +50,7 @@ function ReminderDetailCard({ data }) {
         <div className="card-todo__footer__right">
           <button type="button" className={favorite ? ('card-todo__footer__right__favorite__on') : ('card-todo__footer__right__favorite__off')} onClick={toggleFavorite}><FaHeart /></button>
           <button type="button" className="card-todo__footer__right__delete" onClick={handleDelete}><FaTrashAlt /></button>
-          <button type="button" className="card-todo__footer__right__edit" onClick={handleEdit}><FaEdit /></button>
+          <PopupForm isi={<FaEdit />} className="card-todo__footer__right__edit" onClick={handleEdit} data={data} />
         </div>
       </div>
     </div>

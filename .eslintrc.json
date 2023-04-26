@@ -21,6 +21,7 @@
         
     ],
     "rules": {
+        "max-len": "off",
         "linebreak-style": "off",
         "no-alert": "off",
         "no-underscore-dangle": "off",
@@ -40,6 +41,8 @@
         "import/no-extraneous-dependencies": "off",
         "import/no-unresolved": "off",
         "import/no-cycle": "off",
-        "react/require-default-props": "off"
+        "react/require-default-props": "off",
+        "no-console": "off"
+        
     }
 }

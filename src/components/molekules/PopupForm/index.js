@@ -3,16 +3,16 @@ import { React, useState } from 'react';
 import './Popup-Form.scss';
 import { Gap } from '../../atoms';
 
-function PopupForm({ handleSubmit }) {
+function PopupForm({ handleSubmit = '', isi, data }) {
   const [trigger, setTrigger] = useState(false);
   // const navigate = useNavigate();
   const tanggal = new Date();
 
   const [form, setForm] = useState({
-    title: '',
-    category: '',
-    date: '',
-    content: '',
+    title: data?.title || '',
+    category: data?.category || '',
+    date: data?.date || '',
+    content: data?.content || '',
   });
 
   const handleChange = (e) => {
@@ -22,7 +22,8 @@ function PopupForm({ handleSubmit }) {
   return (
 
     <div>
-      <button type="button" className="btn-popup" onClick={() => setTrigger(true)}>Add New Task</button>
+      {console.log('popUpForm', form)}
+      <button type="button" className="btn-popup" onClick={() => setTrigger(true)}>{isi}</button>
       {
         trigger ? (
           <div className="popup">
@@ -35,22 +36,22 @@ function PopupForm({ handleSubmit }) {
               <form className="popup__container__form" onSubmit={() => handleSubmit(form)}>
                 <label className="popup__container__form__title">
                   Title
-                  <input type="text" className="title" onChange={handleChange} />
+                  <input type="text" className="title" onChange={handleChange} value={form.title} />
                 </label>
                 <Gap height={20} />
                 <label className="popup__container__form__date">
                   Date
-                  <input type="date" min={tanggal} className="date" onChange={handleChange} />
+                  <input type="date" min={tanggal} className="date" onChange={handleChange} value={form.date} />
                 </label>
                 <Gap height={20} />
                 <label className="popup__container__form__content">
                   Content
-                  <textarea type="text" className="content" onChange={handleChange} />
+                  <textarea type="text" className="content" onChange={handleChange} value={form.content} />
                 </label>
                 <Gap height={20} />
                 <label className="popup__container__form__category">
                   Category
-                  <input type="text" className="category" onChange={handleChange} />
+                  <input type="text" className="category" onChange={handleChange} value={form.category} />
                 </label>
                 <Gap height={20} />
                 <button type="submit" className="popup__container__submit-btn">Submit</button>
@@ -62,9 +63,5 @@ function PopupForm({ handleSubmit }) {
     </div>
   );
 }
-
-PopupForm.defaultProps = {
-  handleSubmit: () => { console.log('handleSubmitForm'); },
-};
 
 export default PopupForm;
