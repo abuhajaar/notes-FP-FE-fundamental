@@ -29,7 +29,7 @@ function Header({ LogOut }) {
             </Link>
           </li>
           <li className="header__container__nav__list">
-            <Link className="header__container__nav__list__logo" to="/reminder/">
+            <Link className="header__container__nav__list__logo" to="/reminder/all">
               <h2>Reminder</h2>
             </Link>
           </li>

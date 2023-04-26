@@ -65,7 +65,7 @@
         &__logo {
           border-radius: 5px;
           box-shadow: var(--shadow-pop);
-          background: linear-gradient(145deg, #eeeeee, #c8c8c8);
+          background: var(--button-gradient);
           padding: 0.5em 1em;
           text-decoration: none;
           transition: .3s ease-out;

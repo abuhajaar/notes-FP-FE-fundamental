@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Gap } from '../../components';
+import { BsCalendar3Week } from 'react-icons/bs';
 import { showFormattedDate } from '../../utils/index';
 import { getNote } from '../../utils/api';
 import './DetailNote.scss';
@@ -21,14 +21,19 @@ function DetailNote() {
 
   return (
     <div className="detail_page">
-      <div className="wrapper-detailNote">
-        <Gap height={30} />
-        <h1>{notes.title}</h1>
-        <Gap height={30} />
-        <p>{notes.body}</p>
-        <Gap height={30} />
-        <h3>{showFormattedDate(notes.createdAt)}</h3>
-        <Gap height={30} />
+      <div className="detail_page__wrapper">
+
+        <div className="detail_page__wrapper__title">{notes.title}</div>
+
+        <div className="detail_page__wrapper__body">{notes.body}</div>
+
+        <div className="detail_page__wrapper__date">
+          <BsCalendar3Week />
+          {console.log(notes.createdAt)}
+
+          {showFormattedDate(notes.created_at)}
+        </div>
+
       </div>
     </div>
   );

@@ -90,8 +90,7 @@
             background-color: var(--background-color);
             font-size: 1.2em;
             padding: .5em 1em;
-            box-shadow: inset 8px 8px 16px #bdbdbd,
-            inset -8px -8px 16px #ffffff;
+            box-shadow: var(--shadow-pressed);
             border-radius: 20px;
 
             &:focus{
@@ -107,8 +106,7 @@
             background-color: var(--background-color);
             font-size: 1.5em;
             padding: .5em 1em;
-            box-shadow: inset 8px 8px 16px #bdbdbd,
-            inset -8px -8px 16px #ffffff;
+            box-shadow: var(--shadow-pressed);
             border-radius: 15px;
 
             &:focus{

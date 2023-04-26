@@ -32,8 +32,8 @@
       }
     }
 
-    &____date {
-      font-size: 0.8em;
+    &__date {
+      font-size: .8em;
       margin-bottom: 8px;
       color: var(--font-color);
       font-family: var(--font-monserrat);
@@ -73,7 +73,7 @@
         box-shadow: var(--shadow-pop);
         transition: all .2s ease;
         border-radius: 5px;
-        background: linear-gradient(145deg, #eeeeee, #c8c8c8);
+        background: var(--button-gradient);
 
         &:hover{
           outline: 1px solid var(--blue);

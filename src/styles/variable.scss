@@ -22,6 +22,7 @@
   inset -10px -10px 20px #ffffff;
   --shadow-pop: 5px 5px 10px #bdbdbd,
   -5px -5px 10px #ffffff;
+  --button-gradient: linear-gradient(145deg, #eeeeee, #c8c8c8);
 
 
 }
@@ -30,10 +31,18 @@
   --font-color: #dedede;
   --background-color: #313131;
   --header: #dedede;
-  --blue: #39dbe9;
+  
+  --blue: #874efe;
   --red: #f9583d;
   --noise: url('../assets/image/soft-wallpaper.png');
   --grey: #b8b8b8;
-  --card-shadow-todo: 20px 20px 60px #2a2a2a,
-  -20px -20px 60px #383838;
+  --shadow-flat:   5px 5px 10px #272727,
+  -5px -5px 10px #3b3b3b;
+
+  --shadow-pressed: inset 10px 10px 20px #272727,
+  inset -10px -10px 20px #3b3b3b;
+
+  --shadow-pop: 5px 5px 10px #272727,
+  -5px -5px 10px #3b3b3b;
+  --button-gradient: linear-gradient(145deg, #343434, #2c2c2c);
 }

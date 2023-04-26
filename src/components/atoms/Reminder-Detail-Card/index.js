@@ -5,6 +5,8 @@ import { FaEdit, FaHeart, FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { asyncCompleteReminder, asyncDeleteReminder, asyncFavoriteReminder } from '../../../states/reminder/action';
+import { FormattedDate } from '../../../utils';
+import PopupForm from '../../molekules/PopupForm';
 
 function ReminderDetailCard({ data }) {
   const {
@@ -39,7 +41,7 @@ function ReminderDetailCard({ data }) {
 
       <div className="card-todo__body">
         <p className="card-todo__body__content">{content}</p>
-        <p className="card-todo__body__date">{date}</p>
+        <p className="card-todo__body__date">{FormattedDate(date)}</p>
       </div>
       <div className="card-todo__footer">
         <div className="card-todo__footer__left">
