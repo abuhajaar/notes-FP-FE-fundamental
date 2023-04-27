@@ -49,14 +49,20 @@ function Home() {
             </button>
           </div>
           <div className="home-page__top__notes__content">
-            <div className={!notes.length ? 'home-page__top__notes__content__NotFound' : 'home-page__top__notes__content__card'}>
-              {!notes.length ? (<h2>Your Notes Is Empty</h2>) : (
+            <div className={!notes.length ? 'home-page__top__notes__content__notfound' : 'home-page__top__notes__content__card'}>
+              {!notes.length ? (
+                <div className="home-page__top__notes__content__notfound__wrapper">
+                  <h1>
+                    {localStorage.getItem('local') === 'id' ? 'Kumpulkan Pikiranmu' : 'Collect Your Mind'}
+                  </h1>
+                </div>
+              ) : (
                 notes.map((data) => (
                   <Card
                     key={data.id}
                     id={data.id}
                     btnTitle1="Archived"
-                    btnTitle2="Delete"
+                    btnTitle2={localStorage.getItem('local') === 'id' ? 'Hapus' : 'Delete'}
                     title={data.title}
                     body={data.body}
                     createAt={showFormattedDate(data.created_at, localStorage.getItem('local') || 'en')}

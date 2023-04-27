@@ -16,19 +16,41 @@ function Progress({ today }) {
     setTodayReminderLength(todayReminders.length);
   }, [reminders, today]);
 
+  const todayBar = (completedToday / todayReminderLength) * 100;
+  const allBar = (completedAll / reminders.length) * 100;
+
   return (
-    <div>
-      <div>
-        {completedToday}
-        /
-        {' '}
-        {todayReminderLength}
+    <div className="wrapper">
+      <div className="wrapper__label">
+        <div className="wrapper__label__today">Tasks Today</div>
+
+        <div className="wrapper__label__number">
+          {completedToday}
+          {' '}
+          /
+          {' '}
+          {todayReminderLength}
+        </div>
+
       </div>
-      <div>
-        {completedAll}
-        /
-        {' '}
-        {reminders.length}
+      <div className="wrapper__progress">
+        <div className="wrapper__progress__bar" style={{ width: `${todayBar}%` }} />
+      </div>
+
+      <div className="wrapper__label">
+        <div className="wrapper__label__all">All Tasks</div>
+
+        <div className="wrapper__label__number">
+          {completedAll}
+          {' '}
+          /
+          {' '}
+          {reminders.length}
+        </div>
+
+      </div>
+      <div className="wrapper__progress">
+        <div className="wrapper__progress__bar" style={{ width: `${allBar}%` }} />
       </div>
     </div>
   );

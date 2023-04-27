@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { BsCalendar3Week } from 'react-icons/bs';
+import parser from 'html-react-parser';
 import { showFormattedDate } from '../../utils/index';
 import { getNote } from '../../utils/api';
 import './DetailNote.scss';
@@ -25,12 +26,13 @@ function DetailNote() {
 
         <div className="detail_page__wrapper__title">{notes.title}</div>
 
-        <div className="detail_page__wrapper__body">{notes.body}</div>
+        <div className="detail_page__wrapper__body">
+          {parser(`${notes.body}`)}
+        </div>
 
         <div className="detail_page__wrapper__date">
           <BsCalendar3Week />
-          {console.log(notes.createdAt)}
-
+          {' '}
           {showFormattedDate(notes.created_at)}
         </div>
 

@@ -44,6 +44,39 @@
         width: 15%;
         flex-grow: 1;
         box-shadow: var(--shadow-flat);
+
+        .wrapper{
+            text-align: center;
+            padding: 1.5em;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5em;
+
+            &__label{
+             color: var(--grey);
+             font-family: var(--font-monserrat);
+             font-size: 1em;  
+             font-weight: 600; 
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             
+            }
+
+            &__progress{
+                height: .5em;
+                border-radius: 999px;
+                box-shadow: var(--shadow-flat);
+                
+
+                &__bar{
+                    height: 100%;
+                    background-color: var(--green);
+                    border-radius: 999px;
+                    
+                }
+            }
+        }
     }
 }
 

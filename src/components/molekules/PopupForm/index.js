@@ -31,12 +31,12 @@ function PopupForm({ handleSubmit = '', isi, data }) {
               <button type="button" className="popup__container__close-btn" onClick={() => setTrigger(false)}>X</button>
 
               <h1 className="popup__container__header">Add a task</h1>
-              <Gap height={20} />
+              <Gap height={15} />
 
               <form className="popup__container__form" onSubmit={() => handleSubmit(form)}>
                 <label className="popup__container__form__title">
                   Title
-                  <input type="text" className="title" onChange={handleChange} value={form.title} />
+                  <input type="text" className="title" maxLength={15} onChange={handleChange} value={form.title} />
                 </label>
                 <Gap height={20} />
                 <label className="popup__container__form__date">
@@ -46,12 +46,12 @@ function PopupForm({ handleSubmit = '', isi, data }) {
                 <Gap height={20} />
                 <label className="popup__container__form__content">
                   Content
-                  <textarea type="text" className="content" onChange={handleChange} value={form.content} />
+                  <textarea type="text" className="content" maxLength={100} onChange={handleChange} value={form.content} />
                 </label>
                 <Gap height={20} />
                 <label className="popup__container__form__category">
                   Category
-                  <input type="text" className="category" onChange={handleChange} value={form.category} />
+                  <input type="text" className="category" maxLength={10} onChange={handleChange} value={form.category} />
                 </label>
                 <Gap height={20} />
                 <button type="submit" className="popup__container__submit-btn">Submit</button>

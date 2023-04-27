@@ -20,8 +20,11 @@
   -5px -5px 10px #ffffff;
   --shadow-pressed: inset 10px 10px 20px #bdbdbd,
   inset -10px -10px 20px #ffffff;
-  --shadow-pop: 5px 5px 10px #bdbdbd,
-  -5px -5px 10px #ffffff;
+  --shadow-pop: 5px 5px 10px rgb(189, 189, 189),
+  -5px -5px 10px rgb(255, 255, 255);
+  --text-shadow: 2px 2px 2px #bdbdbd,
+  -2px -2px 2px #ffffff;
+  
   --button-gradient: linear-gradient(145deg, #eeeeee, #c8c8c8);
 
 
@@ -44,5 +47,9 @@
 
   --shadow-pop: 5px 5px 10px #272727,
   -5px -5px 10px #3b3b3b;
+
+  --text-shadow: 2px 2px 2px #272727,
+  -2px -2px 2px #3b3b3b;
+
   --button-gradient: linear-gradient(145deg, #343434, #2c2c2c);
 }

@@ -15,7 +15,7 @@ function ToggleTheme() {
             title="mode"
             className="button-setting"
           >
-            {theme === 'light' ? <FaMoon /> : <FaSun />}
+            {theme === 'light' ? <FaSun /> : <FaMoon />}
           </button>
         )}
       </ThemeConsumer>

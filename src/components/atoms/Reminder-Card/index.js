@@ -57,7 +57,7 @@ function ReminderCard({ reminderDate, reminderTotalTask }) {
           <div className="card-reminder__container__todo">
             {reminderTotalTask}
             {' '}
-            Tasks for this day
+            {localStorage.getItem('local') === 'id' ? 'Tugas untuk hari ini' : 'Task for today'}
 
           </div>
         </div>

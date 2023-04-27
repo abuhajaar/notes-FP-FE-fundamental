@@ -81,6 +81,33 @@
         align-items: center;
         width: 100%;
 
+        &__notfound{
+          width: 90%;          
+          box-shadow: var(--shadow-flat);
+          border-radius: 15px;
+          height: 200px;
+         
+
+          &__wrapper{
+              border-radius: 15px;
+              height: 100%;
+              width: 100%;
+              box-shadow: var(--shadow-pressed);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+            h1{
+              text-align: center;              
+              letter-spacing: 1px;
+              color: var(--background-color);
+              text-shadow: var(--text-shadow);
+              font-family: var(--font-monserrat);
+              font-weight: 800;              
+            }
+          }
+        }
+
         &__card {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

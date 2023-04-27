@@ -24,8 +24,8 @@ function Header({ LogOut }) {
       <div className="header__container">
         <ul className="header__container__nav">
           <li className="header__container__nav__list">
-            <Link className="header__container__nav__list__logo" to="/arsip">
-              <h2>Arsip</h2>
+            <Link className="header__container__nav__list__logo" to="/">
+              <h2>Home</h2>
             </Link>
           </li>
           <li className="header__container__nav__list">

@@ -28,14 +28,14 @@
 
         .card-todo__header__title{
             
-            font-size: 1.6em;
+            font-size: 1.4em;
             font-weight: 800;
             color: var(--blue);
         }
 
         .card-todo__header__category{
             
-            font-size: 1.3em;
+            font-size: 1.1em;
             font-weight: 600;
             color: var(--grey);
 
@@ -47,9 +47,11 @@
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
+        overflow: hidden;
 
         &__content{
             color: var(--font-color);
+            text-overflow: ellipsis;
             
         }
         

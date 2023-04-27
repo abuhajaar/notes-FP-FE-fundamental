@@ -8,6 +8,7 @@
 
     &__wrapper{
         width: 50%;
+        gap: 2em;
         padding: 2em;
         box-shadow: var(--shadow-flat);
         min-height: 50vh;
@@ -26,12 +27,8 @@
         }
 
         &__body{
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
             min-height: 30vh;
             width: 100%;
-            
             color: var(--font-color);
             font-family: var(--font-monserrat);
             font-size: 1.5em;

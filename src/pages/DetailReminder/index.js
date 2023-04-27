@@ -83,7 +83,7 @@ function DetailReminder() {
             : data.map((datas) => (
               <ReminderDetailCard key={datas.id} data={datas} />
             ))}
-          <PopupForm handleSubmit={submitForm} isi="add New Task" />
+          <PopupForm handleSubmit={submitForm} isi="Add New Task" />
         </div>
       </div>
       <div className="reminder-detail-page__progress">
