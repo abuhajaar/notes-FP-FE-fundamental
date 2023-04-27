@@ -1,41 +1,32 @@
-// import axios from 'axios';
+import axios from 'axios';
+import { BASE_URL } from '../config';
 
-// const handleError = (error) => {
-//     const originalRequest = error.config;
-//     if (error.response.data.msg === 'jwt expired') {
-//         originalRequest._retry = true;
-//         const session = localStorage.getItem('auth')
-//             ? JSON.parse(localStorage.getItem('auth'))
-//             : {};
+const handleError = async (error) => {
+  const originalRequest = error.config;
+  if (error.response.data.message === 'Token maximum age exceeded') {
+    originalRequest._retry = true;
+    const session = localStorage.getItem('refreshToken')
+      ? localStorage.getItem('refreshToken')
+      : {};
+    console.log('session', session);
 
-//         return axios
-//             .get(
-//                 `${config.api_host_dev}/v1/cms/refresh-token/${session.refreshToken}`
-//             )
-//             .then((res) => {
-//                 console.log('res');
-//                 console.log(res);
-//                 localStorage.setItem(
-//                     'auth',
-//                     JSON.stringify({
-//                         ...session,
-//                         token: res.data.data.token,
-//                     })
-//                 );
-//                 originalRequest.headers.Authorization = `Bearer ${res.data.data.token}`;
+    try {
+      const res = await axios.put(`${BASE_URL}/authentications`, { refreshToken: session });
+      console.log('res', res);
+      localStorage.setItem(
+        'accessToken',
+        res.data.data.accessToken,
+      );
+      originalRequest.headers.Authorization = `Bearer ${res.data.data.accessToken}`;
+      return axios(originalRequest);
+    } catch (err) {
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      window.location.href = '/';
+    }
+  }
 
-//                 console.log('originalRequest');
-//                 console.log(originalRequest);
+  return Promise.reject(error);
+};
 
-//                 return axios(originalRequest);
-//             })
-//             .catch((err) => {
-//                 window.location.href = '/signin';
-//                 localStorage.removeItem('auth');
-//             });
-//     }
-
-//     return Promise.reject(error);
-// };
-
-// export default handleError;
+export default handleError;

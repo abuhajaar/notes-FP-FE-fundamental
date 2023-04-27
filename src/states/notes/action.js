@@ -39,7 +39,7 @@ export function asyncAddNote(note) {
     dispatch(showLoading());
     try {
       const response = await api2.addNotes(note);
-      console.log('responseAddNote', response);
+      // console.log('responseAddNote', response);
       dispatch(addNoteActionCreator(response));
     } catch (error) {
       alert(error.message);

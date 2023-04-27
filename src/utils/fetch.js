@@ -15,7 +15,8 @@ export async function getData(url, params) {
       },
     });
   } catch (error) {
-    return error;
+    console.log('error da', error);
+    return handleError(error);
   }
 }
 export async function postData(url, payload) {

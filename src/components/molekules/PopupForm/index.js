@@ -22,7 +22,7 @@ function PopupForm({ handleSubmit = '', isi, data }) {
   return (
 
     <div>
-      {console.log('popUpForm', form)}
+      {/* {console.log('popUpForm', form)} */}
       <button type="button" className="btn-popup" onClick={() => setTrigger(true)}>{isi}</button>
       {
         trigger ? (
