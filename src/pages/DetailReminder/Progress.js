@@ -22,7 +22,9 @@ function Progress({ today }) {
   return (
     <div className="wrapper">
       <div className="wrapper__label">
-        <div className="wrapper__label__today">Tasks Today</div>
+        <div className="wrapper__label__today">
+          {localStorage.getItem('local') === 'id' ? 'Tugas Hari Ini' : "Today's Task"}
+        </div>
 
         <div className="wrapper__label__number">
           {completedToday}
@@ -38,7 +40,9 @@ function Progress({ today }) {
       </div>
 
       <div className="wrapper__label">
-        <div className="wrapper__label__all">All Tasks</div>
+        <div className="wrapper__label__all">
+          {localStorage.getItem('local') === 'id' ? 'Semua Tugas' : 'All Tasks'}
+        </div>
 
         <div className="wrapper__label__number">
           {completedAll}

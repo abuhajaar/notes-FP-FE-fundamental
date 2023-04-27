@@ -41,7 +41,7 @@ function Home() {
       <div className="home-page__top">
         <div className="home-page__top__notes">
           <div className="home-page__top__notes__search">
-            <Input className="home-page__top__notes__search__input" placeholder="search" />
+            <Input className="home-page__top__notes__search__input" placeholder={localStorage.getItem('local') === 'id' ? 'cari' : 'search'} />
             <button type="button" className="home-page__top__notes__search__btn">
               {' '}
               <FaSearch />
@@ -53,7 +53,7 @@ function Home() {
               {!notes.length ? (
                 <div className="home-page__top__notes__content__notfound__wrapper">
                   <h1>
-                    {localStorage.getItem('local') === 'id' ? 'Kumpulkan Pikiranmu' : 'Collect Your Mind'}
+                    {localStorage.getItem('local') === 'id' ? 'Tuangkan Pikiranmu' : 'Collect Your Mind'}
                   </h1>
                 </div>
               ) : (
@@ -77,7 +77,7 @@ function Home() {
           </div>
           <Link className="home-page__top__notes__show" to="/newnote">
             <div className="home-page__top__notes__show__navlink">
-              Tambah Note
+              {localStorage.getItem('local') === 'id' ? 'Tambahkan Catatan' : 'Add Notes'}
             </div>
           </Link>
         </div>

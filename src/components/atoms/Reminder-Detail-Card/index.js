@@ -45,7 +45,7 @@ function ReminderDetailCard({ data }) {
       </div>
       <div className="card-todo__footer">
         <div className="card-todo__footer__left">
-          <button type="button" className={completed ? ('card-todo__footer__left__completed') : ('card-todo__footer__left__uncompleted')} onClick={toggleCompleted}>{completed ? (<h4>completed</h4>) : (<h4>uncompleted</h4>)}</button>
+          <button type="button" className={completed ? ('card-todo__footer__left__completed') : ('card-todo__footer__left__uncompleted')} onClick={toggleCompleted}>{completed ? (<h4>{localStorage.getItem('local') === 'id' ? 'telah selesai' : 'completed'}</h4>) : (<h4>{localStorage.getItem('local') === 'id' ? 'belum selesai' : 'uncompleted'}</h4>)}</button>
         </div>
         <div className="card-todo__footer__right">
           <button type="button" className={favorite ? ('card-todo__footer__right__favorite__on') : ('card-todo__footer__right__favorite__off')} onClick={toggleFavorite}><FaHeart /></button>

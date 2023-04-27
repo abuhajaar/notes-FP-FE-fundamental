@@ -64,10 +64,10 @@ function DetailReminder() {
     <div className="reminder-detail-page">
       <div className="reminder-detail-page__selector">
         <button type="button" onClick={filterTodayTask}>
-          Today's Task
+          {localStorage.getItem('local') === 'id' ? 'Tugas Hari Ini' : "Today's Task"}
         </button>
         <button type="button" onClick={filterAllTask}>
-          All Tasks
+          {localStorage.getItem('local') === 'id' ? 'Semua Tugas' : 'All Task'}
         </button>
       </div>
       <div className="reminder-detail-page__wrapper">
@@ -83,7 +83,7 @@ function DetailReminder() {
             : data.map((datas) => (
               <ReminderDetailCard key={datas.id} data={datas} />
             ))}
-          <PopupForm handleSubmit={submitForm} isi="Add New Task" />
+          <PopupForm handleSubmit={submitForm} isi={localStorage.getItem('local') === 'id' ? 'Tambahkan Tugas' : 'Add New Task'} className="btn-create" />
         </div>
       </div>
       <div className="reminder-detail-page__progress">

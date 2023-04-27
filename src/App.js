@@ -31,7 +31,7 @@ function App() {
     isPreload = false,
   } = useSelector((states) => states);
 
-  const [locale, setLocal] = React.useState(localStorage.getItem('local') || 'id');
+  const [locale, setLocal] = React.useState(localStorage.getItem('local') || 'en');
   const [theme, setTheme] = React.useState(localStorage.getItem('theme') || 'light');
   const ThemeDataFunction = {
     theme,
