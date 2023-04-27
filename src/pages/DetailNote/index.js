@@ -29,7 +29,7 @@ function DetailNote() {
 
         <div className="detail_page__wrapper__date">
           <BsCalendar3Week />
-          {console.log(notes.createdAt)}
+          {/* {console.log(notes.createdAt)} */}
 
           {showFormattedDate(notes.created_at)}
         </div>
