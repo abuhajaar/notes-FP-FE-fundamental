@@ -15,6 +15,17 @@ function PopupForm({ handleSubmit = '', isi, data }) {
     content: data?.content || '',
   });
 
+  const Submit = () => {
+    setTrigger(false);
+    setForm({
+      title: '',
+      category: '',
+      date: '',
+      content: '',
+    });
+    handleSubmit(form);
+  };
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.className]: e.target.value });
   };
@@ -33,7 +44,7 @@ function PopupForm({ handleSubmit = '', isi, data }) {
               <h1 className="popup__container__header">Add a task</h1>
               <Gap height={15} />
 
-              <form className="popup__container__form" onSubmit={() => handleSubmit(form)}>
+              <form className="popup__container__form">
                 <label className="popup__container__form__title">
                   Title
                   <input type="text" className="title" maxLength={15} onChange={handleChange} value={form.title} />
@@ -54,7 +65,7 @@ function PopupForm({ handleSubmit = '', isi, data }) {
                   <input type="text" className="category" maxLength={10} onChange={handleChange} value={form.category} />
                 </label>
                 <Gap height={20} />
-                <button type="submit" className="popup__container__submit-btn">Submit</button>
+                <button type="button" onClick={Submit} className="popup__container__submit-btn">Submit</button>
               </form>
             </div>
           </div>

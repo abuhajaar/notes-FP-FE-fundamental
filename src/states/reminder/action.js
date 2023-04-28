@@ -17,13 +17,19 @@ function addReminderActionCreator(reminders) {
 }
 
 export function asyncAddReminder(reminder) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(showLoading());
-    dispatch(addReminderActionCreator(reminder));
+    // dispatch(addReminderActionCreator(reminder));
     try {
       // TODO: add reminder
-      await api2.addReminder(reminder);
-      // console.log('masuk asyncAddReminder');
+      const { id } = await api2.addReminder(reminder);
+      const reminderNew = {
+        ...reminder,
+        id,
+        favorite: false,
+        completed: false,
+      };
+      dispatch(addReminderActionCreator(reminderNew));
     } catch (error) {
       alert(error.message);
     }

@@ -8,11 +8,11 @@ const handleError = async (error) => {
     const session = localStorage.getItem('refreshToken')
       ? localStorage.getItem('refreshToken')
       : {};
-    console.log('session', session);
+    // console.log('session', session);
 
     try {
       const res = await axios.put(`${BASE_URL}/authentications`, { refreshToken: session });
-      console.log('res', res);
+      // console.log('res', res);
       localStorage.setItem(
         'accessToken',
         res.data.data.accessToken,

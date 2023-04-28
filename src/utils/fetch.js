@@ -15,7 +15,7 @@ export async function getData(url, params) {
       },
     });
   } catch (error) {
-    console.log('error da', error);
+    // console.log('error da', error);
     return handleError(error);
   }
 }
@@ -31,7 +31,8 @@ export async function postData(url, payload) {
       },
     });
   } catch (err) {
-    return handleError(err);
+    // eslint-disable-next-line no-return-await
+    return await handleError(err);
   }
 }
 export async function putData(url, payload) {
@@ -46,7 +47,7 @@ export async function putData(url, payload) {
       },
     });
   } catch (err) {
-    return err;
+    return handleError(err);
   }
 }
 
@@ -62,6 +63,6 @@ export async function deleteData(url) {
       },
     });
   } catch (err) {
-    return err;
+    return handleError(err);
   }
 }
