@@ -58,7 +58,6 @@ function ReminderCard({ reminderDate, reminderTotalTask }) {
             {reminderTotalTask}
             {' '}
             {localStorage.getItem('local') === 'id' ? 'Tugas untuk hari ini' : 'Task for today'}
-
           </div>
         </div>
       </div>

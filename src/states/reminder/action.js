@@ -7,6 +7,7 @@ export const ActionType = {
   DELETE_REMINDER: 'DELETE_REMINDER',
   COMPLETE_REMINDER: 'COMPLETE_REMINDER',
   FAVORITE_REMINDER: 'FAVORITE_REMINDER',
+  EDIT_REMINDER: 'EDIT_REMINDER',
 };
 
 function addReminderActionCreator(reminders) {
@@ -133,5 +134,28 @@ function favoriteReminderActionCreator(id) {
   return {
     type: ActionType.FAVORITE_REMINDER,
     payload: id,
+  };
+}
+
+export function asyncEditReminder(id, reminder) {
+  return async (dispatch) => {
+    dispatch(showLoading());
+    dispatch(editReminderActionCreator(id, reminder));
+    try {
+      await api2.editReminderById(id, reminder);
+    } catch (error) {
+      alert(error.message);
+    }
+    dispatch(hideLoading());
+  };
+}
+
+function editReminderActionCreator(id, reminder) {
+  return {
+    type: ActionType.EDIT_REMINDER,
+    payload: {
+      id,
+      reminder,
+    },
   };
 }

@@ -4,7 +4,9 @@ import './reminder-detail-card.scss';
 import { FaEdit, FaHeart, FaTrashAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { asyncCompleteReminder, asyncDeleteReminder, asyncFavoriteReminder } from '../../../states/reminder/action';
+import {
+  asyncCompleteReminder, asyncDeleteReminder, asyncEditReminder, asyncFavoriteReminder,
+} from '../../../states/reminder/action';
 import { FormattedDate } from '../../../utils';
 import PopupForm from '../../molekules/PopupForm';
 
@@ -28,8 +30,8 @@ function ReminderDetailCard({ data }) {
     navigate('/reminder');
   };
 
-  const handleEdit = () => {
-    console.log('edit');
+  const handleEdit = (idEdit, form) => {
+    dispatch(asyncEditReminder(idEdit, form));
   };
 
   return (
@@ -50,7 +52,7 @@ function ReminderDetailCard({ data }) {
         <div className="card-todo__footer__right">
           <button type="button" className={favorite ? ('card-todo__footer__right__favorite__on') : ('card-todo__footer__right__favorite__off')} onClick={toggleFavorite}><FaHeart /></button>
           <button type="button" className="card-todo__footer__right__delete" onClick={handleDelete}><FaTrashAlt /></button>
-          <PopupForm isi={<FaEdit />} className="card-todo__footer__right__edit" onClick={handleEdit} data={data} />
+          <PopupForm type="edit" handleSubmit={handleEdit} isi={<FaEdit />} className="card-todo__footer__right__edit" data={data} />
         </div>
       </div>
     </div>

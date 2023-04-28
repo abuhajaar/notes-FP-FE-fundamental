@@ -87,6 +87,14 @@ const api2 = (() => {
     return (response.data.data);
   }
 
+  async function editReminderById(id, reminder) {
+    const response = await putData(`/reminders/${id}`, reminder);
+    const { status, message } = response.data;
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+    return (response.data.data);
+  }
   // ------------------END Reminder------------------------------
   // --------------------Notes-----------------------------------
   async function addNotes(notes) {
@@ -293,6 +301,7 @@ const api2 = (() => {
   }
 
   return {
+    editReminderById,
     favoriteReminderById,
     completeReminderById,
     deleteReminderById,

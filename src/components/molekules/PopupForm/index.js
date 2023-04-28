@@ -3,7 +3,9 @@ import { React, useState } from 'react';
 import './Popup-Form.scss';
 import { Gap } from '../../atoms';
 
-function PopupForm({ handleSubmit = '', isi, data }) {
+function PopupForm({
+  handleSubmit = '', isi, data, type = 'add',
+}) {
   const [trigger, setTrigger] = useState(false);
   // const navigate = useNavigate();
   const tanggal = new Date();
@@ -17,13 +19,22 @@ function PopupForm({ handleSubmit = '', isi, data }) {
 
   const Submit = () => {
     setTrigger(false);
-    setForm({
-      title: '',
-      category: '',
-      date: '',
-      content: '',
-    });
-    handleSubmit(form);
+    switch (type) {
+      case 'add':
+        setForm({
+          title: '',
+          category: '',
+          date: '',
+          content: '',
+        });
+        handleSubmit(form);
+        break;
+      case 'edit':
+        handleSubmit(data.id, form);
+        break;
+      default:
+        break;
+    }
   };
 
   const handleChange = (e) => {

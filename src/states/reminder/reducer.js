@@ -60,6 +60,24 @@ function reminderReducer(reminders = initialState, action) {
         }),
         status: status.success,
       };
+    case ActionType.EDIT_REMINDER:
+      return {
+        ...reminders,
+        reminders: reminders.reminders.map((reminder) => {
+          if (reminder.id === action.payload.id) {
+            return {
+              ...reminder,
+              title: action.payload.reminder.title,
+              content: action.payload.reminder.content,
+              date: action.payload.reminder.date,
+              category: action.payload.reminder.category,
+            };
+          }
+          return reminder;
+        }),
+        status: status.success,
+      };
+
     default:
       return reminders;
   }
