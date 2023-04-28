@@ -5,6 +5,8 @@ export const ActionType = {
   SET_NOTES: 'SET_NOTES',
   ADD_NOTE: 'ADD_NOTE',
   DELETE_NOTE: 'DELETE_NOTE',
+  TOGGLE_ARCHIVE_NOTE: 'TOGGLE_ARCHIVE_NOTE',
+  UNARCHIVE_NOTE: 'UNARCHIVE_NOTE',
 };
 
 export function setNotesActionCreator(notes) {
@@ -58,12 +60,56 @@ export function deleteNoteActionCreator(id) {
 export function asyncDeleteNotesById(id) {
   return async (dispatch) => {
     dispatch(showLoading());
+    dispatch(deleteNoteActionCreator(id));
     try {
       await api2.deleteNotesById(id);
-      dispatch(deleteNoteActionCreator(id));
     } catch (error) {
       alert(error.message);
     }
     dispatch(hideLoading());
+  };
+}
+
+export function toggleArchiveNoteActionCreator(id, type) {
+  return {
+    type: ActionType.TOGGLE_ARCHIVE_NOTE,
+    payload: id,
+  };
+}
+
+export function asyncToggleArchiveNotesById(id) {
+  return async (dispatch, getState) => {
+    dispatch(showLoading());
+    const note = await getState().notes.find((Note) => Note.id === id);
+    let type = '';
+
+    if (note.is_archived) {
+      type = 'unarchive';
+    } else {
+      type = 'archive';
+    }
+    dispatch(toggleArchiveNoteActionCreator(id));
+
+    try {
+      await api2.toggleArchiveNotesById(id, type);
+    } catch (error) {
+      alert(error.message);
+    }
+    dispatch(hideLoading());
+  };
+}
+
+export function getActiveNotes() {
+  return (getState) => {
+    const { notes } = getState();
+    console.log('notes', notes);
+    return notes.filter((note) => !note.is_archived);
+  };
+}
+
+export function getArchivedNotes() {
+  return (getState) => {
+    const { notes } = getState();
+    return notes.filter((note) => note.is_archived);
   };
 }

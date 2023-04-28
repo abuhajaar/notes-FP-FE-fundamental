@@ -126,6 +126,16 @@ const api2 = (() => {
     }
     return (response.data.data);
   }
+
+  async function toggleArchiveNotesById(id, type) {
+    // NOTE - type: archive/unarchive
+    const response = await postData(`/notes/${id}/toggleArchive/${type}`);
+    const { status, message } = response.data;
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+    return (response.data.data);
+  }
   // ------------------END Notes---------------------------------
 
   async function _fetchWithAuth(url, options = {}) {
@@ -301,6 +311,7 @@ const api2 = (() => {
   }
 
   return {
+    toggleArchiveNotesById,
     editReminderById,
     favoriteReminderById,
     completeReminderById,

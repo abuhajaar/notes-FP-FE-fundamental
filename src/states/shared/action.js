@@ -8,9 +8,10 @@ function asyncFetchReminderAndNotes() {
     dispatch(showLoading());
     try {
       const { data: { data: reminders } } = await getData('/reminders');
-      // console.log('remindersFECH AWAL', reminders);
+      console.log('remindersFECH AWAL', reminders);
       dispatch(setRemindersActionCreator(reminders));
       const { data: { data: notes } } = await getData('/notes');
+      console.log('remindersFECH AWAL', notes);
       dispatch(setNotesActionCreator(notes));
     } catch (error) {
       alert(error);

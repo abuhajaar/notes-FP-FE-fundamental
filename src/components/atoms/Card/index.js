@@ -27,7 +27,6 @@ function Card(props) {
         <Gap height={20} />
         <div className="card-notes__content__action">
           <Button title={btnTitle1} onClick={() => onArsip(id)} />
-
           <Button title={btnTitle2} onClick={() => onDelete(id)} />
         </div>
       </div>
