@@ -1,9 +1,10 @@
 import React from 'react';
 import './profile.scss';
+import { useSelector } from 'react-redux';
 
 function Profile() {
   // Mouse Effect Begin
-
+  const { authUser } = useSelector((state) => state);
   const handleOnMouseMove = (e) => {
     const { currentTarget: target } = e;
 
@@ -25,7 +26,7 @@ function Profile() {
     <div className="wrapper-card">
       <div className="wrapper-card__profile">
         <div className="wrapper-card__profile__name">
-          <h2>Hi John Doe!</h2>
+          <h2>{authUser.name}</h2>
         </div>
         <div className="wrapper-card__profile__image">
           <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=826&t=st=1682958127~exp=1682958727~hmac=9beddb9b791d384cf78a2bf0448af16376eaa890807fd8528f0bf6305944280e" alt="profile" />

@@ -26,27 +26,22 @@ function ReminderCard({ reminderDate, reminderTotalTask }) {
 
   // Weather Begin
 
-  // eslint-disable-next-line camelcase
   const API_endpoint = 'https://api.openweathermap.org/data/2.5/weather?';
-  // eslint-disable-next-line camelcase
-  const API_key = '54acd4abc06de8878ffa64af6cffbdaa';
-  const [longitude, setLongitude] = useState('');
-  const [latitude, setLatitude] = useState('');
+
+  const API_key = process.env.REACT_APP_API_KEY;
   const [responseData, setResponseData] = useState('');
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      setLatitude(position.coords.latitude);
-      setLongitude(position.coords.longitude);
+      test(position.coords.latitude, position.coords.longitude);
     });
-    // eslint-disable-next-line camelcase
-    const finalAPI = `${API_endpoint}lat=${latitude}&lon=${longitude}&appid=${API_key}&units=metric`;
-    axios.get(finalAPI)
-      .then((response) => {
-        setResponseData(response.data);
-      });
-  }, [latitude, longitude]);
+  }, []);
 
+  async function test(lat, long) {
+    const finalAPI = `${API_endpoint}lat=${lat}&lon=${long}&appid=${API_key}&units=metric`;
+    const response = await axios.get(finalAPI);
+    setResponseData(response.data);
+  }
   // Weather End
 
   // Mouse Effect Begin
@@ -82,7 +77,7 @@ function ReminderCard({ reminderDate, reminderTotalTask }) {
           </div>
           <div className="card-reminder__container__weather">
             <h4>Weather today</h4>
-            <h5>{responseData.weather[0].main}</h5>
+            <h5>{responseData.weather ? responseData.weather[0].main : null}</h5>
             <div className="card-reminder__container__weather__icon">
 
               <img src={`http://openweathermap.org/img/wn/${responseData.weather ? responseData.weather[0].icon : null}.png`} alt="weather-icon" />
