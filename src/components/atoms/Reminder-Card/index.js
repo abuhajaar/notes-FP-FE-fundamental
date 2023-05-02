@@ -1,6 +1,7 @@
-import React from 'react';
+import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './reminder-card.scss';
+import axios from 'axios';
 
 function ReminderCard({ reminderDate, reminderTotalTask }) {
   // Fotmat Date Begin
@@ -22,6 +23,31 @@ function ReminderCard({ reminderDate, reminderTotalTask }) {
   }
 
   // Fotmat Date End
+
+  // Weather Begin
+
+  // eslint-disable-next-line camelcase
+  const API_endpoint = 'https://api.openweathermap.org/data/2.5/weather?';
+  // eslint-disable-next-line camelcase
+  const API_key = '54acd4abc06de8878ffa64af6cffbdaa';
+  const [longitude, setLongitude] = useState('');
+  const [latitude, setLatitude] = useState('');
+  const [responseData, setResponseData] = useState('');
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLatitude(position.coords.latitude);
+      setLongitude(position.coords.longitude);
+    });
+    // eslint-disable-next-line camelcase
+    const finalAPI = `${API_endpoint}lat=${latitude}&lon=${longitude}&appid=${API_key}&units=metric`;
+    axios.get(finalAPI)
+      .then((response) => {
+        setResponseData(response.data);
+      });
+  }, [latitude, longitude]);
+
+  // Weather End
 
   // Mouse Effect Begin
 
@@ -53,6 +79,29 @@ function ReminderCard({ reminderDate, reminderTotalTask }) {
             <h3>
               {formatDate(reminderDate)}
             </h3>
+          </div>
+          <div className="card-reminder__container__weather">
+            <h4>Weather today</h4>
+            <h5>{responseData.weather[0].main}</h5>
+            <div className="card-reminder__container__weather__icon">
+
+              <img src={`http://openweathermap.org/img/wn/${responseData.weather ? responseData.weather[0].icon : null}.png`} alt="weather-icon" />
+
+            </div>
+
+            <div className="card-reminder__container__weather__temp">
+              <p>
+                {responseData.main ? responseData.main.temp : null}
+                {' '}
+                C
+              </p>
+            </div>
+
+            <div className="card-reminder__container__weather__city">
+              <p>
+                {responseData.name ? responseData.name : null}
+              </p>
+            </div>
           </div>
           <div className="card-reminder__container__todo">
             {reminderTotalTask}

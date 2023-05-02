@@ -11,7 +11,7 @@
     align-items: center;
     background: var(--background-color);
     border: 2px dashed var(--grey);
-    color: var(--grey);
+    color: var(--font-color);
     font-weight: 500;
     font-family: var(--font-monserrat);
     font-size: 1.2em;
@@ -21,7 +21,7 @@
 
     &:hover{
         background: var(--grey);
-        color: var(--background-color);
+        // color: var(--background-color);
     }
 }
 

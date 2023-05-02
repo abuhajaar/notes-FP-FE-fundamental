@@ -13,6 +13,7 @@ import {
 import { asyncFetchReminderAndNotes } from '../../states/shared/action';
 // import Loading from '../../components/atoms/Loading';
 import { FaSearch } from 'react-icons/fa';
+import Profile from '../../components/atoms/Profile';
 
 function Home() {
   const { notes } = useSelector((state) => state);
@@ -84,7 +85,9 @@ function Home() {
         </div>
         <div className="home-page__top__explore">
           <div className="home-page__top__explore__reminder">
+            <Profile />
             <Reminder reminders={reminders} />
+            <Profile />
           </div>
           <div className="home-page__top__explore__thread">Upcoming Content</div>
         </div>
