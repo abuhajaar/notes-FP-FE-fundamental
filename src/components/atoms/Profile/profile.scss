@@ -100,7 +100,8 @@
             padding: .5em;
             cursor: pointer;
             font-weight: 600;
-             box-shadow: var(--shadow-pressed);
+             box-shadow: var(--shadow-pressed),
+             var(--shadow-flat);
              border-radius: 5px;
              transition: .2s ease;
             

@@ -25,10 +25,10 @@ function ReminderCard({ reminderDate, reminderTotalTask }) {
   // Fotmat Date End
 
   // Weather Begin
-
+  // eslint-disable-next-line camelcase
   const API_endpoint = 'https://api.openweathermap.org/data/2.5/weather?';
-
-  const API_key = process.env.REACT_APP_API_KEY;
+  // eslint-disable-next-line camelcase
+  const API_key = '54acd4abc06de8878ffa64af6cffbdaa';
   const [responseData, setResponseData] = useState('');
 
   useEffect(() => {
@@ -38,6 +38,7 @@ function ReminderCard({ reminderDate, reminderTotalTask }) {
   }, []);
 
   async function test(lat, long) {
+    // eslint-disable-next-line camelcase
     const finalAPI = `${API_endpoint}lat=${lat}&lon=${long}&appid=${API_key}&units=metric`;
     const response = await axios.get(finalAPI);
     setResponseData(response.data);
@@ -80,15 +81,15 @@ function ReminderCard({ reminderDate, reminderTotalTask }) {
             <h5>{responseData.weather ? responseData.weather[0].main : null}</h5>
             <div className="card-reminder__container__weather__icon">
 
-              <img src={`http://openweathermap.org/img/wn/${responseData.weather ? responseData.weather[0].icon : null}.png`} alt="weather-icon" />
+              <img src={` https://openweathermap.org/img/wn/${responseData.weather ? responseData.weather[0].icon : null}.png`} alt="weather-icon" />
 
             </div>
 
             <div className="card-reminder__container__weather__temp">
               <p>
-                {responseData.main ? responseData.main.temp : null}
+                {responseData.main ? Math.round(responseData.main.temp) : null}
                 {' '}
-                C
+                <span>&#8451;</span>
               </p>
             </div>
 

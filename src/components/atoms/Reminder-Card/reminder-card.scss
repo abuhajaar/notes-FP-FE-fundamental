@@ -75,7 +75,7 @@
             font-family: var(--font-monserrat);
             text-shadow: var(--shadow-flat);
             font-weight: 700;
-            font-size: 1.2em;
+            font-size: 1em;
             color: var(--blue);
           }
 
@@ -86,7 +86,7 @@
             text-shadow: var(--shadow-flat);
             color: var(--grey);
             font-weight: 700;
-            font-size: 1.3em;
+            font-size: 1em;
             
           
           }
@@ -104,13 +104,15 @@
               display: flex;
               justify-content: center;
               align-items: center;
-
+              
+          
             }
           }
             
             
             
           &__todo {
+            width: 70%;
             font-family: var(--font-monserrat);
             text-align: center;
             border-top: 2px dashed var(--grey);

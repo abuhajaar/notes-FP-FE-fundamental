@@ -26,7 +26,11 @@ function Profile() {
     <div className="wrapper-card">
       <div className="wrapper-card__profile">
         <div className="wrapper-card__profile__name">
-          <h2>{authUser.name}</h2>
+          <h2>
+            Hi
+            {' '}
+            {authUser.name}
+          </h2>
         </div>
         <div className="wrapper-card__profile__image">
           <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=826&t=st=1682958127~exp=1682958727~hmac=9beddb9b791d384cf78a2bf0448af16376eaa890807fd8528f0bf6305944280e" alt="profile" />

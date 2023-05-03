@@ -1,9 +1,9 @@
 .input-wrapper {
-  justify-content: center;
-  box-shadow: var(--shadow-flat);
+  width: 100%;
   border-radius: 15px;
+  box-shadow: var(--shadow-flat);
   .input {
-    
+    width: 100%;
     border: none;
     padding: 0.5em 1em;
     border-radius: 15px;

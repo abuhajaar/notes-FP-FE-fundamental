@@ -72,6 +72,7 @@ function Home() {
                     onDelete={onDeleteHandler}
                     // eslint-disable-next-line react/jsx-no-bind
                     onArsip={onArsipHandler}
+                    className="card-notes"
                   />
                 ))
               )}
