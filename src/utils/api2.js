@@ -161,7 +161,7 @@ const api2 = (() => {
     const response = await fetch(`${BASE_URL}/register`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
       },
       body: JSON.stringify({
         name,

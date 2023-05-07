@@ -94,10 +94,7 @@ function Home() {
             <Reminder reminders={reminders} />
             <News />
           </div>
-          <div className="home-page__top__explore__thread">
-            <FileInput />
-            <img src={urlImage} alt="Group-1" border="0" />
-          </div>
+          <div className="home-page__top__explore__thread" />
         </div>
       </div>
       <div className="main-bottom">sdadsad</div>

@@ -17,7 +17,7 @@ function FileInput({ onFileSelect }) {
 
     const formData = new FormData();
     formData.append('data', selectedFile);
-
+    console.log(formData.get('data'));
     axios.post(
       `${BASE_URL}/upload/images`,
       formData,

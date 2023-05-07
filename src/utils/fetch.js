@@ -66,3 +66,19 @@ export async function deleteData(url) {
     return handleError(err);
   }
 }
+
+export async function uploadImage(url, payload) {
+  try {
+    const token = localStorage.getItem('accessToken')
+      ? localStorage.getItem('accessToken')
+      : {};
+    return await axios.post(`${BASE_URL}${url}`, payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  } catch (err) {
+    return handleError(err);
+  }
+}

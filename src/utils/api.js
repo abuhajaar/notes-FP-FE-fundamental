@@ -38,7 +38,9 @@ async function login({ email, password }) {
   return { error: false, data: responseJson.data };
 }
 
-async function register({ name, email, password }) {
+async function register({
+  name, email, password, pic,
+}) {
   const response = await fetch(`${BASE_URL}/register`, {
     method: 'POST',
     headers: {
