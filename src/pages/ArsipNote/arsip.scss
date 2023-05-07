@@ -85,7 +85,7 @@
             }
 
             &__value{
-                font-size: 2em;
+                font-size: 1.7em;
                 font-weight: 800;
                 color: var(--font-color);
             }
@@ -127,7 +127,7 @@
                 text-decoration: none;
                 text-align: center;
                 h1 {
-                  font-size: 2em;
+                  font-size: 1.7em;
                   overflow: hidden;
                   letter-spacing: 1px;
                   white-space: nowrap;
@@ -221,6 +221,7 @@
                     text-align: center;
                     transition: .3s ease;
                     color: var(--grey);
+                    border-radius: 5px;
 
                    
                     &:hover{
@@ -261,6 +262,10 @@
             flex-grow: 2;
             box-shadow: var(--shadow-flat);
             height: 100px;
+            border-radius: 15px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
             
         }
         
@@ -273,8 +278,8 @@
             display: flex;
             text-decoration: none;
             border: 1px solid var(--blue);
-        
             transition: .3s ease;
+            border-radius: 15px;
         
 
             &__navlink{
