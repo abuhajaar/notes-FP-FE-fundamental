@@ -3,7 +3,7 @@
 
 
 
-.reminder-card {
+.wrapper-card {
   color: var(--background-color);
   text-decoration: inherit;
   border-radius: 15px;
@@ -18,11 +18,13 @@
 
        &:hover {
         outline: 1px solid var(--blue);
+
+      
         
        }
       &:active {
         box-shadow:  var(--shadow-pressed);
-        border: 1px solid white;
+        
       }
 
 
@@ -31,7 +33,7 @@
     border: 1px solid rgba(255, 255, 255, 0.5);
     height: 25vh;
     border-radius: 15px;
-    padding: .5em;
+    padding: 1em;
     width: 100%;
     position: relative;
     

@@ -78,9 +78,9 @@ function ArsipPage() {
           </div>
           <div className="main-page__content__stats">
             <div className="main-page__content__stats__label">
-              {localStorage.getItem('local') === 'id' ? 'Jumlah Arsip' : 'Total Archive'}
+              {localStorage.getItem('local') === 'id' ? 'Jumlah Catatan' : 'Total Notes'}
             </div>
-            <div className="main-page__content__stats__value">{notesData.length}</div>
+            <div className="main-page__content__stats__value">{notes.length}</div>
           </div>
           <div className="main-page__content__stats">
             <div className="main-page__content__stats__label">
