@@ -14,6 +14,7 @@ import { asyncFetchReminderAndNotes } from '../../states/shared/action';
 // import Loading from '../../components/atoms/Loading';
 import { FaSearch } from 'react-icons/fa';
 import Profile from '../../components/atoms/Profile';
+import FileInput from '../../components/atoms/FileInput';
 import News from '../../components/atoms/News';
 
 function Home() {
@@ -21,6 +22,7 @@ function Home() {
   const { reminders } = useSelector((state) => state.reminders);
   const [notesData, setNotesData] = React.useState([]);
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
+  const urlImage = localStorage.getItem('ImageTest');
 
   useEffect(() => {
     dispatch(asyncFetchReminderAndNotes());
@@ -91,7 +93,10 @@ function Home() {
             <Reminder reminders={reminders} />
             <News />
           </div>
-          <div className="home-page__top__explore__thread">Upcoming Content</div>
+          <div className="home-page__top__explore__thread">
+            <FileInput />
+            <img src={urlImage} alt="Group-1" border="0" />
+          </div>
         </div>
       </div>
       <div className="main-bottom">sdadsad</div>

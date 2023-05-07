@@ -1,0 +1,31 @@
+.fileInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        border: 1px dashed #aaa;
+    }
+
+    &__icon {
+        font-size: 2rem;
+        color: #ccc;
+    }
+
+    &__text {
+        font-size: 1rem;
+        color: #ccc;
+    }
+
+    &__input {
+        display: none;
+    }
+
+}
