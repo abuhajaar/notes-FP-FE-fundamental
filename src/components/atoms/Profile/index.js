@@ -33,7 +33,7 @@ function Profile() {
           </h2>
         </div>
         <div className="wrapper-card__profile__image">
-          <img src={authUser.avatar || 'https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=826&t=st=1682958127~exp=1682958727~hmac=9beddb9b791d384cf78a2bf0448af16376eaa890807fd8528f0bf6305944280e'} alt="profile" />
+          <img src={authUser.avatar === 'null' ? 'https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=826&t=st=1682958127~exp=1682958727~hmac=9beddb9b791d384cf78a2bf0448af16376eaa890807fd8528f0bf6305944280e' : authUser.avatar} alt="profile" />
         </div>
 
         <div className="wrapper-card__profile__settings">
