@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable import/order */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Input } from '../../components';
 import './Home.scss';
@@ -19,11 +19,12 @@ import FileInput from '../../components/atoms/FileInput';
 function Home() {
   const { notes } = useSelector((state) => state);
   const { reminders } = useSelector((state) => state.reminders);
-  const [notesData, setNotesData] = React.useState([]);
+  const [notesData, setNotesData] = useState([]);
   const dispatch = useDispatch(); // @TODO: mengambil dispatch dari redux
-  const urlImage = localStorage.getItem('ImageTest');
+  const [urlImage, setUrlImage] = useState('');
 
   useEffect(() => {
+    setUrlImage(localStorage.getItem('ImageTest'));
     dispatch(asyncFetchReminderAndNotes());
   }, [dispatch]);
 

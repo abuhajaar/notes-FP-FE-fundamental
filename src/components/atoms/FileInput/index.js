@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './fileInput.scss';
 import { BASE_URL } from '../../../config/index';
+import Button from '../Button';
 
 function FileInput({ onFileSelect }) {
   const [selectedFile, setSelectedFile] = useState();
@@ -36,8 +37,10 @@ function FileInput({ onFileSelect }) {
   return (
     <div className="fileInput">
       <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileInput} />
-        <button type="submit">Submit</button>
+        <div className="fileInput__input">
+          <input type="file" onChange={handleFileInput} />
+        </div>
+        <Button title="Upload" type="submit" />
       </form>
     </div>
   );
