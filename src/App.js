@@ -24,6 +24,7 @@ import {
   RegisterPage,
   // Reminder,
 } from './pages';
+import GoogleLoginTest from './pages/GoogleLoginPage';
 
 function App() {
   const {
@@ -98,6 +99,10 @@ function App() {
                   <Route
                     path="/register"
                     element={<RegisterPage />}
+                  />
+                  <Route
+                    path="/login/google"
+                    element={<GoogleLoginTest />}
                   />
                 </Routes>
               </main>
